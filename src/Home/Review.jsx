@@ -13,7 +13,8 @@ import { Navigation } from 'swiper/modules';
 
 
 const Review = () => {
-  const [rating, setRating] = useState(0)
+  const [_rating, setRating] = useState(0)
+  // console.log(rating)
    const [reviews,setReviews] = useState([])
    useEffect(()=>{
     fetch("http://localhost:3000/reviews")
@@ -31,7 +32,7 @@ const Review = () => {
       {
         reviews.map(review =>(
 <div className="mx-auto flex justify-center items-center">
-  (<SwiperSlide key={review.id}>
+  (<SwiperSlide key={review._id}>
   
   
   <h2 className="text-2xl text-green-500">{review.name}</h2>
