@@ -25,9 +25,9 @@ const Carousel = () => {
       }}
       loop={true}
       >
-        <SwiperSlide><img className="w-full" src={slide1} /></SwiperSlide>
-        <SwiperSlide><img src={slide2} className="w-full" alt="" /></SwiperSlide>
-        <SwiperSlide><img src={slide3} className="w-full"  alt="" /></SwiperSlide>
+        <SwiperSlide><img className="w-full object-cover" src={slide1} /></SwiperSlide>
+        <SwiperSlide><img src={slide2} className="w-full object-cover " alt="" /></SwiperSlide>
+        <SwiperSlide><img src={slide3} className="w-full object-cover h-full"  alt="" /></SwiperSlide>
        
       </Swiper>
     </div>

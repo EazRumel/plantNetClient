@@ -44,9 +44,9 @@ return(
         <NavbarToggle />
       </div>
       <NavbarCollapse>
-        <NavbarLink href="#" active>
+        {/* <NavbarLink href="#" active>
           Home
-        </NavbarLink>
+        </NavbarLink> */}
         <NavbarLink href="/">Home</NavbarLink>
         <NavbarLink href="#">About</NavbarLink>
         <NavbarLink href="#">Services</NavbarLink>
