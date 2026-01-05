@@ -9,7 +9,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 // import './styles.css';
-import { Navigation } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 
 
 const Review = () => {
@@ -27,7 +27,13 @@ const Review = () => {
   return (
     <div>
                <div className="m-24 mx-auto items-center ">
-             <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+             <Swiper navigation={true} modules={[Navigation,Autoplay]} className="mySwiper"
+             autoplay={
+              {
+              delay:2000,
+              pauseOnMouseEnter:true
+             }}loop={true}
+             >
              
       {
         reviews.map(review =>(
@@ -35,9 +41,11 @@ const Review = () => {
   (<SwiperSlide key={review._id}>
   
   
-  <h2 className="text-2xl text-green-500">{review.name}</h2>
-  <p className="">{review.review}</p>
-  <Rating style={{ maxWidth: 250 }} value={review.rating} onChange={setRating} />
+  <div className="text-center">
+    <h2 className="text-2xl  text-green-500">{review.name}</h2>
+  <p className="my-5">{review.review}</p>
+  </div>
+  <Rating className="items-center flex justify-center mx-auto" style={{ maxWidth: 250 }} value={review.rating} onChange={setRating} />
   </SwiperSlide>)
 </div>
         ))

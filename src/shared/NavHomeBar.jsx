@@ -47,11 +47,11 @@ return(
         {/* <NavbarLink href="#" active>
           Home
         </NavbarLink> */}
-        <NavbarLink href="/">Home</NavbarLink>
-        <NavbarLink href="#">About</NavbarLink>
-        <NavbarLink href="#">Services</NavbarLink>
-        <NavbarLink href="#">Pricing</NavbarLink>
-        <NavbarLink href="#">Contact</NavbarLink>
+        <NavbarLink className="hover:text-green-500 " href="/">Home</NavbarLink>
+        <NavbarLink className="hover:text-green-500"  href="#">About</NavbarLink>
+        <NavbarLink className="hover:text-green-500"  href="#">Services</NavbarLink>
+        <NavbarLink className="hover:text-green-500"  href="#">Pricing</NavbarLink>
+        <NavbarLink className="hover:text-green-500"  href="#">Contact</NavbarLink>
       </NavbarCollapse>
     </Navbar>
 
