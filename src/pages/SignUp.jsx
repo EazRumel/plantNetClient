@@ -8,12 +8,46 @@ import lottieRegister from "../assets/lotties/register.json";
  
 
 import { AuthContext } from "../provider/AuthProvider";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { Notyf } from "notyf";
+import 'notyf/notyf.min.css';
+
 
 
 const SignUp = () => {
+
+
+   const notyf = new Notyf({
+  duration: 2000,
+  position: {
+    x: 'center',
+    y: 'top',
+  },
+  types: [
+    {
+      type: 'success',
+      background: 'green',
+      icon: {
+        className: 'material-icons',
+        tagName: 'i',
+        text: 'success'
+      }
+    },
+    {
+      type: 'success',
+      background: 'green',
+      duration: 2000,
+      dismissible: true
+    }
+  ]
+});
+
+// useNavigate to send user to home route after successful signup
+  const navigate = useNavigate();
+  const {createUser} = useContext(AuthContext);
   
   const {
     register,
@@ -24,6 +58,19 @@ const SignUp = () => {
 
    const onSubmit = (data) => {
     console.log(data);
+    createUser(data.email,data.password)
+    .then(result=>{
+      console.log(result.user);
+      navigate("/");
+     if(result.user){
+       notyf.success("Sign Up successful");
+     }
+      
+    })
+    .catch(error=>{
+      console.log(error.message);
+      notyf.error("Sign Up failed");
+    })
    }
 
   // console.log(watch("example")) // watch input value by passing the name of it
@@ -49,26 +96,35 @@ const SignUp = () => {
         <div className="mb-2 block">
           <Label htmlFor="your name">Your Name</Label>
         </div>
-        <TextInput {...register("name")} id="email2" name="name" type="email" placeholder="type your name" required shadow />
+        <TextInput {...register("name",{required:true})} id="email2" name="name" type="text" placeholder="type your name" required shadow />
       </div>
       <div>
      
         <div className="mb-2 block">
           <Label htmlFor="email2">Email</Label>
         </div>
-        <TextInput {...register("email")} id="email2" name="email" type="email" placeholder="name@flowbite.com" required shadow />
+        <TextInput {...register("email",{required:true})} id="email2" name="email" type="email" placeholder="name@flowbite.com" required shadow />
       </div>
       <div>
         <div className="mb-2 block">
           <Label htmlFor="password2">Password</Label>
         </div>
-        <TextInput {...register("password")} name="password" id="password2" type="password" required shadow />
+        <TextInput {...register("password",{required:true,minLength:6,maxLength:20,pattern:/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,}$/})} name="password" id="password2" type="password" required shadow />
+        
+        {errors.password?.type == "required" && <p className="text-red-500">Password is required</p>}
+        {errors.password?.type == "minLength" && <span className="text-red-500">Password must be of 6 characters</span>}
+    {errors.password?.type == "maxLength" && <span className="text-red-500">
+      Password cannot be more then 20 characters
+    </span>}
+    {errors.password?.type == "pattern" && <span className="text-red-500">
+      Password must have one single letter,one uppercase,one lowercase and a single symbol
+    </span>}
       </div>
 
        
         
       
-      <Button  className="cursor-pointer bg-green-500 text-red-500" type="submit">Register</Button>
+        <button className="btn cursor-pointer bg-green-500 text-white">Register</button>
     </form>
  </Card>
 </div>
