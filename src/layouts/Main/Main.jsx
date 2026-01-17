@@ -11,14 +11,16 @@ const Main = () => {
   const location = useLocation();
   // console.log(location);
 
-  const hideHeaderFooter = location.pathname.includes("/signUp");
+  const hideHeaderFooter = location.pathname.includes("/signUp") || location.pathname.includes("login");
+
+
   
 
   return (
     <div className="max-w-7xl mx-auto">
 
       <div className="">
-        {hideHeaderFooter || <NavHomeBar ></NavHomeBar>}
+        {hideHeaderFooter || <NavHomeBar ></NavHomeBar>  }
       </div>
       <Outlet></Outlet>
 {hideHeaderFooter || <Footerrr></Footerrr>}

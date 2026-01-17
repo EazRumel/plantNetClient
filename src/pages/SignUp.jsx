@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { Notyf } from "notyf";
 import 'notyf/notyf.min.css';
+import useAuth from "../hooks/useAuth";
 
 
 
@@ -47,7 +48,7 @@ const SignUp = () => {
 
 // useNavigate to send user to home route after successful signup
   const navigate = useNavigate();
-  const {createUser} = useContext(AuthContext);
+  const {createUser,updateUser} = useAuth();
   
   const {
     register,
@@ -61,11 +62,16 @@ const SignUp = () => {
     createUser(data.email,data.password)
     .then(result=>{
       console.log(result.user);
-      navigate("/");
+      updateUser(data.name,data.photo)
+      
+      .then(result=>{
+        console.log(result)
+        navigate("/");
      if(result.user){
        notyf.success("Sign Up successful");
      }
       
+      })
     })
     .catch(error=>{
       console.log(error.message);
@@ -87,7 +93,7 @@ const SignUp = () => {
      
     </div>
     
-    <div className="min-h-screen items-center flex  justify-center mx-auto">
+    <div className="min-h-screen items-center flex  justify-center mx-auto ">
    <Card className="w-full max-w-md px-10 py-10">
    <h1 className="text-center text-green-500 font-semibold text-3xl">New User?Register</h1>
   <form onSubmit={handleSubmit(onSubmit)}className="flex  flex-col gap-4">
@@ -97,6 +103,13 @@ const SignUp = () => {
           <Label htmlFor="your name">Your Name</Label>
         </div>
         <TextInput {...register("name",{required:true})} id="email2" name="name" type="text" placeholder="type your name" required shadow />
+      </div>
+     <div>
+     
+        <div className="mb-2 block">
+          <Label htmlFor="your name">Your Photo</Label>
+        </div>
+        <TextInput {...register("photo",{required:true})} id="email2" name="photo" type="photo" placeholder="place a photo" required shadow />
       </div>
       <div>
      
@@ -120,12 +133,9 @@ const SignUp = () => {
       Password must have one single letter,one uppercase,one lowercase and a single symbol
     </span>}
       </div>
-
-       
-        
-      
-        <button className="btn cursor-pointer bg-green-500 text-white">Register</button>
+        <input className="btn cursor-pointer bg-green-500 text-white" type="submit" value="Register" />
     </form>
+    <p>Already have an account? <Link className="text-green-500" to={"/login"}>Login</Link></p>
  </Card>
 </div>
     
