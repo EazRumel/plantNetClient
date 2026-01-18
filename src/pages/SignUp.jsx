@@ -15,11 +15,13 @@ import { useContext } from "react";
 import { Notyf } from "notyf";
 import 'notyf/notyf.min.css';
 import useAuth from "../hooks/useAuth";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
 
 const SignUp = () => {
 
+  const axiosPublic = useAxiosPublic();
 
    const notyf = new Notyf({
   duration: 2000,
@@ -66,11 +68,20 @@ const SignUp = () => {
       
       .then(result=>{
         console.log(result)
-        navigate("/");
-     if(result.user){
-       notyf.success("Sign Up successful");
-     }
-      
+        const userInfo={
+          email :data.email,
+          name : data.name
+        }
+        axiosPublic.post("/users",userInfo)
+        .then(response=>{
+          console.log(response.data);
+          if(response.data.insertedId){
+        
+            navigate("/");
+           notyf.success("Sign Up successful");
+
+          }
+        })
       })
     })
     .catch(error=>{
