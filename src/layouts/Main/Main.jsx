@@ -8,10 +8,12 @@ import Footerrr from "../../shared/Footerrr";
 
 
 const Main = () => {
+
   const location = useLocation();
   // console.log(location);
 
   const hideHeaderFooter = location.pathname.includes("/signUp") || location.pathname.includes("login");
+
 
 
   

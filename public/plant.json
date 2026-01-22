@@ -1,5 +1,6 @@
 [
   {
+
     "name": "Monstera Deliciosa",
     "category": "Indoor",
     "difficulty": "Easy",
@@ -9,9 +10,12 @@
     "currency": "BDT",
     "rating": 5,
     "available": true,
-    "image": "/images/plants/monstera.jpg"
+    "isFeatured": true,
+    "image": "https://florastore.com/cdn/shop/files/1711701_Productimage_02_SQ.jpg?v=1764599206&width=1800"
   },
+  
   {
+
     "name": "Snake Plant",
     "category": "Indoor",
     "difficulty": "Very Easy",
@@ -21,9 +25,11 @@
     "currency": "BDT",
     "rating": 5,
     "available": true,
-    "image": "/images/plants/snake-plant.jpg"
+    "isFeatured": true,
+    "image": "https://www.gardenersdream.co.uk/cdn/shop/articles/Snake_Plant_1_f6204179-d92b-40e3-bec7-0d3a61e93b81.jpg?v=1744013002&width=1500"
   },
   {
+
     "name": "Peace Lily",
     "category": "Indoor",
     "difficulty": "Medium",
@@ -33,9 +39,11 @@
     "currency": "BDT",
     "rating": 4,
     "available": true,
-    "image": "/images/plants/peace-lily.jpg"
+    "isFeatured": false,
+    "image": "https://radhakrishnaagriculture.in/cdn/shop/files/peacelily.jpg?v=1709184309"
   },
   {
+
     "name": "Aloe Vera",
     "category": "Succulent",
     "difficulty": "Easy",
@@ -45,9 +53,11 @@
     "currency": "BDT",
     "rating": 5,
     "available": true,
-    "image": "/images/plants/aloe-vera.jpg"
+    "isFeatured": true,
+    "image": "https://store.thegreenery.ca/cdn/shop/products/IMG_20210313_123448_2048x2048.jpg?v=1615667887"
   },
   {
+
     "name": "Bamboo Palm",
     "category": "Indoor",
     "difficulty": "Medium",
@@ -57,9 +67,11 @@
     "currency": "BDT",
     "rating": 4,
     "available": false,
-    "image": "/images/plants/bamboo-palm.jpg"
+    "isFeatured": false,
+    "image": "https://www.chhajedgarden.com/cdn/shop/files/bamboo-palm-indoor-greenery_1800x2400.jpg?v=1706075144"
   },
   {
+
     "name": "Fiddle Leaf Fig",
     "category": "Indoor",
     "difficulty": "Hard",
@@ -69,9 +81,11 @@
     "currency": "BDT",
     "rating": 3,
     "available": true,
-    "image": "/images/plants/fiddle-leaf.jpg"
+    "isFeatured": false,
+    "image": "https://www.palasa.co.in/cdn/shop/articles/IMG_20220226_173034_1.jpg?v=1694161186"
   },
   {
+
     "name": "Spider Plant",
     "category": "Indoor",
     "difficulty": "Easy",
@@ -81,9 +95,11 @@
     "currency": "BDT",
     "rating": 5,
     "available": true,
-    "image": "/images/plants/spider-plant.jpg"
+    "isFeatured": false,
+    "image": "https://www.bhg.com/thmb/LrCakiEVtRCyslgobTNlo-suVMk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/BHG-spider-plant-c0e0fdd5ec6e4c1588998ce3167f6579.jpg"
   },
   {
+
     "name": "Rubber Plant",
     "category": "Indoor",
     "difficulty": "Medium",
@@ -93,9 +109,11 @@
     "currency": "BDT",
     "rating": 4,
     "available": true,
-    "image": "/images/plants/rubber-plant.jpg"
+    "isFeatured": false,
+    "image": "https://abeautifulmess.com/wp-content/uploads/2023/06/rubbertree-1.jpg"
   },
   {
+
     "name": "Cactus",
     "category": "Succulent",
     "difficulty": "Very Easy",
@@ -105,9 +123,11 @@
     "currency": "BDT",
     "rating": 5,
     "available": true,
-    "image": "/images/plants/cactus.jpg"
+    "isFeatured": false,
+    "image": "https://www.jacksonandperkins.com/images/xxl/29377.webp?v=1"
   },
   {
+
     "name": "Jade Plant",
     "category": "Succulent",
     "difficulty": "Easy",
@@ -117,9 +137,11 @@
     "currency": "BDT",
     "rating": 4,
     "available": true,
-    "image": "/images/plants/jade.jpg"
+    "isFeatured": false,
+    "image": "https://cdn.mos.cms.futurecdn.net/tJwQ7w6uytDpxrChQfSSf3-1600-80.jpg.webp"
   },
   {
+
     "name": "Boston Fern",
     "category": "Indoor",
     "difficulty": "Medium",
@@ -129,9 +151,11 @@
     "currency": "BDT",
     "rating": 4,
     "available": true,
-    "image": "/images/plants/boston-fern.jpg"
+    "isFeatured": false,
+    "image": "https://chaletnursery.com/cdn/shop/files/Chalet-home-garden-chicago-boston-fern-annual-landscape.jpg?v=1711565391"
   },
   {
+
     "name": "ZZ Plant",
     "category": "Indoor",
     "difficulty": "Very Easy",
@@ -141,9 +165,11 @@
     "currency": "BDT",
     "rating": 5,
     "available": true,
-    "image": "/images/plants/zz-plant.jpg"
+    "isFeatured": true,
+    "image": "https://unlimitedgreens.com/cdn/shop/articles/vecteezy_houseplant-with-concrete-wall-and-copy-space_3330611_22a515c2-3332-43b1-a0eb-ec12495aca56.jpg?crop=center&height=1024&v=1739874631&width=1024"
   },
   {
+
     "name": "Areca Palm",
     "category": "Indoor",
     "difficulty": "Medium",
@@ -153,9 +179,11 @@
     "currency": "BDT",
     "rating": 4,
     "available": false,
-    "image": "/images/plants/areca-palm.jpg"
+    "isFeatured": false,
+    "image": "https://eureka-farms.com/cdn/shop/files/02_PALM_ARECA_01.jpg?v=1747160168&width=1100"
   },
   {
+
     "name": "Pothos",
     "category": "Indoor",
     "difficulty": "Easy",
@@ -165,9 +193,11 @@
     "currency": "BDT",
     "rating": 5,
     "available": true,
-    "image": "/images/plants/pothos.jpg"
+    "isFeatured": true,
+    "image": "https://www.marthastewart.com/thmb/AtP8qfuuu72ZACtNxqkXOB7imTk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-2170686151-675aeaba15364e1c876dc485f7e6d8d8.jpg"
   },
   {
+
     "name": "Calathea",
     "category": "Indoor",
     "difficulty": "Hard",
@@ -177,9 +207,11 @@
     "currency": "BDT",
     "rating": 3,
     "available": true,
-    "image": "/images/plants/calathea.jpg"
+    "isFeatured": false,
+    "image": "https://cdn.shopify.com/s/files/1/0621/8157/2697/files/nxbnllfv2b9wsm6fwwjr_e5890f42-f73b-4889-b03d-08907eea83a0_1000x1000_crop_center.jpg.webp?v=1738163051"
   },
   {
+
     "name": "Lavender",
     "category": "Outdoor",
     "difficulty": "Medium",
@@ -189,9 +221,11 @@
     "currency": "BDT",
     "rating": 4,
     "available": true,
-    "image": "/images/plants/lavender.jpg"
+    "isFeatured": false,
+    "image": "https://cdn.shopify.com/s/files/1/0059/8835/2052/files/20250513-_DSC0727-OliverCrane_7242e093-26ef-4299-953f-589246f78332.jpg?v=1760100810"
   },
   {
+
     "name": "Rose Plant",
     "category": "Outdoor",
     "difficulty": "Medium",
@@ -201,9 +235,11 @@
     "currency": "BDT",
     "rating": 5,
     "available": true,
-    "image": "/images/plants/rose.jpg"
+    "isFeatured": true,
+    "image": "https://prickleplants.co.uk/cdn/shop/files/Red_Rose_ed8c1a30-47bb-4dab-a4da-c8bc3446efc0.jpg?v=1722507826"
   },
   {
+
     "name": "Tulsi (Holy Basil)",
     "category": "Herb",
     "difficulty": "Easy",
@@ -213,9 +249,11 @@
     "currency": "BDT",
     "rating": 5,
     "available": true,
-    "image": "/images/plants/tulsi.jpg"
+    "isFeatured": true,
+    "image": "https://greensouq.ae/cdn/shop/files/ocimum-tenuiflorumtulsi-plantholy-basil-3298535.webp?v=1761327725&width=800"
   },
   {
+
     "name": "Mint",
     "category": "Herb",
     "difficulty": "Easy",
@@ -225,9 +263,11 @@
     "currency": "BDT",
     "rating": 4,
     "available": true,
-    "image": "/images/plants/mint.jpg"
+    "isFeatured": false,
+    "image": "https://celebratednest.com/wp-content/uploads/2024/06/growing-mint-in-containers-1.jpg"
   },
   {
+
     "name": "Sunflower",
     "category": "Outdoor",
     "difficulty": "Easy",
@@ -237,6 +277,7 @@
     "currency": "BDT",
     "rating": 5,
     "available": true,
-    "image": "/images/plants/sunflower.jpg"
+    "isFeatured": false,
+    "image": "https://greenshipgardenus.com/wp-content/uploads/2025/02/unnamed-133.png"
   }
 ]

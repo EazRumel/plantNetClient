@@ -4,6 +4,8 @@ import Home from "../Home/Home";
 import SignUp from "../pages/SignUp";
 import Main from "../layouts/Main/Main";
 import Login from "../pages/Login";
+import FeaturedPlants from "../components/FeaturedPlants";
+
 
 
 
@@ -23,6 +25,10 @@ export const router = createBrowserRouter([
   {
     path:"/login",
     element:<Login></Login>
+  },
+  {
+    path:"/featuredPlants",
+    element:<FeaturedPlants></FeaturedPlants>
   }
     ]
   }
