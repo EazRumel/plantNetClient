@@ -10,11 +10,8 @@ import {
 import AuthProvider, { AuthContext } from './provider/AuthProvider.jsx';
 
 import {
-
-
-
-  QueryClient,
-  QueryClientProvider,
+ QueryClient,
+ QueryClientProvider,
 } from '@tanstack/react-query';
 
 const queryClient = new QueryClient();

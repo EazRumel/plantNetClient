@@ -5,6 +5,9 @@ import SignUp from "../pages/SignUp";
 import Main from "../layouts/Main/Main";
 import Login from "../pages/Login";
 import FeaturedPlants from "../components/FeaturedPlants";
+import Plants from "../pages/Plants";
+
+
 
 
 
@@ -29,7 +32,15 @@ export const router = createBrowserRouter([
   {
     path:"/featuredPlants",
     element:<FeaturedPlants></FeaturedPlants>
-  }
+  },
+  {
+    path:"/plants",
+    element:<Plants></Plants>
+  },
+
+   
+  
+    
     ]
   }
 ]);

@@ -33,8 +33,10 @@ return(
 
      <Navbar  fluid rounded className="my-5 ">
       <NavbarBrand href="">
-        <img src={logo} className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Tree Planet</span>
+        <div className="flex px-6 py-2 rounded-2xl">
+          <img src={logo} className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
+        <p className="self-center whitespace-nowrap text-xl font-light dark:text-white"><span className="text-green-400 font-light">Tree</span> Planet</p>
+        </div>
       </NavbarBrand>
       <div className="flex md:order-2">
        {
@@ -97,10 +99,9 @@ return(
           Home
         </NavbarLink> */}
         <NavbarLink className="hover:text-green-500 " href="/">Home</NavbarLink>
-        <NavbarLink className="hover:text-green-500"  href="#">About</NavbarLink>
-        <NavbarLink className="hover:text-green-500"  href="#">Services</NavbarLink>
-        <NavbarLink className="hover:text-green-500"  href="#">Pricing</NavbarLink>
-        <NavbarLink className="hover:text-green-500"  href="#">Contact</NavbarLink>
+        <NavbarLink className="hover:text-green-500"  href="/plants">Plants</NavbarLink>
+        
+        
       </NavbarCollapse>
     </Navbar>
 
