@@ -98,8 +98,48 @@ return(
         {/* <NavbarLink href="#" active>
           Home
         </NavbarLink> */}
-        <NavbarLink className="hover:text-green-500 " href="/">Home</NavbarLink>
-        <NavbarLink className="hover:text-green-500"  href="/plants">Plants</NavbarLink>
+       <NavbarLink
+  href="/"
+  className="
+    relative group
+    text-gray-700
+    transition-colors duration-200
+    hover:text-green-600
+  "
+>
+  Home
+  <span
+    className="
+      absolute left-0 -bottom-1 h-[2px] w-full
+      bg-green-500
+      transform scale-x-0 origin-left
+      transition-transform duration-300 ease-out
+      group-hover:scale-x-100
+    "
+  ></span>
+</NavbarLink>
+
+        <NavbarLink
+  href="/plants"
+  className="
+    relative group
+    text-gray-700
+    transition-colors duration-200
+    hover:text-green-600
+  "
+>
+ Plants
+  <span
+    className="
+      absolute left-0 -bottom-1 h-[2px] w-full
+      bg-green-500
+      transform scale-x-0 origin-left
+      transition-transform duration-300 ease-out
+      group-hover:scale-x-100
+    "
+  ></span>
+</NavbarLink>
+
         
         
       </NavbarCollapse>

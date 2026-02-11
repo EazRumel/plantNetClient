@@ -12,7 +12,7 @@ const Main = () => {
   const location = useLocation();
   // console.log(location);
 
-  const hideHeaderFooter = location.pathname.includes("/signUp") || location.pathname.includes("login");
+  const hideHeaderFooter = location.pathname.includes("/signUp") || location.pathname.includes("login") ;
 
 
 

@@ -6,6 +6,8 @@ import Main from "../layouts/Main/Main";
 import Login from "../pages/Login";
 import FeaturedPlants from "../components/FeaturedPlants";
 import Plants from "../pages/Plants";
+import Secret from "./Secret";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -37,6 +39,12 @@ export const router = createBrowserRouter([
     path:"/plants",
     element:<Plants></Plants>
   },
+  {
+    path:"/secret",
+    element:<PrivateRoute>
+      <Secret></Secret>
+    </PrivateRoute>
+  }
 
    
   

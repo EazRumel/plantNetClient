@@ -2,7 +2,12 @@ import { Button, ButtonGroup, Card } from 'flowbite-react';
 
 
 const PageCard = ({plant}) => {
-  const {image,category,difficulty,price} = plant;
+  const {image,category,difficulty,price} = plant
+
+  const handleAddToCart=(plant)=>{
+    plant.preventDefault();
+    console.log(plant)
+  }
   console.log(plant);
   return (
     <div className="">
@@ -15,10 +20,42 @@ const PageCard = ({plant}) => {
   <div className="card-body">
     <h2 className="card-title">{category}</h2>
 
-    <p>{difficulty}</p>
+    <p>Difficulty : {difficulty}</p>
     <div className="card-actions justify-end">
-      <button className="btn bg-green-300 hover:bg-green-100">Add to Cart <span>{price} BDT</span></button>
-      
+     <button
+     onClick={handleAddToCart}
+  className="
+    btn relative overflow-hidden group
+    bg-transparent border border-green-500 text-green-500
+    transition-shadow duration-200
+    hover:shadow-lg
+  "
+>
+  {/* Pour layer */}
+  <span
+    className="
+      absolute inset-0 bg-green-500
+      transform scale-y-0 origin-top
+      transition-transform duration-300 ease-out
+      delay-75
+      group-hover:scale-y-100
+    "
+  ></span>
+
+  {/* Button content */}
+  <span
+    className="
+      relative z-10 flex items-center gap-2
+      transition-colors duration-150
+      group-hover:text-white
+    "
+  >
+    Add to Cart
+    <span className="font-semibold">{price} BDT</span>
+  </span>
+</button>
+
+
     </div>
   </div>
 </div>

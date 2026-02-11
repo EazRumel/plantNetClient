@@ -9,6 +9,9 @@ import { Notyf } from "notyf";
 
 const Login = () => {
 
+  const from = location?.state?.from?.pathname || "/";
+  console.log(location.state)
+
 
    const notyf = new Notyf({
     duration: 2000,
@@ -96,7 +99,37 @@ const Login = () => {
       Password must have one single letter,one uppercase,one lowercase and a single symbol
     </span>}
       </div>
-<input className="btn cursor-pointer bg-green-500 text-white" type="submit" value="Login" />
+<button
+  type="submit"
+  className="
+    btn relative overflow-hidden group
+    bg-transparent border border-green-500 text-green-500
+    transition-shadow duration-200
+    hover:shadow-lg
+  "
+>
+  {/* Pour layer */}
+  <span
+    className="
+      absolute inset-0 bg-green-500
+      transform scale-y-0 origin-top
+      transition-transform duration-300 ease-out delay-75
+      group-hover:scale-y-100
+    "
+  ></span>
+
+  {/* Text */}
+  <span
+    className="
+      relative z-10
+      transition-colors duration-150
+      group-hover:text-white
+    "
+  >
+    Login
+  </span>
+</button>
+
     </form>
     <p>Doesn't have an account? <Link className="text-green-500" to={"/signUp"}>Register</Link></p>
  </Card>

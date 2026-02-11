@@ -12,6 +12,7 @@ import { Home, Leaf, TreePine } from "lucide-react";
 import { GiCactus } from "react-icons/gi";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import TabItems from "../components/TabItems";
+import Parallax from "../components/Parallax";
 
 
 
@@ -35,13 +36,127 @@ const Plants = () => {
   // console.log(herb)
   return (
    <div>
-
+         <Parallax></Parallax>
   <Tabs selectedIndex={tabIndex}  onSelect={(index) => setTabIndex(index)}>
-      <TabList className="flex gap-4 mx-auto my-5 justify-center ">
-        <Tab className="btn">Indoor</Tab>
-        <Tab className="btn ">Succulent</Tab>
-        <Tab className="btn">Outdoor</Tab>
-        <Tab className="btn">Herb</Tab>
+      <TabList className="flex gap-4 mx-auto my-20 justify-center ">
+
+
+       <Tab className="p-0">
+  <div
+    className="
+      relative px-4 py-2
+      border border-gray-300 rounded-md
+      cursor-pointer group
+      transition-colors duration-200
+      hover:border-green-500
+    "
+  >
+    {/* Text */}
+    <span className="text-gray-700 group-hover:text-green-600 transition-colors">
+      Indoor
+    </span>
+
+    {/* Underline */}
+    <span
+      className="
+        absolute left-2 right-2 bottom-1
+        h-[2px] bg-green-500
+        transform scale-x-0 origin-left
+        transition-transform duration-300 ease-out
+        group-hover:scale-x-100
+      "
+    ></span>
+  </div>
+</Tab>
+
+
+
+        <Tab className="p-0">
+  <div
+    className="
+      relative px-4 py-2
+      border border-gray-300 rounded-md
+      cursor-pointer group
+      transition-colors duration-200
+      hover:border-green-500
+    "
+  >
+    {/* Text */}
+    <span className="text-gray-700 group-hover:text-green-600 transition-colors">
+      Succulent
+    </span>
+
+    {/* Underline */}
+    <span
+      className="
+        absolute left-2 right-2 bottom-1
+        h-[2px] bg-green-500
+        transform scale-x-0 origin-left
+        transition-transform duration-300 ease-out
+        group-hover:scale-x-100
+      "
+    ></span>
+  </div>
+</Tab>
+
+       <Tab className="p-0">
+  <div
+    className="
+      relative px-4 py-2
+      border border-gray-300 rounded-md
+      cursor-pointer group
+      transition-colors duration-200
+      hover:border-green-500
+    "
+  >
+    {/* Text */}
+    <span className="text-gray-700 group-hover:text-green-600 transition-colors">
+      Outdoor
+    </span>
+
+    {/* Underline */}
+    <span
+      className="
+        absolute left-2 right-2 bottom-1
+        h-[2px] bg-green-500
+        transform scale-x-0 origin-left
+        transition-transform duration-300 ease-out
+        group-hover:scale-x-100
+      "
+    ></span>
+  </div>
+</Tab>
+
+
+        <Tab className="p-0">
+  <div
+    className="
+      relative px-4 py-2
+      border border-gray-300 rounded-md
+      cursor-pointer group
+      transition-colors duration-200
+      hover:border-green-500
+    "
+  >
+    {/* Text */}
+    <span className="text-gray-700 group-hover:text-green-600 transition-colors">
+    Herb
+    </span>
+
+    {/* Underline */}
+    <span
+      className="
+        absolute left-2 right-2 bottom-1
+        h-[2px] bg-green-500
+        transform scale-x-0 origin-left
+        transition-transform duration-300 ease-out
+        group-hover:scale-x-100
+      "
+    ></span>
+  </div>
+</Tab>
+
+
       </TabList>
       <TabPanel>
         <TabItems plants={indoor}></TabItems>
