@@ -1,12 +1,32 @@
 import { Button, ButtonGroup, Card } from 'flowbite-react';
+import useAuth from '../hooks/useAuth';
+import userAxiosSecure from '../hooks/userAxiosSecure';
 
 
 const PageCard = ({plant}) => {
-  const {image,category,difficulty,price} = plant
+
+  const axiosSecure = userAxiosSecure();
+
+  const {user} = useAuth();
+  const {name,image,category,difficulty,price,_id} = plant
 
   const handleAddToCart=(plant)=>{
     plant.preventDefault();
-    console.log(plant)
+    
+   if(user && user?.email){
+     const cartItem = {
+      cartId : _id,
+      price,
+      name,
+      email:user.email,
+      image,
+      category
+    }
+    axiosSecure.post("/carts",cartItem)
+    .then(response=>{
+      console.log(response.data);
+    })
+   }
   }
   console.log(plant);
   return (
