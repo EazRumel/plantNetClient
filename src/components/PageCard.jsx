@@ -4,11 +4,13 @@ import userAxiosSecure from '../hooks/userAxiosSecure';
 import Swal from 'sweetalert2';
 import { Notyf } from 'notyf';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useCart from '../hooks/useCart';
 
 
 const PageCard = ({plant}) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [carts,refetch] = useCart();
    const notyf = new Notyf({
       duration: 2000,
       position: {
@@ -54,12 +56,15 @@ const PageCard = ({plant}) => {
     }
     
     axiosSecure.post("/carts",cartItem)
+    
     .then(response=>{
-      console.log(response.data);
+      // console.log(response.data);
       if(response.data.insertedId){
         notyf.success(`${name} Added to Cart`)
+        refetch();
       }
     })
+    
     .catch(error=>{
       notyf.error("Failed to Add to Cart")
       console.log(error.message)
@@ -84,7 +89,7 @@ const PageCard = ({plant}) => {
 
    }
   }
-  console.log(plant);
+  // console.log(plant);
   return (
     <div className="">
           <div className="card bg-base-100  w-96 shadow-sm">

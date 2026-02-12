@@ -13,12 +13,15 @@ import {
 import logo from "../assets/img/plantLogo.jpg"
 import useAuth from "../hooks/useAuth";
 import { Link } from "react-router-dom";
+import useCart from "../hooks/useCart";
 
 
 const NavHomeBar = () => {
 
 
   const {user,logOut} = useAuth();
+  const [cart] = useCart();
+  // console.log(carts);
 
   const handleLogOut =() =>{
      logOut()
@@ -31,7 +34,7 @@ const NavHomeBar = () => {
 return(
 
 
-     <Navbar  fluid rounded className="my-5 ">
+     <Navbar  fluid rounded className="my-5">
       <NavbarBrand href="">
         <div className="flex px-6 py-2 rounded-2xl">
           <img src={logo} className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
@@ -118,6 +121,7 @@ return(
     "
   ></span>
 </NavbarLink>
+     
 
         <NavbarLink
   href="/plants"
@@ -140,6 +144,26 @@ return(
   ></span>
 </NavbarLink>
 
+  <NavbarLink
+  href="/"
+  className="flex
+    relative group
+    text-gray-700
+    transition-colors duration-200
+    hover:text-green-600
+  "
+>
+  Carts <p>  ({cart.length})</p>
+  <span
+    className="
+      absolute left-0 -bottom-1 h-[2px] w-full
+      bg-green-500
+      transform scale-x-0 origin-left
+      transition-transform duration-300 ease-out
+      group-hover:scale-x-100
+    "
+  ></span>
+</NavbarLink>
         
         
       </NavbarCollapse>
