@@ -53,7 +53,7 @@ const Login = () => {
    loginUser(data.email,data.password)
    .then(result=>{
     console.log(result.user);
-    navigate("/");
+    navigate(from,{replace:true});
 
     if(result.user){
         notyf.success("Login Successful");
