@@ -1,5 +1,5 @@
 
-import PageCard from './PageCard';
+import PageCard from './PlantCard';
 
 const TabItems = ({plants}) => {
   return (

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PageCard from "../components/PageCard";
+import PageCard from "../components/PlantCard";
 import usePlants from "../hooks/usePlants";
 
 import { Home, Leaf, TreePine } from "lucide-react";

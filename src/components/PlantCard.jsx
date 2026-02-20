@@ -3,11 +3,12 @@ import useAuth from '../hooks/useAuth';
 import userAxiosSecure from '../hooks/userAxiosSecure';
 import Swal from 'sweetalert2';
 import { Notyf } from 'notyf';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useCart from '../hooks/useCart';
 
 
-const PageCard = ({plant}) => {
+const PlantCard = ({plant}) => {
+
   const navigate = useNavigate();
   const location = useLocation();
   const [carts,refetch] = useCart();
@@ -40,6 +41,11 @@ const PageCard = ({plant}) => {
 
   const {user} = useAuth();
   const {name,image,category,difficulty,price,_id} = plant
+
+
+  // const handleDetails =() =>{
+      
+  // }
 
   const handleAddToCart=(plant)=>{
     plant.preventDefault();
@@ -106,6 +112,46 @@ const PageCard = ({plant}) => {
 
     <p>Difficulty : {difficulty}</p>
     <div className="card-actions justify-end">
+
+    {/* div for two buttons alignment */}
+    <div className="flex mx-3 my-3 gap-2">
+    {/* details button */}
+      <Link to={`/plant/${_id}`}>
+         <button
+
+  className="
+    btn relative overflow-hidden group
+    bg-transparent border border-green-500 text-green-500
+    transition-shadow duration-200
+    hover:shadow-lg
+  "
+>
+  {/* Pour layer */}
+  <span
+    className="
+      absolute inset-0 bg-green-500
+      transform scale-y-0 origin-top
+      transition-transform duration-300 ease-out
+      delay-75
+      group-hover:scale-y-100
+    "
+  ></span>
+
+  {/* Button content */}
+  <span
+    className="
+      relative z-10 flex items-center gap-2
+      transition-colors duration-150
+      group-hover:text-white
+    "
+  >
+   Details
+
+  </span>
+</button>
+      </Link>
+
+   {/* add to cart button */}
      <button
      onClick={handleAddToCart}
   className="
@@ -138,6 +184,7 @@ const PageCard = ({plant}) => {
     <span className="font-semibold">{price} BDT</span>
   </span>
 </button>
+    </div>
 
 
     </div>
@@ -147,4 +194,4 @@ const PageCard = ({plant}) => {
   );
 };
 
-export default PageCard;
+export default PlantCard;

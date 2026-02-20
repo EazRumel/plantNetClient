@@ -8,6 +8,9 @@ import FeaturedPlants from "../components/FeaturedPlants";
 import Plants from "../pages/Plants";
 import Secret from "./Secret";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../layouts/Dashboard/Dashboard";
+import Cart from "../layouts/Dashboard/Cart";
+import PlantCardDetails from "../components/PlantCardDetails";
 
 
 
@@ -40,6 +43,14 @@ export const router = createBrowserRouter([
     element:<Plants></Plants>
   },
   {
+    path:"/plant/:id",
+    element:<PrivateRoute>
+      <PlantCardDetails></PlantCardDetails>
+    </PrivateRoute>,
+    loader:({params})=>fetch(`http://localhost:3000/plants/${params.id}`)
+
+  },
+  {
     path:"/secret",
     element:<PrivateRoute>
       <Secret></Secret>
@@ -49,6 +60,16 @@ export const router = createBrowserRouter([
    
   
     
+    ]
+  },
+  {
+    path:"dashboard",
+    element:<Dashboard></Dashboard>,
+    children:[
+      {
+        path:"cart",
+        element:<Cart></Cart>
+      }
     ]
   }
 ]);

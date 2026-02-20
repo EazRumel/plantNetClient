@@ -62,9 +62,7 @@ return(
           </DropdownHeader>
 
           
-          <DropdownItem>Dashboard</DropdownItem>
-          <DropdownItem>Settings</DropdownItem>
-          <DropdownItem>Earnings</DropdownItem>
+          <DropdownItem ><Link to="dashboard">Dashboard</Link></DropdownItem>
           <DropdownDivider />
          <DropdownItem onClick={handleLogOut}>Sign Out</DropdownItem>
           
@@ -145,7 +143,7 @@ return(
 </NavbarLink>
 
   <NavbarLink
-  href="/"
+
   className="flex
     relative group
     text-gray-700
@@ -153,7 +151,7 @@ return(
     hover:text-green-600
   "
 >
-  Carts <p>  ({cart.length})</p>
+  
   <span
     className="
       absolute left-0 -bottom-1 h-[2px] w-full
@@ -163,6 +161,7 @@ return(
       group-hover:scale-x-100
     "
   ></span>
+  <Link to="/dashboard/cart">Carts <p>  ({cart.length})</p></Link>
 </NavbarLink>
         
         
