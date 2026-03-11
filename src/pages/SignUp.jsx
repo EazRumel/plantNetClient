@@ -59,36 +59,46 @@ const SignUp = () => {
     formState: { errors },
   } = useForm()
 
-   const onSubmit = (data) => {
-    console.log(data);
-    createUser(data.email,data.password)
-    .then(result=>{
-      console.log(result.user);
-      updateUser(data.name,data.photo)
-      
-      .then(result=>{
-        console.log(result)
-        const userInfo={
-          email :data.email,
-          name : data.name
-        }
-        axiosPublic.post("/users",userInfo)
-        .then(response=>{
-          console.log(response.data);
-          if(response.data.insertedId){
-        
-            navigate("/");
-           notyf.success("Sign Up successful");
+ const onSubmit = async (data) => {
+  try {
 
-          }
-        })
-      })
-    })
-    .catch(error=>{
-      console.log(error.message);
-      notyf.error("Sign Up failed");
-    })
-   }
+    console.log(data);
+
+    // 1. Create Firebase user
+    const result = await createUser(data.email, data.password);
+    console.log(result.user);
+
+    // 2. Update Firebase profile
+    await updateUser(data.name, data.photo);
+
+    // 3. Save user to database
+    const userInfo = {
+      email: data.email,
+      name: data.name
+    };
+
+    await axiosPublic.post("/users", userInfo);
+
+    // 4. Create JWT cookie
+    const response = await axiosPublic.post(
+      "/jwt",
+      { email: data.email },
+      { withCredentials: true }
+    );
+
+    console.log(response.data);
+
+    // 5. Redirect after success
+    if (response.data.success) {
+      notyf.success("Sign Up successful");
+      navigate("/");
+    }
+
+  } catch (error) {
+    console.log(error.message);
+    notyf.error("Sign Up failed");
+  }
+};
 
   // console.log(watch("example")) // watch input value by passing the name of it
 
