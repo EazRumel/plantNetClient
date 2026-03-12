@@ -59,17 +59,17 @@ const SignUp = () => {
     formState: { errors },
   } = useForm()
 
- const onSubmit = async (data) => {
-  try {
+ const onSubmit = (data) => {
+
 
     console.log(data);
 
     // 1. Create Firebase user
-    const result = await createUser(data.email, data.password);
-    console.log(result.user);
+      createUser(data.email, data.password);
+    // console.log(result.user);
 
     // 2. Update Firebase profile
-    await updateUser(data.name, data.photo);
+    updateUser(data.name, data.photo);
 
     // 3. Save user to database
     const userInfo = {
@@ -77,27 +77,26 @@ const SignUp = () => {
       name: data.name
     };
 
-    await axiosPublic.post("/users", userInfo);
+   axiosPublic.post("/users", userInfo)
+   .then(response=>{
+         if (response.data.insertedId) {
+      notyf.success("Sign Up successful");
+      navigate("/");
+    }
+   })
+   .catch(error=>{
+    console.log(error.message);
+    notyf.error("Sign Up Failed!!")
+   })
 
-    // 4. Create JWT cookie
-    const response = await axiosPublic.post(
-      "/jwt",
-      { email: data.email },
-      { withCredentials: true }
-    );
 
     console.log(response.data);
 
     // 5. Redirect after success
-    if (response.data.success) {
-      notyf.success("Sign Up successful");
-      navigate("/");
-    }
+   
+    
 
-  } catch (error) {
-    console.log(error.message);
-    notyf.error("Sign Up failed");
-  }
+   
 };
 
   // console.log(watch("example")) // watch input value by passing the name of it

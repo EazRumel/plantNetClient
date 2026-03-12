@@ -9,7 +9,7 @@ const usePlants = () => {
   const {data:plants=[]} = useQuery({
     queryKey:["plants"],
     queryFn:async()=>{
-      const response = await axiosPublic.get("/plants");
+      const response = await axiosPublic.get("/plants",{withCredentials:true});
       return response.data;
     }
 

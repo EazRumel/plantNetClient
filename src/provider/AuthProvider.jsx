@@ -2,11 +2,13 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,onA
 
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebaseInit";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
 
 export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
+  const axiosPublic = useAxiosPublic();
 
   const [loading,setLoading] = useState(true);
   const [user,setUser ]  = useState(null);
@@ -38,8 +40,28 @@ const AuthProvider = ({children}) => {
    const unsubscribe = onAuthStateChanged(auth,currentUser=>{
     console.log(currentUser);
     setUser(currentUser)
+
+
+     if(currentUser?.email){
+       const user = {email : currentUser.email}
+         axiosPublic.post("/jwt",user,{withCredentials:true})
+         .then(res=>{
+          console.log(res.data)
+          setLoading(false)
+         })
+     }
+     else{
+           axiosPublic.post("/logOutJwt",{},{withCredentials:true})
+           .then(res=>{
+            console.log(res.data)
+            setLoading(false)
+           })
+     }
+
+  
     setLoading(false);
    })
+
 
     return () =>{
       return unsubscribe();
