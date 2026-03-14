@@ -46,19 +46,26 @@ const AuthProvider = ({children}) => {
        const user = {email : currentUser.email}
          axiosPublic.post("/jwt",user,{withCredentials:true})
          .then(res=>{
-          console.log(res.data)
+
+          {
+
+          console.log("from logIn",res.data)
           setLoading(false)
+
+          }
+
          })
      }
      else{
-           axiosPublic.post("/logOutJwt",{},{withCredentials:true})
+           axiosPublic.post("/logOutJwt",{},     
+            {withCredentials:true})
            .then(res=>{
-            console.log(res.data)
-            setLoading(false)
+            {
+              console.log("from logOut",res.data)
+              setLoading(false);
+            }
            })
      }
-
-  
     setLoading(false);
    })
 
