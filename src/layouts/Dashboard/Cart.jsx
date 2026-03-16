@@ -1,9 +1,70 @@
 
+import { BookmarkX } from 'lucide-react';
 import useCart from '../../hooks/useCart';
+import Swal from 'sweetalert2';
+
+import userAxiosSecure from '../../hooks/userAxiosSecure';
+import { Notyf } from 'notyf';
 
 const Cart = () => {
-  const [cart] = useCart();
-  const totalPrice = cart.reduce((sum,item)=>sum+item.price,0)
+  const [cart,refetch] = useCart();
+  const axiosSecure = userAxiosSecure();
+  const totalPrice = cart.reduce((sum,item)=>sum+item.price,0);
+
+
+  const notyf = new Notyf({
+        duration: 2000,
+        position: {
+          x: 'center',
+          y: 'top',
+        },
+        types: [
+          {
+            type: 'success',
+            background: 'green',
+            icon: {
+              className: 'material-icons',
+              tagName: 'i',
+              text: 'success'
+            }
+          },
+          {
+            type: 'success',
+            background: 'green',
+            duration: 2000,
+            dismissible: true
+          }
+        ]
+      });
+
+  //handel delete cart using a specific id
+
+  const handleDelete = (id) =>{
+      Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+
+  
+  if (result.isConfirmed) {
+    axiosSecure.delete(`/carts/${id}`)
+    .then(response=>{
+      // console.log(response.data)
+       if(response.data.deletedCount > 0){
+
+       notyf.success("Item has been deleted")
+      refetch();
+      
+    }
+    })
+  }
+});
+  }
   return (
     <div className="mx-auto">
 <div className="flex justify-evenly my-5">
@@ -52,7 +113,7 @@ const Cart = () => {
         </td>
         <td>{carts.price}</td>
         <th>
-          <button className="btn btn-ghost btn-xs">details</button>
+          <button onClick={()=>handleDelete(carts._id)} className="btn bg-red-400 btn-ghost"><BookmarkX /></button>
         </th>
       </tr>)
       }
