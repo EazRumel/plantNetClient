@@ -5,6 +5,7 @@ import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
 import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
 import { Notyf } from "notyf";
+import SocialLogin from "../components/SocialLogin";
 
 
 const Login = () => {
@@ -129,8 +130,9 @@ const Login = () => {
     Login
   </span>
 </button>
-
+       
     </form>
+    <SocialLogin></SocialLogin>
     <p>Doesn't have an account? <Link className="text-green-500" to={"/signUp"}>Register</Link></p>
  </Card>
 </div>

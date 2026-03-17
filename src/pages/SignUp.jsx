@@ -16,6 +16,7 @@ import { Notyf } from "notyf";
 import 'notyf/notyf.min.css';
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import SocialLogin from "../components/SocialLogin";
 
 
 
@@ -155,7 +156,9 @@ const SignUp = () => {
       </div>
         <input className="btn cursor-pointer bg-green-500 text-white" type="submit" value="Register" />
     </form>
+    <SocialLogin></SocialLogin>
     <p>Already have an account? <Link className="text-green-500" to={"/login"}>Login</Link></p>
+
  </Card>
 </div>
     
