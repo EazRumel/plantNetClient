@@ -36,13 +36,14 @@ const SocialLogin = () => {
   const handleGoogleLogin = () =>{
        signInWithGoogle()
        .then(response=>{
-        // console.log(response.user)
+        console.log(response.user)
         const userInfo = {
            name : response.user?.displayName,
            email : response.user?.email
         }
         axiosPublic.post("/users",userInfo)
         .then(response=>{
+          console.log(response.data)
         notyf.success("Login success")
         navigate("/")
 

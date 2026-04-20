@@ -9,8 +9,10 @@ import Plants from "../pages/Plants";
 import Secret from "./Secret";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../layouts/Dashboard/Dashboard";
-import Cart from "../layouts/Dashboard/Cart";
+
 import PlantCardDetails from "../components/PlantCardDetails";
+import Cart from "../pages/Cart";
+
 
 
 
@@ -56,6 +58,10 @@ export const router = createBrowserRouter([
       <Secret></Secret>
     </PrivateRoute>
   }
+  ,{
+    path:"/cart",
+    element:<Cart></Cart>
+  }
 
    
   
@@ -66,10 +72,10 @@ export const router = createBrowserRouter([
     path:"dashboard",
     element:<Dashboard></Dashboard>,
     children:[
-      {
-        path:"cart",
-        element:<Cart></Cart>
-      }
+      // {
+      //   path:"cart",
+      //   element:<Cart></Cart>
+      // }
     ]
   }
 ]);

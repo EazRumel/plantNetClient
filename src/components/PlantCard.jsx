@@ -43,9 +43,9 @@ const PlantCard = ({plant}) => {
   const {name,image,category,difficulty,price,_id} = plant
 
 
-  // const handleDetails =() =>{
-      
-  // }
+  const handleLogOut =()=>{
+    
+  }
 
   const handleAddToCart=(plant)=>{
     plant.preventDefault();
@@ -116,8 +116,7 @@ const PlantCard = ({plant}) => {
     {/* div for two buttons alignment */}
     <div className="flex mx-3 my-3 gap-2">
     {/* details button */}
-      <Link to={`/plant/${_id}`}>
-         <button
+     <button
 
   className="
     btn relative overflow-hidden group
@@ -145,11 +144,13 @@ const PlantCard = ({plant}) => {
       group-hover:text-white
     "
   >
-   Details
+  <Link to={`/plant/${_id}`}>
+        Details
+      </Link>
 
   </span>
 </button>
-      </Link>
+     
 
    {/* add to cart button */}
      <button

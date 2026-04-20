@@ -4,6 +4,9 @@ import useAuth from "../hooks/useAuth";
 
 
 const PlantCardDetails = () => {
+
+
+  
   const {user} = useAuth();
   console.log(user);
 
@@ -23,12 +26,12 @@ const PlantCardDetails = () => {
       <p>Quantity: {quantity}</p>
       
       <p className="py-6">
-
+     
       </p>
       <img src={user?.photoURL} alt="" />
          <button
 
-  className="
+  className="mt-3
     btn relative overflow-hidden group
     bg-transparent border border-green-500 text-green-500
     transition-shadow duration-200

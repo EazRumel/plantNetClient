@@ -29,7 +29,7 @@ const Dashboard = () => {
 </NavLink>
           </li>
           <li>
-            <NavLink
+            {/* <NavLink
   to="cart"
   className={({ isActive }) =>
     isActive
@@ -38,7 +38,7 @@ const Dashboard = () => {
   }
 >
   <span className="flex font-bold text-xl gap-2 items-center justify-center">Cart({cart.length}) -<ShoppingCart size={22} strokeWidth={3} /></span>
-</NavLink>
+</NavLink> */}
           </li>
         </ul>
     

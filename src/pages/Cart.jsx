@@ -1,13 +1,14 @@
 
 import { BookmarkX } from 'lucide-react';
-import useCart from '../../hooks/useCart';
+import useCart from '../hooks/useCart';
 import Swal from 'sweetalert2';
 
-import userAxiosSecure from '../../hooks/userAxiosSecure';
+import userAxiosSecure from '../hooks/userAxiosSecure';
 import { Notyf } from 'notyf';
 
 const Cart = () => {
   const [cart,refetch] = useCart();
+  console.log(cart);
   const axiosSecure = userAxiosSecure();
   const totalPrice = cart.reduce((sum,item)=>sum+item.price,0);
 
@@ -40,12 +41,13 @@ const Cart = () => {
   //handel delete cart using a specific id
 
   const handleDelete = (id) =>{
+    const deletedItem = cart.find(item => item._id === id)
       Swal.fire({
   title: "Are you sure?",
   text: "You won't be able to revert this!",
   icon: "warning",
   showCancelButton: true,
-  confirmButtonColor: "#3085d6",
+  confirmButtonColor: "#008000",
   cancelButtonColor: "#d33",
   confirmButtonText: "Yes, delete it!"
 }).then((result) => {
@@ -57,8 +59,10 @@ const Cart = () => {
       // console.log(response.data)
        if(response.data.deletedCount > 0){
 
-       notyf.success("Item has been deleted")
+       notyf.success(`${deletedItem.name} has been removed from cart`)
+       console.log(response)
       refetch();
+
       
     }
     })
@@ -66,7 +70,7 @@ const Cart = () => {
 });
   }
   return (
-    <div className="mx-auto">
+    <div className="mx-auto my-10">
 <div className="flex justify-evenly my-5">
   <h2 className="font-bold text-2xl text-green-400">Cart Item :{cart.length}</h2>
 <p className="font-bold text-2xl text-green-400">Total Price: {totalPrice}</p>
@@ -77,7 +81,7 @@ const Cart = () => {
     {/* head */}
     <thead>
       <tr>
-      <th>Serial</th>
+        <th>Serial</th>
         <th>Plant Preview</th>
         <th>Name</th>
         <th>Category</th>
@@ -105,16 +109,19 @@ const Cart = () => {
             </div>
           </div>
         </td>
-         <td> <div className="font-bold">{carts.name}</div></td>
+         <td> 
+         <div className="font-bold">{carts.name}</div>
+         </td>
         <td>
          {carts.category}
           <br />
          
         </td>
         <td>{carts.price}</td>
-        <th>
-          <button onClick={()=>handleDelete(carts._id)} className="btn bg-red-400 btn-ghost"><BookmarkX /></button>
-        </th>
+       
+          <td>
+          <button onClick={()=>handleDelete(carts._id)} className="btn bg-red-400 btn-ghost"><BookmarkX /></button></td>
+        
       </tr>)
       }
      

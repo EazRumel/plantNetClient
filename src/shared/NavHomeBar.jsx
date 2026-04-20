@@ -161,7 +161,7 @@ return(
       group-hover:scale-x-100
     "
   ></span>
-  <Link to="/dashboard/cart">Carts <p>  ({cart.length})</p></Link>
+  <Link to="/cart">Carts <p>  ({cart.length})</p></Link>
 </NavbarLink>
         
         
