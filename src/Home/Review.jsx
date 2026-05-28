@@ -10,6 +10,7 @@ import 'swiper/css/navigation';
 
 // import './styles.css';
 import { Autoplay, Navigation } from 'swiper/modules';
+import PostReview from "../components/PostReview";
 
 
 const Review = () => {
@@ -56,6 +57,11 @@ const Review = () => {
       }
       </Swiper>
            </div>
+
+ <div className="my-10">
+   <h2 className="font-bold text-2xl text-center">Write your review to us</h2>
+   <PostReview></PostReview>
+ </div>
     </div>
   );
 };

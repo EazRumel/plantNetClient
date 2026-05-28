@@ -59,11 +59,10 @@ const Cart = () => {
       // console.log(response.data)
        if(response.data.deletedCount > 0){
 
-       notyf.success(`${deletedItem.name} has been removed from cart`)
+       notyf.success(`${deletedItem.name} has been removed from the cart`)
        console.log(response)
       refetch();
 
-      
     }
     })
   }
@@ -114,14 +113,12 @@ const Cart = () => {
          </td>
         <td>
          {carts.category}
-          <br />
-         
+          <br /> 
         </td>
         <td>{carts.price}</td>
        
           <td>
-          <button onClick={()=>handleDelete(carts._id)} className="btn bg-red-400 btn-ghost"><BookmarkX /></button></td>
-        
+          <button onClick={()=>handleDelete(carts._id)} className="btn bg-red-400 btn-ghost"><BookmarkX /></button></td>   
       </tr>)
       }
      

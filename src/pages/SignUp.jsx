@@ -64,6 +64,7 @@ const SignUp = () => {
 
 
     console.log(data);
+    console.log(data.photo[0]);
 
     // 1. Create Firebase user
       createUser(data.email, data.password);
@@ -82,7 +83,7 @@ const SignUp = () => {
    .then(response=>{
          if (response.data.insertedId) {
       notyf.success("Sign Up successful");
-      navigate("/");
+      // navigate("/");
     }
    })
    .catch(error=>{
@@ -116,7 +117,7 @@ const SignUp = () => {
     
     <div className="min-h-screen items-center flex  justify-center mx-auto ">
    <Card className="w-full max-w-md px-10 py-10">
-   <h1 className="text-center text-green-500 font-semibold text-3xl">New User?Register</h1>
+   <h1 className="text-center text-green-500 font-semibold text-3xl">Sign Up</h1>
   <form onSubmit={handleSubmit(onSubmit)}className="flex  flex-col gap-4">
      <div>
      
@@ -127,12 +128,17 @@ const SignUp = () => {
       </div>
      <div>
      
-        <div className="mb-2 block">
-          <Label htmlFor="your name">Your Photo</Label>
+        <div className="mb-2 block gap-4">
+          <Label htmlFor="your name">Choose a photo</Label>
+          
         </div>
-        <TextInput {...register("photo",{required:true})} id="email2" name="photo" type="photo" placeholder="place a photo" required shadow />
+        <input {...register("photo",{required:true})} className="file-input file-input-accent w-64 h-8" name="photo" type="file" placeholder="place a photo" required shadow />
+
       </div>
+      
+
       <div>
+      
      
         <div className="mb-2 block">
           <Label htmlFor="email2">Email</Label>
