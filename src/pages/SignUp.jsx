@@ -60,18 +60,29 @@ const SignUp = () => {
     formState: { errors },
   } = useForm()
 
- const onSubmit = (data) => {
+ const onSubmit = async(data) => {
 
+try{
 
     console.log(data);
-    console.log(data.photo[0]);
+
+    const formData = new FormData();
+
+    formData.append("image",data.photo[0]);
+
+  const res = await  axiosPublic.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`,formData)
+
+  console.log(res.data.data.display_url);
+  const img_url = res.data.data.display_url;
+
+    // console.log(data.photo[0]);
 
     // 1. Create Firebase user
-      createUser(data.email, data.password);
+     const result = await createUser(data.email, data.password);
     // console.log(result.user);
 
     // 2. Update Firebase profile
-    updateUser(data.name, data.photo);
+    await updateUser(data.name, img_url);
 
     // 3. Save user to database
     const userInfo = {
@@ -79,26 +90,26 @@ const SignUp = () => {
       name: data.name
     };
 
-   axiosPublic.post("/users", userInfo)
-   .then(response=>{
-         if (response.data.insertedId) {
+  const response = await axiosPublic.post("/users", userInfo)
+   
+      if (response.data.insertedId) {
       notyf.success("Sign Up successful");
       // navigate("/");
     }
-   })
-   .catch(error=>{
-    console.log(error.message);
-    notyf.error("Sign Up Failed!!")
-   })
-
-
+      
     console.log(response.data);
 
-    // 5. Redirect after success
-   
-    
+}
+  catch(error){
+     
+    console.log(error.message);
+    notyf.error("Sign Up Failed!!")
 
-   
+  }
+
+
+    // 5. Redirect after success
+     
 };
 
   // console.log(watch("example")) // watch input value by passing the name of it
@@ -106,7 +117,11 @@ const SignUp = () => {
   // const {user,setUser} = useContext(AuthContext)
   
   return (
+
+  // Main Div
     <div className="min-h-screen flex flex-col lg:flex-row items-center justify-around gap-12 px-6">
+    
+{/* Lottie React Div */}
     
 <div className="flex items-center mx-auto justify-center">
       {/* <img  className="w-48 object-contain"  src={logo} alt="" /> */}
@@ -115,6 +130,7 @@ const SignUp = () => {
      
     </div>
     
+    {/* Div for Card Item of Sign Up */}
     <div className="min-h-screen items-center flex  justify-center mx-auto ">
    <Card className="w-full max-w-md px-10 py-10">
    <h1 className="text-center text-green-500 font-semibold text-3xl">Sign Up</h1>
@@ -147,6 +163,8 @@ const SignUp = () => {
       </div>
       <div>
         <div className="mb-2 block">
+
+        {/* Input for Password */}
           <Label htmlFor="password2">Password</Label>
         </div>
         <TextInput {...register("password",{required:true,minLength:6,maxLength:20,pattern:/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,}$/})} name="password" id="password2" type="password" required shadow />
