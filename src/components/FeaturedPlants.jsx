@@ -2,6 +2,8 @@ import { Key } from "lucide-react";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import usePlants from "../hooks/usePlants";
 import { Card } from "flowbite-react";
+import  "../components/FeaturedPlants.css"
+
 
 
 const FeaturedPlants = () => {
@@ -14,9 +16,14 @@ const FeaturedPlants = () => {
 
   return (
 <div className="my-12">
-<p className="text-green-300 text-center my-6 text-3xl">~~~~~~~~~~~~~~~~~~~~~~~~~</p>
-<h1 className="text-green-400 font-light text-center my-6 text-3xl">Our featured plants for you</h1>
-<p className="text-green-300 text-center my-6 text-3xl">~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+{/* <p className="text-green-300 text-center my-6 text-3xl">~~~~~~~~~~~~~~~~~~~~~~~~~</p> */}
+
+
+
+  <h1 className="h1 text-green-400 font-light mt-36 mb-12 text-3xl">Our featured plants for you</h1>
+
+
+{/* <p className="text-green-300 text-center my-6 text-3xl">~~~~~~~~~~~~~~~~~~~~~~~~~</p> */}
   <div className="grid grid-cols-3 gap-6">
     {
     featuredPlant.map(plant=>(

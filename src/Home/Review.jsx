@@ -11,6 +11,8 @@ import 'swiper/css/navigation';
 // import './styles.css';
 import { Autoplay, Navigation } from 'swiper/modules';
 import PostReview from "../components/PostReview";
+import  "../components/FeaturedPlants.css"
+
 
 
 const Review = () => {
@@ -27,9 +29,9 @@ const Review = () => {
    },[])
   return (
     <div>
-    <div className="text-center">
-      <h1 className="mt-32 fond-light text-green-500 text-3xl ">What people say</h1>
-    <p className="text-green-500">-------------------------------------------</p>
+    <div>
+      <h1 className="h1 mt-32 fond-light text-green-500 text-3xl ">What people say</h1>
+    {/* <p className="text-green-500">-------------------------------------------</p> */}
     </div>
                <div className="m-12 mx-auto items-center ">
              <Swiper navigation={true} modules={[Navigation,Autoplay]} className="mySwiper"
@@ -47,7 +49,7 @@ const Review = () => {
   
   
   <div className="text-center">
-    <h2 className="text-2xl  text-green-500">{review.name}</h2>
+    <h1 className="h1 text-2xl  text-green-500">{review.name}</h1>
   <p className="my-5">{review.review}</p>
   </div>
   <Rating className="items-center flex justify-center mx-auto" style={{ maxWidth: 250 }} value={review.rating} onChange={setRating} />

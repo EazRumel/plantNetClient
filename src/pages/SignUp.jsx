@@ -98,13 +98,11 @@ try{
     }
       
     console.log(response.data);
-
 }
   catch(error){
      
     console.log(error.message);
     notyf.error("Sign Up Failed!!")
-
   }
 
 
@@ -151,8 +149,6 @@ try{
         <input {...register("photo",{required:true})} className="file-input file-input-accent w-64 h-8" name="photo" type="file" placeholder="place a photo" required shadow />
 
       </div>
-      
-
       <div>
       
      
@@ -163,7 +159,7 @@ try{
       </div>
       <div>
         <div className="mb-2 block">
-
+           
         {/* Input for Password */}
           <Label htmlFor="password2">Password</Label>
         </div>
@@ -185,8 +181,6 @@ try{
 
  </Card>
 </div>
-    
-
     </div>
   );
 };
