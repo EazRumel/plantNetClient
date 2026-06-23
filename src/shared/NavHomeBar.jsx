@@ -14,6 +14,8 @@ import logo from "../assets/img/plantLogo.jpg"
 import useAuth from "../hooks/useAuth";
 import { Link } from "react-router-dom";
 import useCart from "../hooks/useCart";
+import  "../components/FeaturedPlants.css"
+
 
 
 const NavHomeBar = () => {
@@ -23,7 +25,7 @@ const NavHomeBar = () => {
   const [cart] = useCart();
   // console.log(carts);
 
-  const handleLogOut =() =>{
+  const handleLogOut = () =>{
      logOut()
     //  console.log(logOut)
     .catch(error=>{
@@ -38,7 +40,9 @@ return(
       <NavbarBrand href="">
         <div className="flex px-6 py-2 rounded-2xl">
           <img src={logo} className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
-        <p className="self-center whitespace-nowrap text-xl font-light dark:text-white"><span className="text-green-400 font-light">Tree</span> Planet</p>
+        <p className="self-center whitespace-nowrap text-xl font-light dark:text-white"><span className="span-text text-green-400 font-light">Tree</span> 
+        <span className="ml-4">Planet</span>
+        </p>
         </div>
       </NavbarBrand>
       <div className="flex md:order-2">

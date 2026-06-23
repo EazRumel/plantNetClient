@@ -17,6 +17,7 @@ import 'notyf/notyf.min.css';
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import SocialLogin from "../components/SocialLogin";
+import { imageUpload } from "../api/utils";
 
 
 
@@ -66,23 +67,20 @@ try{
 
     console.log(data);
 
-    const formData = new FormData();
+   
+  // console.log(res.data.data.display_url);
+ 
+    const image = data.photo[0];
+    const photoURL = await imageUpload(image);
 
-    formData.append("image",data.photo[0]);
-
-  const res = await  axiosPublic.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`,formData)
-
-  console.log(res.data.data.display_url);
-  const img_url = res.data.data.display_url;
-
-    // console.log(data.photo[0]);
+    console.log(data.photo[0]);
 
     // 1. Create Firebase user
      const result = await createUser(data.email, data.password);
     // console.log(result.user);
 
     // 2. Update Firebase profile
-    await updateUser(data.name, img_url);
+    await updateUser(data.name, photoURL);
 
     // 3. Save user to database
     const userInfo = {
@@ -100,7 +98,8 @@ try{
     console.log(response.data);
 }
   catch(error){
-     
+     console.log(error)
+     console.log(error?.response.data)
     console.log(error.message);
     notyf.error("Sign Up Failed!!")
   }

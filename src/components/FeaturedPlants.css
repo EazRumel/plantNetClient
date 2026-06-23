@@ -5,3 +5,11 @@
   font-size:50px;
   font-style: normal;
 }
+
+.span-text{
+    font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-size:45px;
+  font-style: normal;
+}
