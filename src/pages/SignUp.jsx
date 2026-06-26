@@ -18,10 +18,14 @@ import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import SocialLogin from "../components/SocialLogin";
 import { imageUpload } from "../api/utils";
+import { LoaderPinwheel } from "lucide-react";
+
 
 
 
 const SignUp = () => {
+
+  const {loading} = useAuth();
 
   const axiosPublic = useAxiosPublic();
 
@@ -66,33 +70,42 @@ const SignUp = () => {
 try{
 
     console.log(data);
+    
 
    
   // console.log(res.data.data.display_url);
  
-    const image = data.photo[0];
-    const photoURL = await imageUpload(image);
+    // const image = data.photo[0];
+    // const photoURL = await imageUpload(image);
 
+    // console.log(data.photo[0]);
+
+    const image = data.photo[0];
     console.log(data.photo[0]);
+
+
+
+    const photoUrl = await imageUpload(image);
 
     // 1. Create Firebase user
      const result = await createUser(data.email, data.password);
     // console.log(result.user);
 
     // 2. Update Firebase profile
-    await updateUser(data.name, photoURL);
+    await updateUser(data.name,photoUrl);
 
     // 3. Save user to database
     const userInfo = {
       email: data.email,
-      name: data.name
+      name: data.name,
+      // role:"customer"
     };
 
   const response = await axiosPublic.post("/users", userInfo)
    
       if (response.data.insertedId) {
       notyf.success("Sign Up successful");
-      // navigate("/");
+      navigate("/");
     }
       
     console.log(response.data);
@@ -173,7 +186,43 @@ try{
       Password must have one single letter,one uppercase,one lowercase and a single symbol
     </span>}
       </div>
-        <input className="btn cursor-pointer bg-green-500 text-white" type="submit" value="Register" />
+        {/* <input className="btn cursor-pointer bg-green-500 text-white" type="submit" value="Register" /> */}
+
+<button
+  type="submit"
+  className="
+    btn relative overflow-hidden group
+    bg-transparent border border-green-500 text-green-500
+    transition-shadow duration-200
+    hover:shadow-lg
+  "
+>
+  {/* Pour layer */}
+  <span
+    className="
+      absolute inset-0 bg-green-500
+      transform scale-y-0 origin-top
+      transition-transform duration-300 ease-out delay-75
+      group-hover:scale-y-100
+    "
+  ></span>
+
+  {/* Text */}
+  <span
+    className="
+      relative z-10
+      transition-colors duration-150
+      group-hover:text-white
+    "
+  >
+
+   { 
+    loading ? <LoaderPinwheel className="animate-spin" /> : 
+     "Register"
+     }
+  </span>
+</button>
+
     </form>
     <SocialLogin></SocialLogin>
     <p>Already have an account? <Link className="text-green-500" to={"/login"}>Login</Link></p>

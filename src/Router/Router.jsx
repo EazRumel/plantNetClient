@@ -12,6 +12,7 @@ import Dashboard from "../layouts/Dashboard/Dashboard";
 
 import PlantCardDetails from "../components/PlantCardDetails";
 import Cart from "../pages/Cart";
+import AddPlant from "../layouts/Dashboard/Seller/AddPlant";
 
 
 
@@ -77,6 +78,10 @@ export const router = createBrowserRouter([
         index:true,
         // path:"cart",
         element:<Cart></Cart>
+      },
+      {
+        path:"addPlant",
+        element:<AddPlant></AddPlant>
       }
     ]
   }

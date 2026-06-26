@@ -6,9 +6,11 @@ import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
 import { Notyf } from "notyf";
 import SocialLogin from "../components/SocialLogin";
+import { LoaderPinwheel } from "lucide-react";
 
 
 const Login = () => {
+
 
   const from = location?.state?.from?.pathname || "/";
   console.log(location.state)
@@ -40,7 +42,7 @@ const Login = () => {
   });
  
   const navigate = useNavigate();
-  const {loginUser} = useAuth();
+  const {loginUser,loading} = useAuth();
 
  const {
     register,
@@ -62,6 +64,11 @@ const Login = () => {
 
    })
    .catch(error=>{
+    console.log(error.code);
+
+  console.log(error.message);
+
+    // notyf.error(error.message);
     notyf.error("Login failed");
    })
   }
@@ -127,7 +134,10 @@ const Login = () => {
       group-hover:text-white
     "
   >
-    Login
+   { 
+    loading ? <LoaderPinwheel className="animate-spin" /> : 
+     "Login"
+     }
   </span>
 </button>
        
@@ -153,3 +163,5 @@ const Login = () => {
 };
 
 export default Login;
+
+// gazuboji@mailinator.com

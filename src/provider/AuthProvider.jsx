@@ -61,7 +61,20 @@ const AuthProvider = ({children}) => {
 
           }
 
+          
+
          })
+         .catch(err => {
+
+    console.log(err);
+
+  })
+
+  .finally(() => {
+
+    setLoading(false);
+
+  });
      }
      else{
            axiosPublic.post("/logOutJwt",{},     

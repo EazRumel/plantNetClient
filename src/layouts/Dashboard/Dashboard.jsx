@@ -1,4 +1,4 @@
-import { House, ShoppingCart } from "lucide-react";
+import { House, ShoppingCart, Trees } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../../hooks/useCart";
 import imageLogo from "../../../src/assets/img/plantLogo.jpg"
@@ -25,20 +25,20 @@ const Dashboard = () => {
       : "text-gray-300 hover:text-green-400"
   }
 >
-  <span className="flex font-bold text-xl gap-2 items-center justify-center">Home -<House size={22} strokeWidth={3} /></span>
+  <span className="flex font-bold text-xl gap-2 items-center justify-center"><House size={22} strokeWidth={3} /> Home</span>
 </NavLink>
           </li>
           <li>
-            {/* <NavLink
-  to="cart"
+            <NavLink
+  to="addPlant"
   className={({ isActive }) =>
     isActive
       ? "text-green-500 font-semibold"
       : "text-gray-300 hover:text-green-400"
   }
 >
-  <span className="flex font-bold text-xl gap-2 items-center justify-center">Cart({cart.length}) -<ShoppingCart size={22} strokeWidth={3} /></span>
-</NavLink> */}
+  <span className="flex font-bold text-lg gap-2 items-center justify-center"><Trees size={22} strokeWidth={3} /> Add Plant </span>
+</NavLink>
           </li>
         </ul>
     
