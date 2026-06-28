@@ -8,9 +8,14 @@
     "price": 2500,
     "currency": "BDT",
     "quantity": 15,
-    "rating": 5,
     "isFeatured": true,
-    "image": "https://florastore.com/cdn/shop/files/1711701_Productimage_02_SQ.jpg?v=1764599206&width=1800"
+    "description": "A stunning tropical houseplant with iconic split leaves that adds a lush, modern touch to indoor spaces while helping create a fresh atmosphere.",
+    "image": "https://florastore.com/cdn/shop/files/1711701_Productimage_02_SQ.jpg?v=1764599206&width=1800",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Snake Plant",
@@ -21,9 +26,14 @@
     "price": 1800,
     "currency": "BDT",
     "quantity": 25,
-    "rating": 5,
     "isFeatured": true,
-    "image": "https://www.gardenersdream.co.uk/cdn/shop/articles/Snake_Plant_1_f6204179-d92b-40e3-bec7-0d3a61e93b81.jpg?v=1744013002&width=1500"
+    "description": "A hardy, low-maintenance plant with upright sword-like leaves, perfect for beginners and capable of thriving in a variety of indoor conditions.",
+    "image": "https://www.gardenersdream.co.uk/cdn/shop/articles/Snake_Plant_1_f6204179-d92b-40e3-bec7-0d3a61e93b81.jpg?v=1744013002&width=1500",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Peace Lily",
@@ -34,9 +44,14 @@
     "price": 2200,
     "currency": "BDT",
     "quantity": 12,
-    "rating": 4,
     "isFeatured": false,
-    "image": "https://radhakrishnaagriculture.in/cdn/shop/files/peacelily.jpg?v=1709184309"
+    "description": "An elegant flowering plant with glossy green foliage and graceful white blooms that brightens homes and offices with minimal effort.",
+    "image": "https://radhakrishnaagriculture.in/cdn/shop/files/peacelily.jpg?v=1709184309",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Aloe Vera",
@@ -47,9 +62,14 @@
     "price": 900,
     "currency": "BDT",
     "quantity": 30,
-    "rating": 5,
     "isFeatured": true,
-    "image": "https://store.thegreenery.ca/cdn/shop/products/IMG_20210313_123448_2048x2048.jpg?v=1615667887"
+    "description": "A medicinal succulent known for its soothing gel-filled leaves, making it an excellent choice for sunny windowsills and easy care.",
+    "image": "https://store.thegreenery.ca/cdn/shop/products/IMG_20210313_123448_2048x2048.jpg?v=1615667887",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Bamboo Palm",
@@ -60,9 +80,14 @@
     "price": 3000,
     "currency": "BDT",
     "quantity": 0,
-    "rating": 4,
     "isFeatured": false,
-    "image": "https://www.chhajedgarden.com/cdn/shop/files/bamboo-palm-indoor-greenery_1800x2400.jpg?v=1706075144"
+    "description": "A graceful indoor palm with feathery green fronds that brings a tropical feel while naturally enhancing interior décor.",
+    "image": "https://www.chhajedgarden.com/cdn/shop/files/bamboo-palm-indoor-greenery_1800x2400.jpg?v=1706075144",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Fiddle Leaf Fig",
@@ -73,9 +98,14 @@
     "price": 4500,
     "currency": "BDT",
     "quantity": 8,
-    "rating": 3,
     "isFeatured": false,
-    "image": "https://www.palasa.co.in/cdn/shop/articles/IMG_20220226_173034_1.jpg?v=1694161186"
+    "description": "A statement indoor tree featuring large violin-shaped leaves, ideal for bright rooms and modern living spaces.",
+    "image": "https://www.palasa.co.in/cdn/shop/articles/IMG_20220226_173034_1.jpg?v=1694161186",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Spider Plant",
@@ -86,9 +116,14 @@
     "price": 1200,
     "currency": "BDT",
     "quantity": 20,
-    "rating": 5,
     "isFeatured": false,
-    "image": "https://www.bhg.com/thmb/LrCakiEVtRCyslgobTNlo-suVMk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/BHG-spider-plant-c0e0fdd5ec6e4c1588998ce3167f6579.jpg"
+    "description": "A fast-growing, air-purifying houseplant with cascading green-and-white leaves that looks beautiful in hanging baskets.",
+    "image": "https://www.bhg.com/thmb/LrCakiEVtRCyslgobTNlo-suVMk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/BHG-spider-plant-c0e0fdd5ec6e4c1588998ce3167f6579.jpg",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Rubber Plant",
@@ -99,9 +134,14 @@
     "price": 2800,
     "currency": "BDT",
     "quantity": 10,
-    "rating": 4,
     "isFeatured": false,
-    "image": "https://abeautifulmess.com/wp-content/uploads/2023/06/rubbertree-1.jpg"
+    "description": "A popular ornamental plant with thick, glossy leaves that adds a bold and sophisticated look to any indoor environment.",
+    "image": "https://abeautifulmess.com/wp-content/uploads/2023/06/rubbertree-1.jpg",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Cactus",
@@ -112,9 +152,14 @@
     "price": 700,
     "currency": "BDT",
     "quantity": 40,
-    "rating": 5,
     "isFeatured": false,
-    "image": "https://www.jacksonandperkins.com/images/xxl/29377.webp?v=1"
+    "description": "A resilient desert plant available in many unique shapes, requiring very little water and thriving in bright sunlight.",
+    "image": "https://www.jacksonandperkins.com/images/xxl/29377.webp?v=1",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Jade Plant",
@@ -125,9 +170,14 @@
     "price": 1500,
     "currency": "BDT",
     "quantity": 18,
-    "rating": 4,
     "isFeatured": false,
-    "image": "https://cdn.mos.cms.futurecdn.net/tJwQ7w6uytDpxrChQfSSf3-1600-80.jpg.webp"
+    "description": "A compact succulent with thick, fleshy leaves that symbolizes prosperity and is perfect for desks, shelves, and sunny windows.",
+    "image": "https://cdn.mos.cms.futurecdn.net/tJwQ7w6uytDpxrChQfSSf3-1600-80.jpg.webp",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Boston Fern",
@@ -138,9 +188,15 @@
     "price": 2000,
     "currency": "BDT",
     "quantity": 14,
-    "rating": 4,
+
     "isFeatured": false,
-    "image": "https://chaletnursery.com/cdn/shop/files/Chalet-home-garden-chicago-boston-fern-annual-landscape.jpg?v=1711565391"
+    "description": "A lush fern with arching fronds that adds softness and vibrant greenery to homes while preferring consistently moist soil.",
+    "image": "https://chaletnursery.com/cdn/shop/files/Chalet-home-garden-chicago-boston-fern-annual-landscape.jpg?v=1711565391",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "ZZ Plant",
@@ -151,9 +207,15 @@
     "price": 2600,
     "currency": "BDT",
     "quantity": 16,
-    "rating": 5,
+
     "isFeatured": true,
-    "image": "https://unlimitedgreens.com/cdn/shop/articles/vecteezy_houseplant-with-concrete-wall-and-copy-space_3330611_22a515c2-3332-43b1-a0eb-ec12495aca56.jpg?crop=center&height=1024&v=1739874631&width=1024"
+    "description": "A nearly indestructible indoor plant with glossy dark-green leaves that thrives even in low-light environments.",
+    "image": "https://unlimitedgreens.com/cdn/shop/articles/vecteezy_houseplant-with-concrete-wall-and-copy-space_3330611_22a515c2-3332-43b1-a0eb-ec12495aca56.jpg?crop=center&height=1024&v=1739874631&width=1024",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Areca Palm",
@@ -164,9 +226,15 @@
     "price": 3200,
     "currency": "BDT",
     "quantity": 0,
-    "rating": 4,
+
     "isFeatured": false,
-    "image": "https://eureka-farms.com/cdn/shop/files/02_PALM_ARECA_01.jpg?v=1747160168&width=1100"
+    "description": "A beautiful tropical palm with elegant feather-like fronds, ideal for creating a refreshing and relaxing indoor atmosphere.",
+    "image": "https://eureka-farms.com/cdn/shop/files/02_PALM_ARECA_01.jpg?v=1747160168&width=1100",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Pothos",
@@ -177,9 +245,15 @@
     "price": 1300,
     "currency": "BDT",
     "quantity": 22,
-    "rating": 5,
+
     "isFeatured": true,
-    "image": "https://www.marthastewart.com/thmb/AtP8qfuuu72ZACtNxqkXOB7imTk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-2170686151-675aeaba15364e1c876dc485f7e6d8d8.jpg"
+    "description": "A versatile trailing vine with heart-shaped leaves that grows quickly and adapts well to almost any indoor lighting condition.",
+    "image": "https://www.marthastewart.com/thmb/AtP8qfuuu72ZACtNxqkXOB7imTk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-2170686151-675aeaba15364e1c876dc485f7e6d8d8.jpg",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Calathea",
@@ -190,9 +264,15 @@
     "price": 3500,
     "currency": "BDT",
     "quantity": 6,
-    "rating": 3,
+
     "isFeatured": false,
-    "image": "https://cdn.shopify.com/s/files/1/0621/8157/2697/files/nxbnllfv2b9wsm6fwwjr_e5890f42-f73b-4889-b03d-08907eea83a0_1000x1000_crop_center.jpg.webp?v=1738163051"
+    "description": "A striking foliage plant admired for its colorful patterned leaves that fold up at night, making it a favorite among plant enthusiasts.",
+    "image": "https://cdn.shopify.com/s/files/1/0621/8157/2697/files/nxbnllfv2b9wsm6fwwjr_e5890f42-f73b-4889-b03d-08907eea83a0_1000x1000_crop_center.jpg.webp?v=1738163051",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Lavender",
@@ -203,9 +283,14 @@
     "price": 1700,
     "currency": "BDT",
     "quantity": 12,
-    "rating": 4,
     "isFeatured": false,
-    "image": "https://cdn.shopify.com/s/files/1/0059/8835/2052/files/20250513-_DSC0727-OliverCrane_7242e093-26ef-4299-953f-589246f78332.jpg?v=1760100810"
+    "description": "A fragrant flowering plant with purple blooms that attracts pollinators and brings color and soothing aroma to gardens.",
+    "image": "https://cdn.shopify.com/s/files/1/0059/8835/2052/files/20250513-_DSC0727-OliverCrane_7242e093-26ef-4299-953f-589246f78332.jpg?v=1760100810",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Rose Plant",
@@ -216,9 +301,14 @@
     "price": 1900,
     "currency": "BDT",
     "quantity": 18,
-    "rating": 5,
     "isFeatured": true,
-    "image": "https://prickleplants.co.uk/cdn/shop/files/Red_Rose_ed8c1a30-47bb-4dab-a4da-c8bc3446efc0.jpg?v=1722507826"
+    "description": "A timeless flowering shrub that produces vibrant, fragrant roses, making it a classic choice for gardens and landscapes.",
+    "image": "https://prickleplants.co.uk/cdn/shop/files/Red_Rose_ed8c1a30-47bb-4dab-a4da-c8bc3446efc0.jpg?v=1722507826",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Tulsi (Holy Basil)",
@@ -229,9 +319,14 @@
     "price": 500,
     "currency": "BDT",
     "quantity": 50,
-    "rating": 5,
     "isFeatured": true,
-    "image": "https://greensouq.ae/cdn/shop/files/ocimum-tenuiflorumtulsi-plantholy-basil-3298535.webp?v=1761327725&width=800"
+    "description": "A sacred aromatic herb valued for its medicinal properties, spiritual significance, and ease of growing in sunny locations.",
+    "image": "https://greensouq.ae/cdn/shop/files/ocimum-tenuiflorumtulsi-plantholy-basil-3298535.webp?v=1761327725&width=800",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Mint",
@@ -242,9 +337,14 @@
     "price": 400,
     "currency": "BDT",
     "quantity": 45,
-    "rating": 4,
     "isFeatured": false,
-    "image": "https://celebratednest.com/wp-content/uploads/2024/06/growing-mint-in-containers-1.jpg"
+    "description": "A fast-growing aromatic herb with refreshing leaves, perfect for teas, beverages, and a variety of culinary dishes.",
+    "image": "https://celebratednest.com/wp-content/uploads/2024/06/growing-mint-in-containers-1.jpg",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   },
   {
     "name": "Sunflower",
@@ -255,8 +355,13 @@
     "price": 800,
     "currency": "BDT",
     "quantity": 28,
-    "rating": 5,
     "isFeatured": false,
-    "image": "https://greenshipgardenus.com/wp-content/uploads/2025/02/unnamed-133.png"
+    "description": "A cheerful flowering plant with large golden blooms that follow the sun and brighten gardens throughout the growing season.",
+    "image": "https://greenshipgardenus.com/wp-content/uploads/2025/02/unnamed-133.png",
+    "seller": {
+      "name": "Sawyer Lewis",
+      "email": "bygolovoly@mailinator.com",
+      "photo": "https://i.ibb.co/Zp2hm4w9/1-DD1-AB1-F-ED90-4385-823-D-96193439-A8-FA.jpg"
+    }
   }
 ]

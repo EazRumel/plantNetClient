@@ -22,7 +22,7 @@ const PlantCardDetails = () => {
   const {user} = useAuth();
   console.log(user);
 
- const {name,image,category,difficulty,price,_id,quantity} = useLoaderData();
+ const {name,image,category,difficulty,price,_id,quantity,description} = useLoaderData();
   return (
     <div className="mx-center my-20">
      <div className="hero  min-h-screen">
@@ -32,15 +32,16 @@ const PlantCardDetails = () => {
       className="max-w-sm rounded-lg shadow-2xl"
     />
     <div>
-      <h1 className="text-5xl font-bold ml-10">Plant Name: {name}</h1>
+      <h1 className="text-5xl py-3 font-bold ml-10">{name}</h1>
       <p>Name: {user?.displayName}</p>
       <p>User: {user?.email}</p>
       <p>Quantity: {quantity}</p>
       
-      <p className="py-6">
      
+      <img className="py-5" src={user?.photoURL} alt="" />
+       <p className="py-6">
+           {description}
       </p>
-      <img src={user?.photoURL} alt="" />
       <Button
           onClick={open}
           className="mt-3

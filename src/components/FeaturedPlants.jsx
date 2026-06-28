@@ -3,6 +3,7 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import usePlants from "../hooks/usePlants";
 import { Card } from "flowbite-react";
 import  "../components/FeaturedPlants.css"
+import { Link } from 'react-router-dom';
 
 
 
@@ -25,25 +26,35 @@ const FeaturedPlants = () => {
 
 {/* <p className="text-green-300 text-center my-6 text-3xl">~~~~~~~~~~~~~~~~~~~~~~~~~</p> */}
   <div className="grid grid-cols-3 gap-6">
-    {
-    featuredPlant.map(plant=>(
+  {featuredPlant.length > 0 ? (
+    featuredPlant.map((plant) => (
+      <Card
+        key={plant._id}
+        className="max-w-sm bg-white object-hover transition-transform duration-300 hover:scale-105"
+        imgSrc={plant.image}
+        horizontal
+      >
+        <h5 className="text-2xl font-light tracking-tight text-green-300">
+          {plant.name}
+        </h5>
 
-     <Card className="max-w-sm bg-white" imgSrc={plant.image} horizontal>
-      <h5 className="text-2xl font-light tracking-tight text-green-300 dark:text-white">
-       {plant.name}
-      </h5>
-      <p className="font-normal text-gray-700 dark:text-gray-400">
-        {plant.category} . {plant.difficulty}
-      </p>
-      <p className="absolute rounded-l mr-1 px-2 mt-2 mb-32 ml-24  bg-green-400 p-1 text-white">BDT: {plant.price}</p>
+        <p className="font-normal text-gray-700">
+          {plant.category} · {plant.difficulty}
+        </p>
 
-    </Card>
+        <p>Quantity: {plant.quantity}</p>
 
-    )
-      
-    )
-  }
-  </div>
+        <p className="absolute rounded-l mr-1 px-2 mt-2 mb-32 ml-24 bg-green-400 p-1 text-white">
+          BDT: {plant.price}
+        </p>
+
+        <button className="btn"><Link to={`/plant/${plant._id}`}>Details</Link></button>
+      </Card>
+    ))
+  ) : (
+    <p className="h1 text-red-500">No plants available</p>
+  )}
+</div>
 </div>
   );
 };

@@ -9,6 +9,8 @@ import { Notyf } from 'notyf';
 
 const AddPlant = () => {
 
+  const [loading,setLoading] = useState(false);
+
 
   const notyf = new Notyf({
     duration: 2000,
@@ -42,12 +44,21 @@ const AddPlant = () => {
   const handleSubmitAddPlant = async(event) => {
     
     event.preventDefault();
+    setLoading(true)
     const form = event.target;
     const name = form.name.value;
     const category = form.category.value;
-    const price = form.price.value;
-    const quantity = form.quantity.value;
+    const difficulty = form.difficulty.value;
+    const light = form.light.value;
+    const watering = form.watering.value;
+    const price = parseFloat(form.price.value);
+    const currency = form.currency.value;
+    const quantity = parseInt(form.quantity.value);
     const description = form.description.value;
+
+    
+    
+    const isFeatured = form.isFeatured.value == "true"
 
     const image = form.image.files[0];
     const imageUrl = await imageUpload(image);
@@ -61,8 +72,13 @@ const AddPlant = () => {
     const plantData = {
       name,
       category,
+      difficulty,
+      light,
+      watering,
       price,
+      currency,
       quantity,
+      isFeatured,
       description,
       image:imageUrl,
       seller
@@ -82,14 +98,16 @@ const AddPlant = () => {
        notyf.error("Could not add plant")
 
     }
-
+    finally{
+      setLoading(false)
+    }
   }
 
 
   return (
     <div>
        <h1 className="h1 text-center mx-10 my-10 text-lime-400">Add Plant</h1>
-      <AddPlantForm handleSubmitAddPlant={handleSubmitAddPlant} upload={upload} setUpload={setUpload}></AddPlantForm>
+      <AddPlantForm handleSubmitAddPlant={handleSubmitAddPlant} upload={upload} setUpload={setUpload} loading={loading}></AddPlantForm>
     </div>
   );
 };

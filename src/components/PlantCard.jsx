@@ -43,9 +43,9 @@ const PlantCard = ({plant}) => {
   const {name,image,category,difficulty,price,_id} = plant
 
 
-  const handleLogOut =()=>{
+  // const handleLogOut =()=>{
     
-  }
+  // }
 
   const handleAddToCart=(plant)=>{
     plant.preventDefault();
@@ -101,7 +101,7 @@ const PlantCard = ({plant}) => {
           <div className="card bg-base-100  w-96 shadow-sm">
   <figure>
 
-    <img className="h-96 w-full"
+    <img className="h-96 w-full object-cover transition-transform duration-400 hover:scale-115 "
       src={image}
       alt="Shoes" />
   </figure>
