@@ -3,24 +3,25 @@ import usePlants from "../hooks/usePlants";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+import PurchaseModal from './PurchaseModal';
 
 
 const PlantCardDetails = () => {
 
-  let [isOpen, setIsOpen] = useState(false);
+
+
+  const {user} = useAuth();
+  console.log(user);
+
+ let [isOpen, setIsOpen] = useState(false)
 
   function open() {
     setIsOpen(true)
   }
-  function close() {
+
+  function closeModal() {
     setIsOpen(false)
   }
-    
-  
-
-  
-  const {user} = useAuth();
-  console.log(user);
 
  const {name,image,category,difficulty,price,_id,quantity,description} = useLoaderData();
   return (
@@ -43,7 +44,7 @@ const PlantCardDetails = () => {
            {description}
       </p>
       <Button
-          onClick={open}
+          onClick={()=>setIsOpen(true)}
           className="mt-3
     btn relative overflow-hidden group
     bg-transparent border border-green-500 text-green-500
@@ -68,15 +69,28 @@ const PlantCardDetails = () => {
       transition-colors duration-150
       group-hover:text-white
     ">
-      Purchase
+     {
+      quantity > 0 ? " Purchase" : "Out of Stock"
+     }
     </span>
     
-
+   
           
         </Button>
+          <PurchaseModal closeModal={closeModal} isOpen={isOpen}></PurchaseModal>
 
         {/* Dialog */}
-         <Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none" onClose={close}>
+         
+    </div>
+  </div>
+</div>
+    </div>
+  );
+};
+
+export default PlantCardDetails;
+
+{/* <Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none" onClose={close}>
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4">
             <DialogPanel
@@ -101,12 +115,4 @@ const PlantCardDetails = () => {
             </DialogPanel>
           </div>
         </div>
-      </Dialog>
-    </div>
-  </div>
-</div>
-    </div>
-  );
-};
-
-export default PlantCardDetails;
+      </Dialog> */}

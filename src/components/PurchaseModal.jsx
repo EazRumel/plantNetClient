@@ -1,48 +1,78 @@
 
-import { Button, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
+import { Button, Dialog, DialogPanel, DialogTitle ,Transition ,TransitionChild } from '@headlessui/react'
 import { useState } from 'react'
 
+import {Fragment }from "react";
+import { Label } from 'flowbite-react';
+import ButTon from '../shared/Button';
 
-const PurchaseModal = () => {
-  let [isOpen, setIsOpen] = useState(true)
+
+
+const PurchaseModal = ({closeModal,isOpen}) => {
+
+
+  // let [isOpen, setIsOpen] = useState(false);
+
+  
   return (
-    <div>
-        <>
-      <Button
-        onClick={open}
-        className="rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-black/30"
-      >
-        Open dialog
-      </Button>
+   <Transition appear show={isOpen} as={Fragment}>
+   <Dialog as="div" className="relative z-10" onClose={closeModal}>
+    <TransitionChild 
+    as={Fragment}
+    enter="ease-out duration-300"
+    enterFrom="opacity-0"
+    enterTo="opacity-100"
+    leave="ease-in duration-300"
+    leaveFrom="opacity-100"
+    leaveTo="opacity-0 scale-95"
+    >
+    <div className="fixed inset-0 bg-black/20 backdrop-blur-sm"/>
 
-      <Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none" onClose={close}>
-        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4">
-            <DialogPanel
-              transition
-              className="w-full max-w-md rounded-xl bg-white/5 p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
-            >
-              <DialogTitle as="h3" className="text-base/7 font-medium text-white">
-                Payment successful
-              </DialogTitle>
-              <p className="mt-2 text-sm/6 text-white/50">
-                Your payment has been successfully submitted. We’ve sent you an email with all of the details of your
-                order.
-              </p>
-              <div className="mt-4">
-                <Button
-                  className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-600 data-open:bg-gray-700"
-                  onClick={close}
-                >
-                  Got it, thanks!
-                </Button>
-              </div>
-            </DialogPanel>
-          </div>
-        </div>
-      </Dialog>
-    </>
+ </TransitionChild>
+
+  <div className="fixed inset-0 overflow-y-auto">
+    <div className="flex min-h-full items-center justify-center p-4 text-center">
+    <TransitionChild
+     as={Fragment}
+    enter="ease-out duration-300"
+    enterFrom="opacity-0"
+    enterTo="opacity-100"
+    leave="ease-in duration-300"
+    leaveFrom="opacity-100"
+    leaveTo="opacity-0 scale-95"
+    >
+      <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white">
+     <DialogTitle as="h3"
+     className="text-lg mt-3 font-medium text-center leading-6 text-gray-900"
+     >
+           Review Info Before Purchase
+     </DialogTitle>
+{/* Main div for info */}
+
+       <div className="mt-2">
+      <p className="text-sm text-gray-800">Plant: Money Plant</p>
+     </div>
+       <div className="mt-2">
+      <p className="text-sm text-gray-800">Plant: Money Plant</p>
+     </div>
+       <div className="mt-2">
+      <p className="text-sm text-gray-800">Plant: Money Plant</p>
+     </div>
+       <div className="mt-2">
+      <p className="text-sm text-gray-800">Plant: Money Plant</p>
+     </div>
+
+      <div className='mb-2'>
+         <ButTon label="Purchase"/>
+      </div>
+      </DialogPanel>
+    </TransitionChild>
     </div>
+  </div>
+  
+   </Dialog>
+    
+   </Transition>
   );
 };
 
