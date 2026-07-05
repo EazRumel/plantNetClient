@@ -13,6 +13,7 @@ import Dashboard from "../layouts/Dashboard/Dashboard";
 import PlantCardDetails from "../components/PlantCardDetails";
 import Cart from "../pages/Cart";
 import AddPlant from "../layouts/Dashboard/Seller/AddPlant";
+import MyOrders from "../layouts/Dashboard/Customer/MyOrders";
 
 
 
@@ -62,7 +63,8 @@ export const router = createBrowserRouter([
   ,{
     path:"/cart",
     element:<Cart></Cart>
-  }
+  },
+  
 
    
   
@@ -82,7 +84,12 @@ export const router = createBrowserRouter([
       {
         path:"addPlant",
         element:<AddPlant></AddPlant>
+      },
+      {
+        path:"myOrder",
+        element:<MyOrders></MyOrders>
       }
+
     ]
   }
 ]);
