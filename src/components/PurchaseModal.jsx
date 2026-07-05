@@ -11,7 +11,7 @@ import userAxiosSecure from '../hooks/userAxiosSecure';
 
 
 
-const PurchaseModal = ({plant,closeModal,isOpen}) => {
+const PurchaseModal = ({plant,closeModal,isOpen,refetch}) => {
   const {user} = useAuth();
 
   const axiosSecure = userAxiosSecure();
@@ -47,7 +47,7 @@ const PurchaseModal = ({plant,closeModal,isOpen}) => {
       const [totalQuantity,setTotalQuantity] = useState(1);
       const [totalPrice,setTotalPrice] = useState(price);
 
-      console.log(totalQuantity);
+      // console.log(totalQuantity);
 
       const handleQuantity = (value) => {
           if(value > quantity)
@@ -91,13 +91,22 @@ const PurchaseModal = ({plant,closeModal,isOpen}) => {
         console.table(purchaseInfo);
         try{
           const res = await axiosSecure.post("/order",purchaseInfo);
-          notyf.success("Order Completed")
+        
 
            console.log(res.data);
+
+           const response = await axiosSecure.patch(`/plants/quantity/${_id}`,{
+            updateQuantity:totalQuantity
+           })
+
+            console.log(response)
+             notyf.success("Order Completed")
+             refetch();
 
         }
         catch(error){
           console.log(error.message)
+          console.log(error)
           notyf.error("Order failed")
         }
 

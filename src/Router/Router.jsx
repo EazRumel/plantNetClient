@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
     element:<PrivateRoute>
       <PlantCardDetails></PlantCardDetails>
     </PrivateRoute>,
-    loader:({params})=>fetch(`http://localhost:3000/plants/${params.id}`)
+    // loader:({params})=>fetch(`http://localhost:3000/plants/${params.id}`)
 
   },
   {

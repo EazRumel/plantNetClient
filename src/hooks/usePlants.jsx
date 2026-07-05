@@ -6,17 +6,14 @@ const usePlants = () => {
 
   const axiosPublic = useAxiosPublic();
 
-  const {data:plants=[]} = useQuery({
+  const {refetch,data:plants=[]} = useQuery({
     queryKey:["plants"],
     queryFn:async()=>{
       const response = await axiosPublic.get("/plants",{withCredentials:true});
       return response.data;
     }
-
   })
-
-   
-   return [plants];
+   return [plants,refetch];
 }
 
 export default usePlants;

@@ -45,7 +45,7 @@ const AuthProvider = ({children}) => {
 
  useEffect(()=>{
    const unsubscribe = onAuthStateChanged(auth,currentUser=>{
-    console.log(currentUser);
+    // console.log(currentUser);
     setUser(currentUser)
 
 
@@ -56,7 +56,7 @@ const AuthProvider = ({children}) => {
 
           {
 
-          console.log("from logIn",res.data)
+          // console.log("from logIn",res.data)
           setLoading(false)
 
           }
@@ -81,7 +81,7 @@ const AuthProvider = ({children}) => {
             {withCredentials:true})
            .then(res=>{
             {
-              console.log("from logOut",res.data)
+              // console.log("from logOut",res.data)
               setLoading(false);
             }
            })

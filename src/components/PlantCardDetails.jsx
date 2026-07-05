@@ -1,19 +1,40 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import usePlants from "../hooks/usePlants";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import PurchaseModal from './PurchaseModal';
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 
 const PlantCardDetails = () => {
 
-
-
+  const {id} = useParams();
+  const axiosPublic = useAxiosPublic();
   const {user} = useAuth();
-  console.log(user);
 
- let [isOpen, setIsOpen] = useState(false)
+   let [isOpen, setIsOpen] = useState(false)
+
+
+
+  const {data:plant,isLoading,refetch} = useQuery({
+    queryKey:["plant",id],
+    queryFn:async()=>{
+      const res = await axiosPublic.get(`/plants/${id}`)
+      return res.data
+    },
+  })
+
+  if(isLoading){
+    return <p>Loading</p>
+  }
+
+
+
+  
+  // console.log(user);
+
 
   function open() {
     setIsOpen(true)
@@ -25,7 +46,7 @@ const PlantCardDetails = () => {
 
 //  const {name,image,category,difficulty,price,_id,quantity,description} = useLoaderData();
 
- const plant = useLoaderData();
+//  const plant = useLoaderData();
   return (
     <div className="mx-center my-20">
      <div className="hero  min-h-screen">
@@ -79,7 +100,7 @@ const PlantCardDetails = () => {
    
           
         </Button>
-          <PurchaseModal plant={plant} closeModal={closeModal} isOpen={isOpen}></PurchaseModal>
+          <PurchaseModal refetch={refetch} plant={plant} closeModal={closeModal} isOpen={isOpen}></PurchaseModal>
 
         {/* Dialog */}
          
