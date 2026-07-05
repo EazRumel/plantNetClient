@@ -7,12 +7,15 @@ import { Label } from 'flowbite-react';
 import ButTon from '../shared/Button';
 import useAuth from '../hooks/useAuth';
 import { Notyf } from 'notyf';
+import userAxiosSecure from '../hooks/userAxiosSecure';
 
 
 
 const PurchaseModal = ({plant,closeModal,isOpen}) => {
+  const {user} = useAuth();
 
-  const {quantity,price,category} = plant;
+  const axiosSecure = userAxiosSecure();
+  const {name,quantity,price,category,seller,_id} = plant;
 
 
 
@@ -41,32 +44,86 @@ const PurchaseModal = ({plant,closeModal,isOpen}) => {
         ]
       });
 
+      const [totalQuantity,setTotalQuantity] = useState(1);
+      const [totalPrice,setTotalPrice] = useState(price);
 
-  const [totalQuantity,setTotalQuantity] = useState(1);
+      console.log(totalQuantity);
+
+      const handleQuantity = (value) => {
+          if(value > quantity)
+          {
+            setTotalQuantity(quantity);
+            return notyf.error("Limit exceeded")
+          }
+
+          if(value <= 0)
+          {
+            setTotalQuantity(1);
+            return notyf.error("Cannot order zero item");
+          }
+
+          setTotalQuantity(value);
+          setTotalPrice(value * price);
+
+      setPurchaseInfo(prev=>{
+      return{...prev,quantity:value,price:value*price}
+     })
+      }
+
+
+      const [purchaseInfo,setPurchaseInfo] = useState({
+        customer :{
+         name:user?.displayName,
+         email:user?.email,
+         image:user?.photoURL
+        },
+
+        plantId:_id,
+        quantity:totalQuantity,
+        price:totalPrice,
+        seller:seller?.email,
+        address:" ",
+        status:"Pending"
+      })
+
+
+      const handlePurchaseInfo = async()=>{
+        console.table(purchaseInfo);
+        try{
+          const res = await axiosSecure.post("/order",purchaseInfo);
+          notyf.success("Order Completed")
+
+           console.log(res.data);
+
+        }
+        catch(error){
+          console.log(error.message)
+          notyf.error("Order failed")
+        }
+
+        finally{
+          closeModal();
+        }
+
+        
+
+       
+        
+      }
+      
+
+
+
+
 
 
  
-  const handleQuantity = (value)=> {
-    // value = Number(value);
-     if(value > quantity){
-      setTotalQuantity(quantity);
-      return notyf.error("It exceeds the limit")
-    
-     }
+  
 
-     if(value <= 0){
-       setTotalQuantity(1);
-       return notyf.error("Value cannot be zero");
-       
-     }
-
-     setTotalQuantity(value);
-  }
-
-  console.log(quantity);
+  // console.log(quantity);
 
   // let [isOpen, setIsOpen] = useState(false);
-  const {user} = useAuth();
+  
 
   
   return (
@@ -128,9 +185,8 @@ const PurchaseModal = ({plant,closeModal,isOpen}) => {
         Quantity
       </label>
       <input
-        onChange={(e)=>handleQuantity(e.target.value)}
-       
         value={totalQuantity}
+        onChange={(e)=>handleQuantity(e.target.value)}
         type="number"
         name="quantity"
         id="quantity"
@@ -149,6 +205,9 @@ const PurchaseModal = ({plant,closeModal,isOpen}) => {
         Address
       </label>
       <input
+     onChange={(e)=>setPurchaseInfo(prev=>{
+      return{...prev,address:e.target.value}
+     })}
 
         type="text"
         name="address"
@@ -160,7 +219,11 @@ const PurchaseModal = ({plant,closeModal,isOpen}) => {
 
 
       <div className='mb-2 ml-5'>
-         <ButTon label="Purchase"/>
+         <ButTon
+          onClick={handlePurchaseInfo}
+          label={`Pay ${totalPrice} BDT`}
+         
+         />
       </div>
       </DialogPanel>
     </TransitionChild>

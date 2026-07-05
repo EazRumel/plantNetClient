@@ -1,8 +1,9 @@
 
 
-const ButTon = ({label}) => {
+const ButTon = ({label,onClick}) => {
    return(
       <button
+      onClick={onClick}
           className="mt-3
     btn relative overflow-hidden group
     bg-transparent border border-green-500 text-green-500
