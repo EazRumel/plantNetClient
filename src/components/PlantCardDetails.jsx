@@ -23,25 +23,27 @@ const PlantCardDetails = () => {
     setIsOpen(false)
   }
 
- const {name,image,category,difficulty,price,_id,quantity,description} = useLoaderData();
+//  const {name,image,category,difficulty,price,_id,quantity,description} = useLoaderData();
+
+ const plant = useLoaderData();
   return (
     <div className="mx-center my-20">
      <div className="hero  min-h-screen">
   <div className="hero-content flex-col lg:flex-row">
     <img
-      src={image}
+      src={plant.image}
       className="max-w-sm rounded-lg shadow-2xl"
     />
     <div>
-      <h1 className="text-5xl py-3 font-bold ml-10">{name}</h1>
+      <h1 className="text-5xl py-3 font-bold ml-10">{plant.name}</h1>
       <p>Name: {user?.displayName}</p>
       <p>User: {user?.email}</p>
-      <p>Quantity: {quantity}</p>
+      <p>Quantity: {plant.quantity}</p>
       
      
       <img className="py-5" src={user?.photoURL} alt="" />
        <p className="py-6">
-           {description}
+           {plant.description}
       </p>
       <Button
           onClick={()=>setIsOpen(true)}
@@ -70,14 +72,14 @@ const PlantCardDetails = () => {
       group-hover:text-white
     ">
      {
-      quantity > 0 ? " Purchase" : "Out of Stock"
+      plant.quantity > 0 ? " Purchase" : "Out of Stock"
      }
     </span>
     
    
           
         </Button>
-          <PurchaseModal closeModal={closeModal} isOpen={isOpen}></PurchaseModal>
+          <PurchaseModal plant={plant} closeModal={closeModal} isOpen={isOpen}></PurchaseModal>
 
         {/* Dialog */}
          

@@ -5,13 +5,68 @@ import { useState } from 'react'
 import {Fragment }from "react";
 import { Label } from 'flowbite-react';
 import ButTon from '../shared/Button';
+import useAuth from '../hooks/useAuth';
+import { Notyf } from 'notyf';
 
 
 
-const PurchaseModal = ({closeModal,isOpen}) => {
+const PurchaseModal = ({plant,closeModal,isOpen}) => {
 
+  const {quantity,price,category} = plant;
+
+
+
+  const notyf = new Notyf({
+        duration: 2000,
+        position: {
+          x: 'center',
+          y: 'top',
+        },
+        types: [
+          {
+            type: 'success',
+            background: 'green',
+            icon: {
+              className: 'material-icons',
+              tagName: 'i',
+              text: 'success'
+            }
+          },
+          {
+            type: 'success',
+            background: 'green',
+            duration: 2000,
+            dismissible: true
+          }
+        ]
+      });
+
+
+  const [totalQuantity,setTotalQuantity] = useState(1);
+
+
+ 
+  const handleQuantity = (value)=> {
+    // value = Number(value);
+     if(value > quantity){
+      setTotalQuantity(quantity);
+      return notyf.error("It exceeds the limit")
+    
+     }
+
+     if(value <= 0){
+       setTotalQuantity(1);
+       return notyf.error("Value cannot be zero");
+       
+     }
+
+     setTotalQuantity(value);
+  }
+
+  console.log(quantity);
 
   // let [isOpen, setIsOpen] = useState(false);
+  const {user} = useAuth();
 
   
   return (
@@ -31,7 +86,7 @@ const PurchaseModal = ({closeModal,isOpen}) => {
  </TransitionChild>
 
   <div className="fixed inset-0 overflow-y-auto">
-    <div className="flex min-h-full items-center justify-center p-4 text-center">
+    <div className="flex min-h-full items-center justify-center p-4 text-left">
     <TransitionChild
      as={Fragment}
     enter="ease-out duration-300"
@@ -49,20 +104,62 @@ const PurchaseModal = ({closeModal,isOpen}) => {
      </DialogTitle>
 {/* Main div for info */}
 
-       <div className="mt-2">
-      <p className="text-sm text-gray-800">Plant: Money Plant</p>
+       <div className="mt-2 ml-5">
+      <p className="text-sm text-gray-800">Plant: {name}</p>
      </div>
-       <div className="mt-2">
-      <p className="text-sm text-gray-800">Plant: Money Plant</p>
+       <div className="mt-2 ml-5">
+      <p className="text-sm text-gray-800">Category: {category}</p>
      </div>
-       <div className="mt-2">
-      <p className="text-sm text-gray-800">Plant: Money Plant</p>
+       <div className="mt-2 ml-5">
+      <p className="text-sm text-gray-800">Customer: {user?.displayName}</p>
      </div>
-       <div className="mt-2">
-      <p className="text-sm text-gray-800">Plant: Money Plant</p>
+       <div className="mt-2 ml-5">
+      <p className="text-sm text-gray-800">Price: {price} BDT</p>
      </div>
 
-      <div className='mb-2'>
+     <div className="mt-2 ml-5">
+      <p className="text-sm text-gray-800">Available: {quantity} </p>
+     </div>
+
+     {/* Quantity field */}
+
+      <div className="space-y-1 mt-2 ml-5">
+      <label htmlFor="quantity" className="block text-gray-400">
+        Quantity
+      </label>
+      <input
+        onChange={(e)=>handleQuantity(e.target.value)}
+       
+        value={totalQuantity}
+        type="number"
+        name="quantity"
+        id="quantity"
+        placeholder="Quantity"
+         required
+        className="p-2 text-gray-800 border border-lime-400 focus:outline-lime-500 rounded-md"
+      />
+     
+    </div>
+
+
+    {/* Address field */}
+
+     <div className="space-y-1 mt-2 ml-5">
+      <label htmlFor="address" className="block text-gray-400">
+        Address
+      </label>
+      <input
+
+        type="text"
+        name="address"
+        id="address"
+        placeholder="Shipping Address"
+        className="p-2 text-gray-800 border border-lime-400 focus:outline-lime-500 rounded-md"
+      />
+    </div>
+
+
+      <div className='mb-2 ml-5'>
          <ButTon label="Purchase"/>
       </div>
       </DialogPanel>
