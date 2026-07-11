@@ -8,12 +8,13 @@ import ButTon from '../shared/Button';
 import useAuth from '../hooks/useAuth';
 import { Notyf } from 'notyf';
 import userAxiosSecure from '../hooks/userAxiosSecure';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const PurchaseModal = ({plant,closeModal,isOpen,refetch}) => {
   const {user} = useAuth();
-
+  const navigate = useNavigate();
   const axiosSecure = userAxiosSecure();
   const {name,quantity,price,category,seller,_id} = plant;
 
@@ -50,14 +51,12 @@ const PurchaseModal = ({plant,closeModal,isOpen,refetch}) => {
       // console.log(totalQuantity);
 
       const handleQuantity = (value) => {
-          if(value > quantity)
-          {
+          if(value > quantity) {
             setTotalQuantity(quantity);
             return notyf.error("Limit exceeded")
           }
 
-          if(value <= 0)
-          {
+          if(value <= 0) {
             setTotalQuantity(1);
             return notyf.error("Cannot order zero item");
           }
@@ -102,6 +101,7 @@ const PurchaseModal = ({plant,closeModal,isOpen,refetch}) => {
             console.log(response)
              notyf.success("Order Completed")
              refetch();
+             navigate("/dashboard/myOrder");
 
         }
         catch(error){

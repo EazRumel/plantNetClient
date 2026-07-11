@@ -1,9 +1,25 @@
-import React from "react";
+
 import image from "../../../assets/img/parallax.jpg";
 import { BookmarkX } from "lucide-react";
+import userAxiosSecure from "../../../hooks/userAxiosSecure";
 
-const CustomerOrderRow = ({orderData}) => {
-  const {price} = orderData;
+
+const CustomerOrderRow = ({orderData,refetch}) => {
+
+  const {price,category,name,image,quantity,_id,status} = orderData;
+  const axiosSecure = userAxiosSecure();
+
+
+  const handleDelete = async()=>{
+      //  console.log(plantId)
+      try{
+        await axiosSecure.delete(`/order/${_id}`)
+        refetch();
+      }
+      catch(error){
+        console.log(error)
+      }
+  }
   return (
     <tr>
       <td>
@@ -17,17 +33,17 @@ const CustomerOrderRow = ({orderData}) => {
       </td>
 
       <td>
-        <div className="font-bold">{orderData.name}</div>
+        <div className="font-bold">{name}</div>
       </td>
 
-      <td>{orderData.category}</td>
+      <td>{category}</td>
 
-      <td>{price}</td>
-      <td>43</td>
-      <td>Pending</td>
+      <td>{price} BDT</td>
+      <td>{quantity}</td>
+      <td>{status}</td>
 
       <td>
-        <button className="btn bg-red-400 btn-ghost">
+        <button onClick={handleDelete} className="btn bg-red-400 btn-ghost">
           <BookmarkX />
         </button>
       </td>

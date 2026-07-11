@@ -51,7 +51,7 @@ const MyOrders = () => {
     <tbody>
       {
         order.map(orderData=>(
-          <CustomerOrderRow orderData={orderData}/>
+          <CustomerOrderRow orderData={orderData} refetch={refetch} />
         ))
       }
     </tbody>
