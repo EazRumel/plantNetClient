@@ -10,9 +10,9 @@ import { useQuery } from "@tanstack/react-query";
 
 const PlantCardDetails = () => {
 
-  const {id} = useParams();
+  const { id } = useParams();
   const axiosPublic = useAxiosPublic();
-  const {user} = useAuth();
+  const { user } = useAuth();
 
    let [isOpen, setIsOpen] = useState(false)
 

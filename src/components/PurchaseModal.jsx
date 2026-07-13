@@ -95,13 +95,15 @@ const PurchaseModal = ({plant,closeModal,isOpen,refetch}) => {
            console.log(res.data);
 
            const response = await axiosSecure.patch(`/plants/quantity/${_id}`,{
-            updateQuantity:totalQuantity
+            updateQuantity:totalQuantity,
+            status:"decrease"
            })
 
             console.log(response)
              notyf.success("Order Completed")
              refetch();
              navigate("/dashboard/myOrder");
+
 
         }
         catch(error){
@@ -112,12 +114,7 @@ const PurchaseModal = ({plant,closeModal,isOpen,refetch}) => {
 
         finally{
           closeModal();
-        }
-
-        
-
-       
-        
+        } 
       }
       
 
