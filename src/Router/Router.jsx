@@ -14,6 +14,7 @@ import PlantCardDetails from "../components/PlantCardDetails";
 import Cart from "../pages/Cart";
 import AddPlant from "../layouts/Dashboard/Seller/AddPlant";
 import MyOrders from "../layouts/Dashboard/Customer/MyOrders";
+import BecomeASeller from "../layouts/Dashboard/Customer/BecomeASeller";
 
 
 
@@ -88,6 +89,10 @@ export const router = createBrowserRouter([
       {
         path:"myOrder",
         element:<MyOrders></MyOrders>
+      },
+      {
+        path:"becomeSeller",
+        element:<BecomeASeller></BecomeASeller>
       }
 
     ]

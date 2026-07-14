@@ -1,7 +1,8 @@
-import { House, NotebookPen, ShoppingCart, Trees } from "lucide-react";
+import { House, NotebookPen, ShoppingCart, Store, Trees } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../../hooks/useCart";
 import imageLogo from "../../../src/assets/img/plantLogo.jpg"
+import CustomerMenu from "./Customer/CustomerMenu";
 
 
 
@@ -11,7 +12,7 @@ const Dashboard = () => {
 
   const links = (
 
-      <ul className="margin-center flex fled-row lg:flex-col gap-3">
+      <ul className="flex lg:flex-col gap-3">
       <div className="flex gap-3 px-3 py-2 rounded-2xl flex-row">
        <p className="self-center whitespace-nowrap text-xl font-light dark:text-white"><span className="text-green-400 font-light">Tree</span> <span className="text-white">Planet</span></p>
         <img className="mr-3 rounded-lg h-6 sm:h-9" src={imageLogo} alt="" />
@@ -30,18 +31,7 @@ const Dashboard = () => {
   <span className="flex font-bold text-xl gap-2 items-center justify-center"><House size={22} strokeWidth={3} /> Home</span>
 </NavLink>
           </li>
-          <li>
-            <NavLink
-  to="myOrder"
-  className={({ isActive }) =>
-    isActive
-      ? "text-green-500 font-semibold"
-      : "text-gray-300 hover:text-green-400"
-  }
->
-  <span className="flex font-bold text-xl gap-2 items-center justify-center"><NotebookPen size={22} strokeWidth={3} /> My Order</span>
-</NavLink>
-          </li>
+       
           <li>
             <NavLink
   to="addPlant"
@@ -54,6 +44,8 @@ const Dashboard = () => {
   <span className="flex font-bold text-lg gap-2 items-center justify-center"><Trees size={22} strokeWidth={3} /> Add Plant </span>
 </NavLink>
           </li>
+
+        <CustomerMenu></CustomerMenu>
         </ul>
     
   )
@@ -64,14 +56,14 @@ const Dashboard = () => {
        
     {/* large navbar */}
        <div className="hidden lg:p-10 lg:block w-64 min-h-screen bg-gray-300">
-        <ul className="menu bg-lime-600 gap-5 bg-opacity-100 py-6  rounded-xl flex flex-row items-center">
+        <ul className="menu bg-gray-100 text-gray-800 gap-5 bg-opacity-100 py-6 rounded-xl flex flex-row items-center">
           {links}
         </ul>
        </div>
 
 
 {/* //small device navbar */}
-      <div className="lg:hidden bg-lime-900 px-6 py-4">
+      <div className="lg:hidden bg-gray-100 px-6 py-4">
         <ul className="menu flex flex-row  bg-green-200 bg-opacity-20 p-4 rounded-xl  gap-6 items-center">{links}</ul>
       </div>
        <div className="flex-1">
