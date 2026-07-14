@@ -1,8 +1,15 @@
 import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react';
 import React, { Fragment } from 'react';
 import ButTon from '../../../shared/Button';
+import useAuth from '../../../hooks/useAuth';
+import userAxiosSecure from '../../../hooks/userAxiosSecure';
 
-const BecomeASeller = ({closeModal,isOpen}) => {
+const BecomeASeller = ({closeModal,isOpen,handleRequest}) => {
+ 
+
+ 
+
+
   return (
      <Transition appear show={isOpen} as={Fragment}>
    <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -41,7 +48,7 @@ const BecomeASeller = ({closeModal,isOpen}) => {
 {/* Main div for info */}
 
       <div className='mb-2 ml-5 flex gap-3'>
-         <ButTon label="Send Request"/>
+         <ButTon onClick={handleRequest} label="Send Request"/>
          <ButTon onClick={closeModal} label="Cancel"/>
       </div>
       </DialogPanel>

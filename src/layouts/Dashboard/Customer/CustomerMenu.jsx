@@ -2,8 +2,39 @@ import { NotebookPen, Store } from "lucide-react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import BecomeASeller from "./BecomeASeller";
+import useAuth from "../../../hooks/useAuth";
+import userAxiosSecure from "../../../hooks/userAxiosSecure";
+import { Notyf } from "notyf";
 
 const CustomerMenu = () => {
+
+   const {user} = useAuth();
+    const axiosSecure = userAxiosSecure();
+
+    const notyf = new Notyf({
+            duration: 2000,
+            position: {
+              x: 'center',
+              y: 'top',
+            },
+            types: [
+              {
+                type: 'success',
+                background: 'green',
+                icon: {
+                  className: 'material-icons',
+                  tagName: 'i',
+                  text: 'success'
+                }
+              },
+              {
+                type: 'success',
+                background: 'green',
+                duration: 2000,
+                dismissible: true
+              }
+            ]
+          });
 
      let [isOpen, setIsOpen] = useState(false)
 
@@ -14,6 +45,25 @@ const CustomerMenu = () => {
   function closeModal() {
     setIsOpen(false)
   }
+
+
+
+    const handleRequest = async () =>{
+      try{
+         const result = await axiosSecure.patch(`/users/${user?.email}`);
+         console.log(result.data)
+         notyf.success("Applied to become a seller")
+      }
+      catch(error){
+        console.log(error)
+        console.log(error.message)
+                 notyf.error(error.response.data)
+
+      }
+      finally{
+        closeModal();
+      }
+     }
   
   return (
     <>
@@ -52,7 +102,7 @@ const CustomerMenu = () => {
          </button>
        
       </li>
-      <BecomeASeller isOpen={isOpen} closeModal={closeModal}></BecomeASeller>
+      <BecomeASeller handleRequest={handleRequest} isOpen={isOpen} closeModal={closeModal}></BecomeASeller>
     </>
   );
 };

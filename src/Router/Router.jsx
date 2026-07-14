@@ -15,6 +15,7 @@ import Cart from "../pages/Cart";
 import AddPlant from "../layouts/Dashboard/Seller/AddPlant";
 import MyOrders from "../layouts/Dashboard/Customer/MyOrders";
 import BecomeASeller from "../layouts/Dashboard/Customer/BecomeASeller";
+import Profile from "../layouts/Dashboard/Profile";
 
 
 
@@ -90,9 +91,13 @@ export const router = createBrowserRouter([
         path:"myOrder",
         element:<MyOrders></MyOrders>
       },
+      // {
+      //   path:"becomeSeller",
+      //   element:<BecomeASeller></BecomeASeller>
+      // }
       {
-        path:"becomeSeller",
-        element:<BecomeASeller></BecomeASeller>
+        path:"profile",
+        element:<Profile></Profile>
       }
 
     ]
