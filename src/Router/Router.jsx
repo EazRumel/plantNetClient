@@ -15,7 +15,12 @@ import Cart from "../pages/Cart";
 import AddPlant from "../layouts/Dashboard/Seller/AddPlant";
 import MyOrders from "../layouts/Dashboard/Customer/MyOrders";
 import BecomeASeller from "../layouts/Dashboard/Customer/BecomeASeller";
-import Profile from "../layouts/Dashboard/Profile";
+
+import SellerRoute from "./SellerRoute";
+import Profile from "../layouts/Dashboard/Common/Profile";
+import ManageUsers from "../layouts/Dashboard/Admin/ManageUsers";
+import AdminMenu from "../layouts/Dashboard/Admin/AdminMenu";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -66,12 +71,7 @@ export const router = createBrowserRouter([
     path:"/cart",
     element:<Cart></Cart>
   },
-  
-
-   
-  
-    
-    ]
+  ]
   },
   {
     
@@ -85,7 +85,11 @@ export const router = createBrowserRouter([
       },
       {
         path:"addPlant",
-        element:<AddPlant></AddPlant>
+        element:<PrivateRoute>
+          <SellerRoute>
+            <AddPlant></AddPlant>
+          </SellerRoute>
+        </PrivateRoute>
       },
       {
         path:"myOrder",
@@ -95,10 +99,18 @@ export const router = createBrowserRouter([
       //   path:"becomeSeller",
       //   element:<BecomeASeller></BecomeASeller>
       // }
-      {
-        path:"profile",
-        element:<Profile></Profile>
-      }
+     {
+      path:"profile",
+      element:<Profile></Profile>
+     },
+     {
+      path:"manageUsers",
+      element:<PrivateRoute>
+        <AdminRoute>
+          <ManageUsers></ManageUsers>
+        </AdminRoute>
+      </PrivateRoute>
+     }
 
     ]
   }

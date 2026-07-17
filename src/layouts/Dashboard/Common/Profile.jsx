@@ -1,6 +1,6 @@
 import React from 'react';
-import useAuth from '../../hooks/useAuth';
-import useRole from '../../hooks/useRole';
+import useAuth from '../../../hooks/useAuth';
+import useRole from '../../../hooks/useRole';
 
 const Profile = () => {
   const {user} = useAuth();
@@ -9,6 +9,7 @@ const Profile = () => {
   return (
     <div>
        <h1>{user?.displayName}</h1>
+      <h2>{role}</h2>
     </div>
   );
 };

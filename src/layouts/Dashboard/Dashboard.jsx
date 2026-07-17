@@ -4,6 +4,8 @@ import useCart from "../../hooks/useCart";
 import imageLogo from "../../../src/assets/img/plantLogo.jpg"
 import CustomerMenu from "./Customer/CustomerMenu";
 import useRole from "../../hooks/useRole";
+import SellerMenu from "./Seller/SellerMenu";
+import AdminMenu from "./Admin/AdminMenu";
 
 
 
@@ -36,21 +38,20 @@ const Dashboard = () => {
 </NavLink>
           </li>
        
-          <li>
-            <NavLink
-  to="addPlant"
-  className={({ isActive }) =>
-    isActive
-      ? "text-green-500 font-semibold"
-      : "text-gray-300 hover:text-green-400"
-  }
->
-  <span className="flex font-bold text-lg gap-2 items-center justify-center"><Trees size={22} strokeWidth={3} /> Add Plant </span>
-</NavLink>
-          </li>
+          
+          {
+            role === "customer" &&   <CustomerMenu></CustomerMenu>
+          }
 
+          {
+            role === "seller" && <SellerMenu></SellerMenu>
+          }
 
-        <CustomerMenu></CustomerMenu>
+          {
+            role === "admin" && <AdminMenu></AdminMenu>
+          }
+
+      
 
 
            <li>
