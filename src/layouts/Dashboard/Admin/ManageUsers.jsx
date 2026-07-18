@@ -9,7 +9,7 @@ const ManageUsers = () => {
   const {user} = useAuth();
   const axiosSecure = userAxiosSecure();
 
-  const {data:users=[],isLoading}= useQuery({
+  const {data:users=[],isLoading,refetch}= useQuery({
     queryKey:["all-users",user?.email],
     queryFn:async()=>{
       const response = await axiosSecure.get(`/all-users/${user?.email}`)
@@ -45,7 +45,7 @@ const ManageUsers = () => {
 
        {
         users.map(user=>(
-          <ManageUsersRow key={user._id} user={user}></ManageUsersRow>
+          <ManageUsersRow refetch={refetch} key={user._id} user={user}></ManageUsersRow>
         ))
        }
     </tbody>

@@ -5,7 +5,7 @@ import { Fragment } from "react";
 import { useState } from "react";
 
 
-const UpdateUserModal = ({isOpen,setIsOpen}) => {
+const UpdateUserModal = ({isOpen,setIsOpen,role,handleUpdateRole}) => {
 
   const handleIsOpen=()=>{
     setIsOpen(false)
@@ -13,14 +13,18 @@ const UpdateUserModal = ({isOpen,setIsOpen}) => {
   const roles = ["customer","seller","admin"];
 
 
-  const people = [
-  { id: 1, name: 'Tom Cook' },
-  { id: 2, name: 'Wade Cooper' },
-  { id: 3, name: 'Tanya Fox' },
-  { id: 4, name: 'Arlene Mccoy' },
-  { id: 5, name: 'Devon Webb' },
-]
-  const [selected, setSelected] = useState(people[1])
+//   const people = [
+//   { id: 1, name: 'Tom Cook' },
+//   { id: 2, name: 'Wade Cooper' },
+//   { id: 3, name: 'Tanya Fox' },
+//   { id: 4, name: 'Arlene Mccoy' },
+//   { id: 5, name: 'Devon Webb' },
+// ]
+  const [selected, setSelected] = useState(role)
+
+  // console.log(selected)
+  console.log(typeof role);
+  console.log(role)
   return (
      <Transition appear show={isOpen} as={Fragment}>
        <Dialog as="div" className="relative z-10" onClose={handleIsOpen}>
@@ -58,38 +62,67 @@ const UpdateUserModal = ({isOpen,setIsOpen}) => {
     
     {/* Main div for info */}
     
-           <div className="mx-auto h-screen w-full  pt-20">
-      <Listbox value={selected} onChange={setSelected}>
-        <ListboxButton
-          className="relative w-full rounded-lg border border-gray-300 bg-white py-2 px-3 text-left text-black"
-        >
-          {selected.name}
-          <ChevronDownIcon
-            className="group pointer-events-none absolute top-2.5 right-2.5 size-4 fill-white/60"
-            aria-hidden="true"
-          />
-        </ListboxButton>
-        <ListboxOptions
-          anchor="bottom"
-          transition
-         className="relative w-full rounded-lg border border-gray-300 bg-white py-2 px-3 text-left text-black"
-        >
-          {people.map((person) => (
-            <ListboxOption
-              key={person.name}
-              value={person}
-              className="group flex cursor-default items-center gap-2 rounded-lg px-3 py-1.5 select-none data-focus:bg-white/10"
-            >
-              <CheckIcon className="invisible size-4 fill-white group-data-selected:visible" />
-             <div className="text-gray-900">
+           <div className="mx-auto w-full p-2  pt-20">
+    <Listbox value={selected} onChange={setSelected}>
 
-  {person.name}
+  <ListboxButton className="cursor-pointer relative w-full rounded-lg border border-gray-300 bg-white py-2 px-3 text-left">
 
-</div>
-            </ListboxOption>
-          ))}
-        </ListboxOptions>
-      </Listbox>
+    {selected}
+
+    <ChevronDownIcon className="absolute right-3 top-2.5 size-4" />
+
+  </ListboxButton>
+
+  <ListboxOptions anchor="bottom" className="mt-1 w-32 rounded-lg border bg-white shadow-lg">
+
+    {roles.map((role) => (
+
+      <ListboxOption
+
+        key={role}
+
+        value={role}
+
+        className="cursor-pointer px-3 py-2 data-focus:bg-gray-100"
+
+      >
+
+        {role}
+
+      </ListboxOption>
+
+    ))}
+
+  </ListboxOptions>
+
+</Listbox>
+ <div className="mt-6 flex mx-auto  justify-center m-4 gap-3">
+
+    <button
+
+      onClick={handleIsOpen}
+
+      className="cursor-pointer rounded-lg border border-gray-300 px-4 py-2 text-gray-700 hover:bg-gray-100"
+
+    >
+
+      Cancel
+
+    </button>
+
+    <button
+
+     onClick={()=>handleUpdateRole(selected)}
+
+      className="cursor-pointer rounded-lg bg-green-600 px-4 py-2 text-white hover:bg-green-700"
+
+    >
+
+      Update
+
+    </button>
+
+  </div>
     </div>
           </DialogPanel>
         </TransitionChild>
