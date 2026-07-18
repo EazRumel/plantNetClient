@@ -6,13 +6,13 @@ import useAuth from '../../../hooks/useAuth';
 import userAxiosSecure from '../../../hooks/userAxiosSecure';
 
 const ManageUsers = () => {
-  // const {user} = useAuth();
+  const {user} = useAuth();
   const axiosSecure = userAxiosSecure();
 
   const {data:users=[],isLoading}= useQuery({
-    queryKey:["all-users"],
+    queryKey:["all-users",user?.email],
     queryFn:async()=>{
-      const response = await axiosSecure.get("all-users")
+      const response = await axiosSecure.get(`/all-users/${user?.email}`)
       return response.data;
     }
   })

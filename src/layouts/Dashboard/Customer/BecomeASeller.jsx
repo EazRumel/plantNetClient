@@ -3,11 +3,12 @@ import React, { Fragment } from 'react';
 import ButTon from '../../../shared/Button';
 import useAuth from '../../../hooks/useAuth';
 import userAxiosSecure from '../../../hooks/userAxiosSecure';
+import PropTypes from "prop-types";
 
 const BecomeASeller = ({closeModal,isOpen,handleRequest}) => {
  
 
- 
+
 
 
   return (
@@ -47,9 +48,9 @@ const BecomeASeller = ({closeModal,isOpen,handleRequest}) => {
 
 {/* Main div for info */}
 
-      <div className='mb-2 ml-5 flex gap-3'>
-         <ButTon onClick={handleRequest} label="Send Request"/>
-         <ButTon onClick={closeModal} label="Cancel"/>
+      <div className='mb-2 mx-auto justify-center m-5 ml-5 flex gap-3'>
+         <button className="btn text-green-800 bg-green-300 opacity-40" onClick={handleRequest}>Send Request</button>
+         <button className="btn text-red-600 bg-red-200 opacity-40"  onClick={closeModal}>Cancel</button>
       </div>
       </DialogPanel>
     </TransitionChild>
@@ -61,5 +62,11 @@ const BecomeASeller = ({closeModal,isOpen,handleRequest}) => {
    </Transition>
   );
 };
+
+BecomeASeller.propTypes= {
+  handleRequest:PropTypes.func,
+  closeModal:PropTypes.func,
+  isOpen:PropTypes.bool.isRequired
+}
 
 export default BecomeASeller;
