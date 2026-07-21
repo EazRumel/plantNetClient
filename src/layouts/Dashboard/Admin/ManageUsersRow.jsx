@@ -41,6 +41,7 @@ const ManageUsersRow = ({user,refetch}) => {
   const handleUpdateRole=async(selectedRole)=>{
     // console.log("Role is: ",selectedRole);
     try{
+      if(selectedRole === role)return;
       const {data} = await axiosSecure.patch(`/users/role/${email}`,{
       role:selectedRole
     })

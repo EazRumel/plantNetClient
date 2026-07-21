@@ -21,6 +21,7 @@ import Profile from "../layouts/Dashboard/Common/Profile";
 import ManageUsers from "../layouts/Dashboard/Admin/ManageUsers";
 import AdminMenu from "../layouts/Dashboard/Admin/AdminMenu";
 import AdminRoute from "./AdminRoute";
+import MyInventory from "../layouts/Dashboard/Seller/MyInventory";
 
 
 
@@ -110,6 +111,10 @@ export const router = createBrowserRouter([
           <ManageUsers></ManageUsers>
         </AdminRoute>
       </PrivateRoute>
+     },
+     {
+      path:"myInventory",
+      element:<MyInventory></MyInventory>
      }
 
     ]
