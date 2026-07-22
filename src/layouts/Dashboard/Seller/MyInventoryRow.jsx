@@ -1,10 +1,25 @@
+import { useState } from "react";
 import userAxiosSecure from "../../../hooks/userAxiosSecure";
+import DeleteInventoryModal from "./DeleteInventoryModal";
+import { notyf } from "../../../api/utils";
 
 
-const MyInventoryRow = ({plant}) => {
+const MyInventoryRow = ({plant,refetch}) => {
   const {image,name,category,quantity,_id} = plant;
   console.log(plant);
   const axiosSecure = userAxiosSecure();
+
+
+ let [isOpen, setIsOpen] = useState(false)
+
+    function open() {
+    setIsOpen(true)
+  }
+
+  function closeModal() {
+    setIsOpen(false)
+  }
+  
 
 
    const handleDelete = async() =>{
@@ -13,10 +28,16 @@ const MyInventoryRow = ({plant}) => {
     try {
       const {data} = await axiosSecure.delete(`/plants/${_id}`)
       console.log(data);
+      notyf.success("Plant has been deleted");
+      refetch();
     }
     catch(error){
       console.log(error)
       console.log(error.message)
+      notyf.error(error.response.data)
+    }
+    finally{
+     closeModal();
     }
 
   }
@@ -41,8 +62,13 @@ const MyInventoryRow = ({plant}) => {
       </td>
 
       <td>
-  <button onClick={handleDelete} className="border border-red-500 px-2  bg-red-400 bg-opacity-80 text-white  rounded-full cursor-pointer">Delete</button>      </td>
+  <button onClick={()=>setIsOpen(true)} className="border border-red-500 px-2  bg-red-400 bg-opacity-80 text-white  rounded-full cursor-pointer">Delete</button>   
+   
+     </td>
+  
+  <DeleteInventoryModal handleDelete={handleDelete} isOpen={isOpen} closeModal={closeModal}/>
     </tr>
+    
   );
 };
 

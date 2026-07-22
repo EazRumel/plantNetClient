@@ -8,9 +8,6 @@ import PropTypes from "prop-types";
 const BecomeASeller = ({closeModal,isOpen,handleRequest}) => {
  
 
-
-
-
   return (
      <Transition appear show={isOpen} as={Fragment}>
    <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -49,8 +46,14 @@ const BecomeASeller = ({closeModal,isOpen,handleRequest}) => {
 {/* Main div for info */}
 
       <div className='mb-2 mx-auto justify-center m-5 ml-5 flex gap-3'>
+
+
          <button className="btn text-green-800 bg-green-300 opacity-40" onClick={handleRequest}>Send Request</button>
+
+
          <button className="btn text-red-600 bg-red-200 opacity-40"  onClick={closeModal}>Cancel</button>
+
+
       </div>
       </DialogPanel>
     </TransitionChild>

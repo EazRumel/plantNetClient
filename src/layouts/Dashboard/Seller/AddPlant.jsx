@@ -5,11 +5,13 @@ import { imageUpload } from '../../../api/utils';
 import useAuth from '../../../hooks/useAuth';
 import userAxiosSecure from '../../../hooks/userAxiosSecure';
 import { Notyf } from 'notyf';
+import { useNavigate } from 'react-router-dom';
 
 
 const AddPlant = () => {
 
   const [loading,setLoading] = useState(false);
+  const navigate = useNavigate();
 
 
   const notyf = new Notyf({
@@ -90,6 +92,7 @@ const AddPlant = () => {
       const res = await axiosSecure.post("/plants",plantData)
       console.log(res.data);
       notyf.success(`${plantData.name} added`)
+      navigate("/dashboard/myInventory")
 
 
     }

@@ -1,3 +1,4 @@
+import { Notyf } from "notyf";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 // import axios from "axios";
 
@@ -18,3 +19,28 @@ const image_Url = res.data.data.display_url;
 
 return image_Url; 
 }
+
+ export const notyf = new Notyf({
+            duration: 2000,
+            position: {
+              x: 'center',
+              y: 'top',
+            },
+            types: [
+              {
+                type: 'success',
+                background: 'green',
+                icon: {
+                  className: 'material-icons',
+                  tagName: 'i',
+                  text: 'success'
+                }
+              },
+              {
+                type: 'success',
+                background: 'green',
+                duration: 2000,
+                dismissible: true
+              }
+            ]
+          });
