@@ -10,6 +10,7 @@ const axiosSecure = axios.create({
   withCredentials:true
 }
 )
+// http://localhost:3000
 const userAxiosSecure = () => {
   const {logOut} = useAuth();
   const navigate = useNavigate();
