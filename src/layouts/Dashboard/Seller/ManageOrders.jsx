@@ -40,8 +40,7 @@ const ManageOrders = () => {
       <tr>
 
        
-        <th>Name</th>
-       
+        <th>Plant Name</th>
         <th>Customer Email</th>
         <th>Price</th>
         <th>Quantity</th>

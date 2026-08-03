@@ -17,6 +17,10 @@ const ManageOrdersRow = ({orderData,refetch}) => {
     setIsOpen(false)
   }
 
+  const handleAction = (newStatus)=>{
+    console.log(newStatus);
+  }
+
   const handleDelete = async()=>{
     try {
       const {result} = await axiosSecure.delete(`/order/${_id}`)
@@ -57,9 +61,7 @@ const ManageOrdersRow = ({orderData,refetch}) => {
       </td>
 
       <td>
-           {
-            status
-           }
+           {status}
    
      </td>
      <td>
@@ -71,16 +73,17 @@ const ManageOrdersRow = ({orderData,refetch}) => {
     id="update"
 
     defaultValue={status}
+    onChange={(event)=>handleAction(event.target.value)}
 
     className="w-full px-2 py-1 border border-green-300 focus:outline-green-300 rounded-md"
 
   >
 
-    <option value="BDT">Pending</option>
+    <option value="Pending">Pending</option>
 
-    <option value="USD">Start Processing</option>
+    <option value="In Processing">Start Processing</option>
 
-    <option value="EUR">Delivered</option>
+    <option value="Delivered">Delivered</option>
 
   </select>
 
