@@ -12,7 +12,7 @@ import {
 } from "flowbite-react";
 import logo from "../assets/img/plantLogo.jpg"
 import useAuth from "../hooks/useAuth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import  "../components/FeaturedPlants.css"
 
@@ -23,10 +23,12 @@ const NavHomeBar = () => {
 
   const {user,logOut} = useAuth();
   const [cart] = useCart();
+  const navigate = useNavigate();
   // console.log(carts);
 
   const handleLogOut = () =>{
      logOut()
+     navigate("/login")
     //  console.log(logOut)
     .catch(error=>{
       console.log(error.message)
@@ -70,6 +72,7 @@ return(
           <DropdownDivider />
          <DropdownItem onClick={handleLogOut}>Sign Out</DropdownItem>
           
+          
         </Dropdown>
         
         
@@ -82,8 +85,11 @@ return(
           label={
             <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded
              />
+             
           }
+          
         >
+        
 
         
            
@@ -93,7 +99,9 @@ return(
           <DropdownItem>Settings</DropdownItem>
           <DropdownItem>Earnings</DropdownItem>
           <DropdownDivider /> */}
-         <DropdownItem><Link to="/login">Sign In</Link></DropdownItem>
+         <DropdownItem><Link to="/login">Sign In</Link>
+
+         </DropdownItem>
           
         </Dropdown>
        }

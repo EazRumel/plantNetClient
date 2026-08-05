@@ -17,8 +17,23 @@ const ManageOrdersRow = ({orderData,refetch}) => {
     setIsOpen(false)
   }
 
-  const handleAction = (newStatus)=>{
-    console.log(newStatus);
+  
+  const handleStatus=async(newStatus)=>{
+    if(status === newStatus)return;
+
+    try{
+      const {data} = await axiosSecure.patch(`/manageOrders/${_id}`,{
+        status:newStatus
+      })
+      notyf.success("Status Updated")
+      refetch();
+  console.log(data);
+    }
+    catch(error){
+      notyf.error(error.response.data)
+      console.log(error.message)
+    }
+   
   }
 
   const handleDelete = async()=>{
@@ -71,10 +86,10 @@ const ManageOrdersRow = ({orderData,refetch}) => {
     name="update"
 
     id="update"
-
+    disabled={status === "Delivered"}
+  
     defaultValue={status}
-    onChange={(event)=>handleAction(event.target.value)}
-
+   onClick={(event)=>handleStatus(event.target.value)}
     className="w-full px-2 py-1 border border-green-300 focus:outline-green-300 rounded-md"
 
   >
