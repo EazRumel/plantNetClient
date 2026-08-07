@@ -42,6 +42,7 @@ const AddPlant = () => {
  const axiosSecure = userAxiosSecure();
  const {user} = useAuth();
  const [upload,setUpload] = useState("Upload Image");
+ const [image,setImage] = useState(null);
 
   const handleSubmitAddPlant = async(event) => {
     
@@ -110,7 +111,7 @@ const AddPlant = () => {
   return (
     <div>
        <h1 className="h1 text-center mx-10 my-10 text-lime-400">Add Plant</h1>
-      <AddPlantForm handleSubmitAddPlant={handleSubmitAddPlant} upload={upload} setUpload={setUpload} loading={loading}></AddPlantForm>
+      <AddPlantForm handleSubmitAddPlant={handleSubmitAddPlant} upload={upload} setUpload={setUpload} loading={loading} image={image} setImage={setImage}> </AddPlantForm>
     </div>
   );
 };

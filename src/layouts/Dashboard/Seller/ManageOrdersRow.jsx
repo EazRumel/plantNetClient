@@ -105,7 +105,10 @@ const ManageOrdersRow = ({orderData,refetch}) => {
 </div>
      </td>
      <td>
-      <button onClick={()=>setIsOpen(true)} className="bg-red-500 px-2 py-1 rounded-full text-red-300 cursor-pointer">Cancel</button>
+      <button
+       disabled={status === "Delivered"}
+      
+       onClick={()=>setIsOpen(true)} className="bg-red-500 px-2 py-1 rounded-full text-red-300 cursor-pointer disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400">Cancel</button>
      </td>
      <DeleteInventoryModal handleDelete={handleDelete} isOpen={isOpen} closeModal={closeModal}></DeleteInventoryModal>
   

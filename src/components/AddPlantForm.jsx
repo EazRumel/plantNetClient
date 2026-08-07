@@ -1,7 +1,9 @@
 import { LoaderPinwheel } from 'lucide-react';
 import React from 'react';
+import { shortImageName } from '../utilities';
 
-const AddPlantForm = ({handleSubmitAddPlant,upload,setUpload,loading}) => {
+
+const AddPlantForm = ({handleSubmitAddPlant,upload,setUpload,loading,image,setImage}) => {
   return (
     <div className="w-full min-h-[calc-(100vh-40px)] flex flex-col justify-center items-center text-gray-800">
       <form onSubmit={handleSubmitAddPlant}>
@@ -89,20 +91,35 @@ const AddPlantForm = ({handleSubmitAddPlant,upload,setUpload,loading}) => {
       <div className="p-4 rounded-lg border-4 border-dotted border-gray-300">
         <label className="cursor-pointer flex justify-center">
           <input
-           onChange={event=>setUpload(event.target.files[0].name)}
+           onChange={(event)=>
+
+           {
+            const files = event.target.files[0]
+            if(!files)return;
+            setUpload(shortImageName(files.name))
+            setImage(files)
+           }
+           }
             type="file"
             name="image"
             id="image"
             accept="image/*"
             className="hidden"
           />
+       
+      
 
           <div className="bg-lime-500 text-white px-4 py-2 rounded-lg">
-          {upload}
+          { upload }
           </div>
         </label>
       </div>
     </div>
+     {
+          image && ( 
+            <img className="w-40 h-40 object-cover rounded" src={URL.createObjectURL(image)} alt="" />
+          )
+         }
 
     {/* currency */}
 
@@ -209,6 +226,8 @@ const AddPlantForm = ({handleSubmitAddPlant,upload,setUpload,loading}) => {
     <option value="Hard">Hard</option>
   </select>
 </div>
+
+  
 
     {/* Submit Button */}
     <div className="lg:col-span-2">
