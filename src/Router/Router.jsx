@@ -23,6 +23,8 @@ import AdminMenu from "../layouts/Dashboard/Admin/AdminMenu";
 import AdminRoute from "./AdminRoute";
 import MyInventory from "../layouts/Dashboard/Seller/MyInventory";
 import ManageOrders from "../layouts/Dashboard/Seller/ManageOrders";
+import AdminStats from "../layouts/Dashboard/Admin/AdminStats";
+import Stats from "../layouts/Dashboard/Common/Stats";
 
 
 
@@ -84,7 +86,9 @@ export const router = createBrowserRouter([
       {
         index:true,
         // path:"cart",
-        element:<Cart></Cart>
+        element:<PrivateRoute>
+          <Stats></Stats>
+        </PrivateRoute>
       },
       {
         path:"addPlant",
@@ -128,6 +132,14 @@ export const router = createBrowserRouter([
         <SellerRoute>
           <ManageOrders></ManageOrders>
         </SellerRoute>
+      </PrivateRoute>
+     },
+     {
+      path:"admin-stats",
+      element:<PrivateRoute>
+        <AdminRoute>
+          <AdminStats></AdminStats>
+        </AdminRoute>
       </PrivateRoute>
      }
 
