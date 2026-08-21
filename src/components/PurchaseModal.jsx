@@ -78,7 +78,7 @@ const PurchaseModal = ({plant,closeModal,isOpen,refetch}) => {
         },
 
         plantId:_id,
-        quantity:totalQuantity,
+        quantity:Number(totalQuantity),
         price:totalPrice,
         seller:seller?.email,
         address:" ",
@@ -192,7 +192,7 @@ const PurchaseModal = ({plant,closeModal,isOpen,refetch}) => {
       </label>
       <input
         value={totalQuantity}
-        onChange={(e)=>handleQuantity(e.target.value)}
+        onChange={(e)=>handleQuantity(Number(e.target.value))}
         type="number"
         name="quantity"
         id="quantity"
