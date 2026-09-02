@@ -3,12 +3,16 @@ import { Button, Dialog, DialogPanel, DialogTitle ,Transition ,TransitionChild }
 import { useState } from 'react'
 
 import {Fragment }from "react";
-import { Label } from 'flowbite-react';
+
 import ButTon from '../shared/Button';
 import useAuth from '../hooks/useAuth';
 import { Notyf } from 'notyf';
 import userAxiosSecure from '../hooks/userAxiosSecure';
 import { useNavigate } from 'react-router-dom';
+
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+import CheckOutForm from './CheckOutForm';
 
 
 
@@ -17,6 +21,9 @@ const PurchaseModal = ({plant,closeModal,isOpen,refetch}) => {
   const navigate = useNavigate();
   const axiosSecure = userAxiosSecure();
   const {name,quantity,price,category,seller,_id} = plant;
+
+
+  const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC);
 
 
 
@@ -222,6 +229,13 @@ const PurchaseModal = ({plant,closeModal,isOpen,refetch}) => {
         className="p-2 text-gray-800 border border-lime-400 focus:outline-lime-500 rounded-md"
       />
     </div>
+
+    {/* Check Out Form */}
+
+
+      <Elements stripe={stripePromise}>
+          <CheckOutForm></CheckOutForm>
+      </Elements>
 
 
       <div className='mb-2 ml-5'>

@@ -11,6 +11,7 @@ import plantIcon from "../../../assets/gifs/icons8-plant-96.gif"
 
 import userIcon from "../../../assets/gifs/icons8-user-96.gif"
 import useAuth from '../../../hooks/useAuth';
+import Charts from './Charts';
 
 const AdminStats = () => {
   const {user} = useAuth();
@@ -33,7 +34,7 @@ const AdminStats = () => {
 
 
       <div className="flex mx-3 my-3">
-        <h1 className="h1 bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent font-bold text-lg  ">Hello {user.displayName}</h1>
+        <h1 className="h1 bg-gradient-to-r from-green-200 to-emerald-500 bg-clip-text text-transparent font-bold text-lg  ">Hello {user.displayName}</h1>
 
    <img className='w-12 mt-3 ml-4 h-12 rounded-full' src={user.photoURL} alt="" />
       </div>
@@ -96,6 +97,11 @@ const AdminStats = () => {
     </div>
   </div>
 </div>
+ 
+ {
+  statData &&  <Charts statData={statData}></Charts>
+
+ } 
 </div>
     </div>
   );
