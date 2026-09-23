@@ -233,18 +233,20 @@ const PurchaseModal = ({plant,closeModal,isOpen,refetch}) => {
     {/* Check Out Form */}
 
 
-      <Elements stripe={stripePromise}>
-          <CheckOutForm></CheckOutForm>
+     <div className="my-5 mx-3">
+       <Elements stripe={stripePromise}>
+          <CheckOutForm purchaseInfo={purchaseInfo}  closeModal={closeModal} refetch={refetch} ></CheckOutForm>
       </Elements>
+     </div>
 
 
-      <div className='mb-2 ml-5'>
+      {/* <div className='mb-2 ml-5'>
          <ButTon
           onClick={handlePurchaseInfo}
           label={`Pay ${totalPrice} BDT`}
          
          />
-      </div>
+      </div> */}
       </DialogPanel>
     </TransitionChild>
     </div>

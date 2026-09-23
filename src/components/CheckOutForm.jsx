@@ -8,9 +8,9 @@ import {
 
 // import "../styles/common.css";
 
-import "./styles/CheckOutForm.css";
 
-const CheckoutForm = () => {
+
+const CheckoutForm = ({purchaseInfo,closeModal,refetch}) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -62,9 +62,12 @@ const CheckoutForm = () => {
         }}
       />
 
-      <button type="submit" disabled={!stripe}>
-        Pay
+      <div className="flex justify-around mt-5">
+        <button className="btn text-green-500 rounded-xl border-green-300 bg-green-300" type="submit" disabled={!stripe}>
+        {`Pay ${purchaseInfo?.price}`}
       </button>
+      <button className="btn text-red-200 rounded-xl border-red-300 bg-red-300" onClick={closeModal}>Cancel</button>
+      </div>
     </form>
   );
 };
