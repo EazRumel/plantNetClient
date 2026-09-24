@@ -1,53 +1,46 @@
-import { Logs, Trees, Warehouse } from 'lucide-react';
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import MyInventory from './MyInventory';
+import { Logs, Trees, Warehouse } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 const SellerMenu = () => {
+
+  const sellerLinkClass = ({ isActive }) =>
+    `flex items-center gap-3 w-full px-4 py-3 rounded-lg transition-all duration-200
+    ${
+      isActive
+        ? "bg-green-500 text-white font-semibold"
+        : "text-gray-600 hover:bg-green-50 hover:text-green-600"
+    }`;
+
   return (
     <>
-    {/* Add Plant */}
-      <li>
-            <NavLink
-  to="addPlant"
-  className={({ isActive }) =>
-    isActive
-      ? "text-green-500 font-semibold"
-      : "text-gray-300 hover:text-green-400"
-  }
->
-  <span className="flex font-bold text-lg gap-2 items-center justify-center"><Trees size={22} strokeWidth={3} /> Add Plant </span>
-</NavLink>
-          </li>
+      {/* Add Plant */}
+      <NavLink
+        to="addPlant"
+        className={sellerLinkClass}
+      >
+        <Trees size={21} strokeWidth={2} />
+        <span>Add Plant</span>
+      </NavLink>
 
-          {/* Inventory */}
-          <li>
-            <NavLink
-  to="myInventory"
-  className={({ isActive }) =>
-    isActive
-      ? "text-green-500 font-semibold"
-      : "text-gray-300 hover:text-green-400"
-  }
->
-  <span className="flex font-bold text-lg gap-2 items-center justify-center"><Warehouse  size={22} strokeWidth={3} /> My Inventory</span>
-</NavLink>
-          </li>
 
-          {/* Manage Orders */}
+      {/* Inventory */}
+      <NavLink
+        to="myInventory"
+        className={sellerLinkClass}
+      >
+        <Warehouse size={21} strokeWidth={2} />
+        <span>My Inventory</span>
+      </NavLink>
 
-               <li>
-            <NavLink
-  to="manageOrders"
-  className={({ isActive }) =>
-    isActive
-      ? "text-green-500 font-semibold"
-      : "text-gray-300 hover:text-green-400"
-  }
->
-  <span className="flex font-bold text-lg gap-2 items-center justify-center"><Logs   size={22} strokeWidth={3} /> Manage Orders</span>
-</NavLink>
-          </li>
+
+      {/* Manage Orders */}
+      <NavLink
+        to="manageOrders"
+        className={sellerLinkClass}
+      >
+        <Logs size={21} strokeWidth={2} />
+        <span>Manage Orders</span>
+      </NavLink>
     </>
   );
 };

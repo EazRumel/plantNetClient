@@ -21,38 +21,77 @@ const ManageUsers = () => {
 
 
   return (
-      <div className="mx-auto my-10">
-<div className="flex justify-evenly my-5">
+     <div className="mx-auto my-10 px-4 max-w-7xl">
 
-     <h1 className="h1 text-center  text-lime-400">Manage Users</h1>
-</div>
+  {/* Header */}
+  <div className="flex items-center justify-between mb-6">
+    <div>
+      <h1 className="text-2xl font-bold text-gray-800">
+        Manage Users
+      </h1>
 
-  <div className="overflow-x-auto">
-  <table className="table">
-    {/* head */}
-    <thead>
-      <tr>
-
-       
-        <th>Email</th>
-       
-        <th>Role</th>
-        <th>Status</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-
-       {
-        users.map(user=>(
-          <ManageUsersRow refetch={refetch} key={user._id} user={user}></ManageUsersRow>
-        ))
-       }
-    </tbody>
-    
-  </table>
-</div>
+      <p className="text-sm text-gray-500 mt-1">
+        Manage user roles and account status
+      </p>
     </div>
+
+    <div className="bg-green-50 text-green-600 px-4 py-2 rounded-lg text-sm font-medium">
+      {users.length} Users
+    </div>
+  </div>
+
+
+  {/* Table Card */}
+  <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+
+    <div className="overflow-x-auto">
+      <table className="w-full">
+
+        {/* Head */}
+        <thead className="bg-gray-50 border-b border-gray-200">
+          <tr>
+
+            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+              Email
+            </th>
+
+            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+              Role
+            </th>
+
+            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+              Status
+            </th>
+
+            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+              Action
+            </th>
+
+          </tr>
+        </thead>
+
+
+        {/* Body */}
+        <tbody className="divide-y divide-gray-100">
+
+          {
+            users.map(user => (
+              <ManageUsersRow
+                refetch={refetch}
+                key={user._id}
+                user={user}
+              />
+            ))
+          }
+
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+
+</div>
   );
 };
 

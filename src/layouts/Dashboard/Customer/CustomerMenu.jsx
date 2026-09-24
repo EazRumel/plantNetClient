@@ -7,102 +7,66 @@ import userAxiosSecure from "../../../hooks/userAxiosSecure";
 import { Notyf } from "notyf";
 
 const CustomerMenu = () => {
+  const { user } = useAuth();
+  const axiosSecure = userAxiosSecure();
 
-   const {user} = useAuth();
-    const axiosSecure = userAxiosSecure();
+  const [isOpen, setIsOpen] = useState(false);
 
-    const notyf = new Notyf({
-            duration: 2000,
-            position: {
-              x: 'center',
-              y: 'top',
-            },
-            types: [
-              {
-                type: 'success',
-                background: 'green',
-                icon: {
-                  className: 'material-icons',
-                  tagName: 'i',
-                  text: 'success'
-                }
-              },
-              {
-                type: 'success',
-                background: 'green',
-                duration: 2000,
-                dismissible: true
-              }
-            ]
-          });
+  const notyf = new Notyf({
+    duration: 2000,
+    position: {
+      x: "center",
+      y: "top",
+    },
+  });
 
-     let [isOpen, setIsOpen] = useState(false)
+  const handleRequest = async () => {
+    try {
+      const result = await axiosSecure.patch(`/users/${user?.email}`);
 
-    function open() {
-    setIsOpen(true)
-  }
+      console.log(result.data);
+      notyf.success("Applied to become a seller");
+    } catch (error) {
+      console.log(error);
+      notyf.error(error?.response?.data || "Something went wrong");
+    } finally {
+      setIsOpen(false);
+    }
+  };
 
-  function closeModal() {
-    setIsOpen(false)
-  }
+  const customerLinkClass = ({ isActive }) =>
+    `flex items-center gap-3 w-full px-4 py-3 rounded-lg transition-all duration-200
+    ${
+      isActive
+        ? "bg-green-500 text-white font-semibold"
+        : "text-gray-600 hover:bg-green-50 hover:text-green-600"
+    }`;
 
-
-
-    const handleRequest = async () =>{
-      try{
-         const result = await axiosSecure.patch(`/users/${user?.email}`);
-         console.log(result.data)
-         notyf.success("Applied to become a seller")
-      }
-      catch(error){
-        console.log(error)
-        console.log(error.message)
-                 notyf.error(error.response.data)
-
-      }
-      finally{
-        closeModal();
-      }
-     }
-  
   return (
     <>
-      <li>
-        <NavLink
-          to="myOrder"
-          className={({ isActive }) =>
-            isActive
-              ? "text-green-500 font-semibold"
-              : "text-gray-300 hover:text-green-400"
-          }
-        >
-          <span className="flex items-center gap-2 text-lg font-bold">
-            <NotebookPen size={22} strokeWidth={3} />
-            My Orders
-          </span>
-        </NavLink>
-      </li>
+      {/* My Orders */}
+      <NavLink to="myOrder" className={customerLinkClass}>
+        <NotebookPen size={21} strokeWidth={2} />
+        <span>My Orders</span>
+      </NavLink>
 
-      <li>
-       
-        
+      {/* Become a Seller */}
+      <button
+        type="button"
+        onClick={() => setIsOpen(true)}
+        className="flex items-center gap-3 w-full px-4 py-3 rounded-lg
+                   text-gray-600 hover:bg-green-50 hover:text-green-600
+                   transition-all duration-200 cursor-pointer"
+      >
+        <Store size={21} strokeWidth={2} />
+        <span>Become a Seller</span>
+      </button>
 
-         <button
-           className={({ isActive }) =>
-            isActive
-              ? "text-green-500 font-semibold"
-              : "text-gray-300 hover:text-green-400"
-          }
-         onClick={()=>setIsOpen(true)}
-         >
-           <span className="flex items-center gap-2 text-lg font-bold">
-            <Store size={22} strokeWidth={3} />
-            Become a Seller
-          </span>
-         </button>
-       
-      </li>
-      <BecomeASeller handleRequest={handleRequest} isOpen={isOpen} closeModal={closeModal}></BecomeASeller>
+      <BecomeASeller
+        handleRequest={handleRequest}
+        isOpen={isOpen}
+        closeModal={() => setIsOpen(false)}
+      />
     </>
   );
 };

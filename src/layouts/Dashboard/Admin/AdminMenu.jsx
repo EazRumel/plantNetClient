@@ -2,32 +2,32 @@ import { UserPen } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 const AdminMenu = () => {
+
+  const adminLinkClass = ({ isActive }) =>
+    `flex items-center gap-3 w-full px-4 py-3 rounded-lg transition-all duration-200
+    ${
+      isActive
+        ? "bg-green-500 text-white font-semibold"
+        : "text-gray-600 hover:bg-green-50 hover:text-green-600"
+    }`;
+
   return (
     <>
-      <li>
-            <NavLink
-  to="admin-stats"
-  className={({ isActive }) =>
-    isActive
-      ? "text-green-500 font-semibold"
-      : "text-gray-300 hover:text-green-400"
-  }
->
-  <span className="flex font-bold text-lg gap-2 items-center justify-center"><UserPen size={22} strokeWidth={3} /> Admin Statistics</span>
-</NavLink>
-          </li>
-          <li>
-            <NavLink
-  to="manageUsers"
-  className={({ isActive }) =>
-    isActive
-      ? "text-green-500 font-semibold"
-      : "text-gray-300 hover:text-green-400"
-  }
->
-  <span className="flex font-bold text-lg gap-2 items-center justify-center"><UserPen size={22} strokeWidth={3} /> Manage Users</span>
-</NavLink>
-          </li>
+      <NavLink
+        to="admin-stats"
+        className={adminLinkClass}
+      >
+        <UserPen size={21} strokeWidth={2} />
+        <span>Admin Statistics</span>
+      </NavLink>
+
+      <NavLink
+        to="manageUsers"
+        className={adminLinkClass}
+      >
+        <UserPen size={21} strokeWidth={2} />
+        <span>Manage Users</span>
+      </NavLink>
     </>
   );
 };

@@ -5,12 +5,42 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
+import { useEffect, useState } from "react";
+import userAxiosSecure from "../hooks/userAxiosSecure";
 
 // import "../styles/common.css";
 
 
 
 const CheckoutForm = ({purchaseInfo,closeModal,refetch}) => {
+
+
+  const [checkOut,setCheckOut] = useState("");
+  const axiosSecure = userAxiosSecure();
+
+   useEffect(()=>{
+    getPayment();
+    
+  },[purchaseInfo])
+  const getPayment=async()=>{
+    try{
+      const {data} = await axiosSecure.post("/create-payment-intent",{
+      quantity:purchaseInfo?.quantity,
+      plantId : purchaseInfo?.plantId
+    })
+     console.log(data);
+    }
+   
+    catch(error){
+      console.log(error.message)
+    }
+  }
+
+
+
+
+
+  
   const stripe = useStripe();
   const elements = useElements();
 

@@ -33,11 +33,19 @@ const AdminStats = () => {
     <div>
 
 
-      <div className="flex mx-3 my-3">
-        <h1 className="h1 bg-gradient-to-r from-green-200 to-emerald-500 bg-clip-text text-transparent font-bold text-lg  ">Hello {user.displayName}</h1>
 
-   <img className='w-12 mt-3 ml-4 h-12 rounded-full' src={user.photoURL} alt="" />
-      </div>
+       <div className="flex justify-between">
+         <div className="ml-5 my-2">
+         <h1 className="text-2xl font-semibold text-gray-800 tracking-tight">
+  Hello, <span className="text-green-500">{user.displayName}</span> 👋
+</h1>
+
+        </div>
+   <div className="mr-5">
+    <img className='w-12 mt-3 ml-4 h-12 rounded-full' src={user.photoURL} alt="" />
+   </div>
+       </div>
+
       {/* <h1 className="h1 bg-gradient-to-r from-green-300 to-emerald-600 bg-clip-text text-transparent font-bold text-3xl text-center  mt-5">Admin Statistics page</h1> */}
 
 <div className="flex gap-2 my-10 mx-5">

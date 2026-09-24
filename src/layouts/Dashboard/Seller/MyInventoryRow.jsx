@@ -3,72 +3,160 @@ import userAxiosSecure from "../../../hooks/userAxiosSecure";
 import DeleteInventoryModal from "./DeleteInventoryModal";
 import { notyf } from "../../../api/utils";
 
+const MyInventoryRow = ({ plant, refetch }) => {
 
-const MyInventoryRow = ({plant,refetch}) => {
-  const {image,name,category,quantity,_id} = plant;
-  console.log(plant);
+  const {
+    image,
+    name,
+    category,
+    quantity,
+    _id
+  } = plant;
+
   const axiosSecure = userAxiosSecure();
 
-
- let [isOpen, setIsOpen] = useState(false)
-
-    function open() {
-    setIsOpen(true)
-  }
-
-  function closeModal() {
-    setIsOpen(false)
-  }
-  
+  const [isOpen, setIsOpen] = useState(false);
 
 
-   const handleDelete = async() =>{
-    console.log(_id)
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+
+  const handleDelete = async () => {
 
     try {
-      const {data} = await axiosSecure.delete(`/plants/${_id}`)
-      console.log(data);
+
+      await axiosSecure.delete(`/plants/${_id}`);
+
       notyf.success("Plant has been deleted");
+
       refetch();
-    }
-    catch(error){
-      console.log(error)
-      console.log(error.message)
-      notyf.error(error.response.data)
-    }
-    finally{
-     closeModal();
-    }
 
-  }
+    } catch (error) {
+
+      console.log(error);
+
+      notyf.error(
+        error?.response?.data || "Failed to delete plant"
+      );
+
+    } finally {
+
+      closeModal();
+
+    }
+  };
+
+
   return (
-     <tr>
-      <td>
-        <img className="w-12" src={image} alt="" />
-      </td>
-      <td>{name}</td>
+    <tr className="hover:bg-gray-50 transition-colors">
 
-      <td>
-     {category}
-      
-      </td>
-     
+      {/* Image */}
+      <td className="px-6 py-4">
 
-      <td>
-       {quantity}
-      </td>
-      <td>
-        <button className="border border-green-500 px-2  bg-green-400 bg-opacity-80 text-white  rounded-full cursor-pointer">Update</button>
+        <img
+          className="w-14 h-14 rounded-lg object-cover border border-gray-200"
+          src={image}
+          alt={name}
+        />
+
       </td>
 
-      <td>
-  <button onClick={()=>setIsOpen(true)} className="border border-red-500 px-2  bg-red-400 bg-opacity-80 text-white  rounded-full cursor-pointer">Delete</button>   
-   
-     </td>
-  
-  <DeleteInventoryModal handleDelete={handleDelete} isOpen={isOpen} closeModal={closeModal}/>
+
+      {/* Name */}
+      <td className="px-6 py-4">
+
+        <p className="text-sm font-semibold text-gray-700">
+          {name}
+        </p>
+
+      </td>
+
+
+      {/* Category */}
+      <td className="px-6 py-4">
+
+        <span className="inline-flex px-3 py-1 rounded-full bg-green-50 text-green-600 text-xs font-semibold">
+          {category}
+        </span>
+
+      </td>
+
+
+      {/* Quantity */}
+      <td className="px-6 py-4">
+
+        <span
+          className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold ${
+            quantity > 0
+              ? "bg-blue-50 text-blue-600"
+              : "bg-red-50 text-red-500"
+          }`}
+        >
+          {quantity} available
+        </span>
+
+      </td>
+
+
+      {/* Actions */}
+      <td className="px-6 py-4">
+
+        <div className="flex items-center gap-2">
+
+          {/* Update */}
+          <button
+            className="
+              cursor-pointer
+              rounded-lg
+              bg-green-50
+              px-4
+              py-2
+              text-sm
+              font-semibold
+              text-green-600
+              transition
+              hover:bg-green-500
+              hover:text-white
+            "
+          >
+            Update
+          </button>
+
+
+          {/* Delete */}
+          <button
+            onClick={() => setIsOpen(true)}
+            className="
+              cursor-pointer
+              rounded-lg
+              bg-red-50
+              px-4
+              py-2
+              text-sm
+              font-semibold
+              text-red-500
+              transition
+              hover:bg-red-500
+              hover:text-white
+            "
+          >
+            Delete
+          </button>
+
+        </div>
+
+
+        <DeleteInventoryModal
+          handleDelete={handleDelete}
+          isOpen={isOpen}
+          closeModal={closeModal}
+        />
+
+      </td>
+
     </tr>
-    
   );
 };
 
