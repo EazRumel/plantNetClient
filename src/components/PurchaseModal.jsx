@@ -95,33 +95,7 @@ const PurchaseModal = ({plant,closeModal,isOpen,refetch}) => {
 
       const handlePurchaseInfo = async()=>{
         console.table(purchaseInfo);
-        try{
-          const res = await axiosSecure.post("/order",purchaseInfo);
-        
-
-           console.log(res.data);
-
-           const response = await axiosSecure.patch(`/plants/quantity/${_id}`,{
-            updateQuantity:totalQuantity,
-            status:"decrease"
-           })
-
-            console.log(response)
-             notyf.success("Order Completed")
-             refetch();
-             navigate("/dashboard/myOrder");
-
-
-        }
-        catch(error){
-          console.log(error.message)
-          console.log(error)
-          notyf.error("Order failed")
-        }
-
-        finally{
-          closeModal();
-        } 
+    
       }
       
 
@@ -235,7 +209,7 @@ const PurchaseModal = ({plant,closeModal,isOpen,refetch}) => {
 
      <div className="my-5 mx-3">
        <Elements stripe={stripePromise}>
-          <CheckOutForm purchaseInfo={purchaseInfo}  closeModal={closeModal} refetch={refetch} ></CheckOutForm>
+          <CheckOutForm purchaseInfo={purchaseInfo}  closeModal={closeModal} totalQuantity={totalQuantity} refetch={refetch} ></CheckOutForm>
       </Elements>
      </div>
 

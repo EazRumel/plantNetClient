@@ -7,34 +7,40 @@ import {
 } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import userAxiosSecure from "../hooks/userAxiosSecure";
+import { useNavigate } from "react-router-dom";
+import { notyf } from "../api/utils";
 
 // import "../styles/common.css";
 
 
 
-const CheckoutForm = ({purchaseInfo,closeModal,refetch}) => {
+const CheckoutForm = ({purchaseInfo,closeModal,totalQuantity,refetch}) => {
+  const navigate = useNavigate();
 
-
-  const [checkOut,setCheckOut] = useState("");
   const axiosSecure = userAxiosSecure();
 
-   useEffect(()=>{
-    getPayment();
-    
-  },[purchaseInfo])
-  const getPayment=async()=>{
-    try{
-      const {data} = await axiosSecure.post("/create-payment-intent",{
-      quantity:purchaseInfo?.quantity,
-      plantId : purchaseInfo?.plantId
-    })
-     console.log(data);
-    }
-   
-    catch(error){
-      console.log(error.message)
-    }
+ const [clientSecret,setClientSecret] = useState("");
+
+ console.log(clientSecret.clientSecret);
+
+ const getPayment = async()=>{
+
+  try{
+  const {data} = await axiosSecure.post("/create-payment-intent",
+    {
+      plantId:purchaseInfo?.plantId,
+      quantity:purchaseInfo?.quantity
+    } 
+  )
+   setClientSecret(data.clientSecret)
+  }catch(error){
+   console.log(error.message)
   }
+ }
+
+ useEffect(()=>{
+   getPayment();
+ },[purchaseInfo])
 
 
 
@@ -71,6 +77,54 @@ const CheckoutForm = ({purchaseInfo,closeModal,refetch}) => {
     } else {
       console.log("[PaymentMethod]", paymentMethod);
     }
+
+    const {paymentIntent} = await stripe
+  .confirmCardPayment(clientSecret, {
+    payment_method: {
+      card: card,
+      billing_details: {
+        name:purchaseInfo.customer?.name,
+        email:purchaseInfo?.customer?.email
+      },
+    },
+    
+  })
+
+  // if()
+  console.log(paymentIntent);
+  if(paymentIntent.status === "succeeded"){
+        try{
+              const res = await axiosSecure.post("/order",
+                { ...purchaseInfo,
+                transactionId:paymentIntent?.id
+                }
+                );
+            
+    
+               console.log(res.data);
+    
+               const response = await axiosSecure.patch(`/plants/quantity/${purchaseInfo?.plantId}`,{
+                updateQuantity:totalQuantity,
+                status:"decrease"
+               })
+    
+                console.log(response)
+                 notyf.success("Order Completed")
+                 refetch();
+                 navigate("/dashboard/myOrder");
+    
+    
+            }
+            catch(error){
+              console.log(error.message)
+              console.log(error)
+              notyf.error("Order failed")
+            }
+    
+            finally{
+              closeModal();
+            } 
+  }
   };
 
   return (
