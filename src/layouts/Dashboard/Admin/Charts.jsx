@@ -12,8 +12,6 @@ import {
 
 const Charts = ({ statData }) => {
 
-  // console.log("STAT DATA:", statData);
-
   const chartData = [
     {
       name: "Users",
@@ -33,21 +31,18 @@ const Charts = ({ statData }) => {
     }
   ];
 
-  // console.log("CHART DATA:", chartData);
-
   return (
-  
-    <div className="my-10 mx-10" style={{ width: "60%", height: "500px" }}>
+    <div className="w-[600px] h-[350px]">
 
-      <ResponsiveContainer width="100%" height="90%">
+      <ResponsiveContainer width="100%" height="100%">
 
         <ComposedChart
           data={chartData}
           margin={{
-            top: 10,
-            right: 40,
-            left: 10,
-            bottom: 60
+            top: 20,
+            right: 30,
+            left: 20,
+            bottom: 20
           }}
         >
 
@@ -61,12 +56,16 @@ const Charts = ({ statData }) => {
 
           <Legend />
 
-          <Bar dataKey="value" fill="#22c55e" barSize={100}/>
+          <Bar
+            dataKey="value"
+            fill="#22c55e"
+            barSize={50}
+          />
 
           <Line
             type="monotone"
             dataKey="value"
-            fill="#22c55e"
+            stroke="#22c55e"
           />
 
         </ComposedChart>

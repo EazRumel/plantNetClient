@@ -12,7 +12,8 @@ import plantIcon from "../../../assets/gifs/icons8-plant-96.gif"
 import userIcon from "../../../assets/gifs/icons8-user-96.gif"
 import useAuth from '../../../hooks/useAuth';
 import Charts from './Charts';
-import PieChart from './Piechart';
+
+import PieChartComponent from './PieChartComponent';
 
 const AdminStats = () => {
   const {user} = useAuth();
@@ -36,18 +37,15 @@ const AdminStats = () => {
        }
   })
 
-  
 
-  console.log("Order-stats: ",categoryStats);
+
+  // console.log("Order-stats: ",categoryStats);
 
 
  
   return (
     <div>
-
-
-
-       <div className="flex justify-between">
+      <div className="flex justify-between">
          <div className="ml-5 my-2">
          <h1 className="text-2xl font-semibold text-gray-800 tracking-tight">
   Hello, <span className="text-green-500">{user.displayName}</span> 👋
@@ -70,8 +68,8 @@ const AdminStats = () => {
      </div>
    
     <div className=" card-actions">
-       <h1 className="text-xl">Total Revenue: </h1>
-       <h1 className="text-xl">${totalRevenue}</h1>
+       <h1 className="text-xl">Total Revenue: ${totalRevenue} </h1>
+    
     </div>
   </div>
 </div>
@@ -121,16 +119,18 @@ const AdminStats = () => {
  
  
 </div>
-<div className='flex justify-start my-10 mx-10'>
-  {
-  statData &&  <Charts statData={statData}></Charts>
 
- } 
- {/* <div>
-   {
-    categoryStats && <PieChart categoryStats={categoryStats}></PieChart>
-   }
- </div> */}
+
+  
+  <div className="flex items-center justify-evenly gap-10 w-full">
+  {statData && (
+    <Charts statData={statData} />
+  )}
+
+   {categoryStats && (
+    <PieChartComponent categoryStats={categoryStats} />
+  )}
+
 </div>
     </div>
   );
