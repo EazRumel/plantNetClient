@@ -1,7 +1,7 @@
 import React from 'react';
 import userAxiosSecure from '../../../hooks/userAxiosSecure'; 
 import Loading from '../../../components/Loading';
-import { useQuery } from '@tanstack/react-query';
+import { usePrefetchQuery, useQuery } from '@tanstack/react-query';
 import "../../../components/FeaturedPlants.css"
 import moneyIcon from "../../../assets/gifs/icons8-dollar-bag.gif"
 
@@ -12,6 +12,7 @@ import plantIcon from "../../../assets/gifs/icons8-plant-96.gif"
 import userIcon from "../../../assets/gifs/icons8-user-96.gif"
 import useAuth from '../../../hooks/useAuth';
 import Charts from './Charts';
+import PieChart from './Piechart';
 
 const AdminStats = () => {
   const {user} = useAuth();
@@ -24,8 +25,20 @@ const AdminStats = () => {
       return data;
     }
   })
-  console.log(statData)
+  console.log("Stat-Data is: ",statData);
   const {totalUser,totalOrder,totalRevenue,totalPlants} = statData || {};
+
+  const {data:categoryStats=[]} = useQuery({
+       queryKey:["order-stats"],
+       queryFn:async()=>{
+        const {data} = await axiosSecure.get("/order-stats")
+        return data;
+       }
+  })
+
+  
+
+  console.log("Order-stats: ",categoryStats);
 
 
  
@@ -106,10 +119,18 @@ const AdminStats = () => {
   </div>
 </div>
  
- {
+ 
+</div>
+<div className='flex justify-start my-10 mx-10'>
+  {
   statData &&  <Charts statData={statData}></Charts>
 
  } 
+ {/* <div>
+   {
+    categoryStats && <PieChart categoryStats={categoryStats}></PieChart>
+   }
+ </div> */}
 </div>
     </div>
   );

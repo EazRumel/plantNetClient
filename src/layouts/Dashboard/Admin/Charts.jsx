@@ -1,32 +1,78 @@
-import { ComposedChart, Line, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-// import { RechartsDevtools } from '@recharts/devtools';
+import {
+  ComposedChart,
+  Line,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer
+} from "recharts";
 
-const Charts = ({statData}) => {
+const Charts = ({ statData }) => {
 
-  console.log(statData);
+  // console.log("STAT DATA:", statData);
+
+  const chartData = [
+    {
+      name: "Users",
+      value: statData?.totalUser || 0
+    },
+    {
+      name: "Plants",
+      value: statData?.totalPlants || 0
+    },
+    {
+      name: "Orders",
+      value: statData?.totalOrder || 0
+    },
+    {
+      name: "Revenue",
+      value: statData?.totalRevenue || 0
+    }
+  ];
+
+  // console.log("CHART DATA:", chartData);
+
   return (
-    <div>
-      <ComposedChart
-      style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
-      responsive
-      data={[statData]}
-      margin={{
-        top: 20,
-        right: 0,
-        bottom: 0,
-        left: 0,
-      }}
-    >
-      <CartesianGrid />
-      <XAxis dataKey="totalRevenue" label={{ value: 'Pages', position: 'insideBottomRight', offset: 0 }} scale="band" />
-      <YAxis label={{ value: 'Index', angle: -90, position: 'insideLeft' }} width="auto" />
-      <Tooltip />
-      <Legend />
-      <Area type="monotone" dataKey="amt" />
-      <Bar dataKey="pv" barSize={20} />
-      <Line type="monotone" dataKey="uv" />
+  
+    <div className="my-10 mx-10" style={{ width: "60%", height: "500px" }}>
 
-    </ComposedChart>
+      <ResponsiveContainer width="100%" height="90%">
+
+        <ComposedChart
+          data={chartData}
+          margin={{
+            top: 10,
+            right: 40,
+            left: 10,
+            bottom: 60
+          }}
+        >
+
+          <CartesianGrid strokeDasharray="3 3" />
+
+          <XAxis dataKey="name" />
+
+          <YAxis />
+
+          <Tooltip />
+
+          <Legend />
+
+          <Bar dataKey="value" fill="#22c55e" barSize={100}/>
+
+          <Line
+            type="monotone"
+            dataKey="value"
+            fill="#22c55e"
+          />
+
+        </ComposedChart>
+
+      </ResponsiveContainer>
+
     </div>
   );
 };
