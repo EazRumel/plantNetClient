@@ -122,14 +122,31 @@ const AdminStats = () => {
 
 
   
-  <div className="flex items-center justify-evenly gap-10 w-full">
-  {statData && (
-    <Charts statData={statData} />
-  )}
+ <div className="w-full text-center my-24">
 
-   {categoryStats && (
-    <PieChartComponent categoryStats={categoryStats} />
-  )}
+  <h2 className="text-2xl font-bold text-green-500 mb-2">
+    Dashboard Overview
+  </h2>
+
+   <p className="text-slate-500 mb-4">
+
+    A quick overview of your plants, users, orders, and revenue.
+
+  </p>
+
+  <div className="w-full h-px bg-emerald-500 mb-8"></div>
+  <div className="flex items-center justify-evenly gap-4 w-full my-4">
+    
+   
+
+    {statData && (
+      <Charts statData={statData} />
+    )}
+     {categoryStats && (
+      <PieChartComponent categoryStats={categoryStats} />
+    )}
+
+  </div>
 
 </div>
     </div>

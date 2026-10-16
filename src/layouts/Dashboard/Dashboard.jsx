@@ -1,7 +1,7 @@
 import { House, Trees } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../../hooks/useCart";
-import imageLogo from "../../../src/assets/img/plantLogo.jpg";
+import imageLogo from "../../assets/img/plantLogo1.png";
 import CustomerMenu from "./Customer/CustomerMenu";
 import useRole from "../../hooks/useRole";
 import SellerMenu from "./Seller/SellerMenu";
@@ -25,15 +25,15 @@ const Dashboard = () => {
       {/* Logo */}
       <div className="flex items-center gap-3 px-4 mb-8">
         <img
-          className="w-10 h-10 rounded-lg object-cover"
+          className="w-72 h-12 rounded-lg object-cover"
           src={imageLogo}
           alt="Tree Planet"
         />
 
-        <p className="text-xl font-semibold whitespace-nowrap">
+        {/* <p className="text-xl font-semibold whitespace-nowrap">
           <span className="text-green-500">Tree</span>{" "}
           <span className="text-gray-700">Planet</span>
-        </p>
+        </p> */}
       </div>
 
 
