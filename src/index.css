@@ -12,8 +12,13 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+/* 
 @import "tailwindcss";
-@plugin "flowbite-react/plugin/tailwindcss";
-@source "../.flowbite-react/class-list.json";
-@plugin "daisyui";
+
+
+@plugin "daisyui"; */
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: light --default, dark;
+}

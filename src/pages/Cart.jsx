@@ -131,7 +131,7 @@ const Cart = () => {
                 Total cart value
               </p>
               <h2 className="mt-1 text-3xl font-extrabold text-green-800">
-                ৳{totalPrice.toLocaleString("en-BD")}
+                {totalPrice.toLocaleString("en-BD")}$
               </h2>
             </div>
           </div>
@@ -243,7 +243,7 @@ const Cart = () => {
                       {/* Price */}
                       <td className="px-6 py-5">
                         <span className="font-bold text-gray-900">
-                          ৳{Number(item.price).toLocaleString("en-BD")}
+                          {Number(item.price).toLocaleString("en-BD")}$
                         </span>
                       </td>
 

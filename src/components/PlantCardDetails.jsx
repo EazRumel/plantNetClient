@@ -169,11 +169,11 @@ const PlantCardDetails = () => {
 
             <div className="mt-2 flex items-baseline gap-2">
               <span className="text-4xl font-bold tracking-tight text-green-800">
-                ৳{plant.price}
+                {plant.price}$
               </span>
 
               <span className="text-sm text-gray-500">
-                BDT
+                USD
               </span>
             </div>
           </div>

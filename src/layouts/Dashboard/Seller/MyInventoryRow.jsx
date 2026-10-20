@@ -2,6 +2,8 @@ import { useState } from "react";
 import userAxiosSecure from "../../../hooks/userAxiosSecure";
 import DeleteInventoryModal from "./DeleteInventoryModal";
 import { notyf } from "../../../api/utils";
+import UpdateInventory from "./UpdateInventory";
+import { Link } from "react-router-dom";
 
 const MyInventoryRow = ({ plant, refetch }) => {
 
@@ -16,11 +18,17 @@ const MyInventoryRow = ({ plant, refetch }) => {
   const axiosSecure = userAxiosSecure();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isUpdateOpen, setIsUpdateOpen] = useState(false);
 
 
   const closeModal = () => {
     setIsOpen(false);
   };
+
+
+  const closeUpdateModal = () => {
+setIsUpdateOpen(false);
+};
 
 
   const handleDelete = async () => {
@@ -106,25 +114,18 @@ const MyInventoryRow = ({ plant, refetch }) => {
         <div className="flex items-center gap-2">
 
           {/* Update */}
-          <button
-            className="
-              cursor-pointer
-              rounded-lg
-              bg-green-50
-              px-4
-              py-2
-              text-sm
-              font-semibold
-              text-green-600
-              transition
-              hover:bg-green-500
-              hover:text-white
-            "
-          >
-            Update
-          </button>
-
-
+   <button
+  type="button"
+  onClick={() => setIsUpdateOpen(true)}
+  className="
+    inline-flex cursor-pointer items-center rounded-lg
+    bg-green-50 px-4 py-2 text-sm font-semibold
+    text-green-600 transition hover:bg-green-500
+    hover:text-white
+  "
+>
+  Update
+</button>
           {/* Delete */}
           <button
             onClick={() => setIsOpen(true)}
@@ -149,10 +150,21 @@ const MyInventoryRow = ({ plant, refetch }) => {
 
 
         <DeleteInventoryModal
+          plant={plant._id}
           handleDelete={handleDelete}
           isOpen={isOpen}
           closeModal={closeModal}
         />
+
+        <UpdateInventory
+         id={_id}
+         isUpdateOpen={isUpdateOpen} 
+          closeUpdateModal={closeUpdateModal}
+          refetch={refetch}  
+        >
+         
+           
+        </UpdateInventory>
 
       </td>
 

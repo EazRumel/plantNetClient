@@ -13,9 +13,10 @@ import {
 
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
-import logo from "../assets/img/plantLogo1.png";
+import logo from "../assets/img/1-removebg-preview.png";
 import useAuth from "../hooks/useAuth";
 import useCart from "../hooks/useCart";
+import ThemeToggle from "../components/ThemeToggle";
 
 const NavHomeBar = () => {
   const { user, logOut } = useAuth();
@@ -135,11 +136,11 @@ const NavHomeBar = () => {
             to="/"
             className="flex items-center gap-3 shrink-0 group"
           >
-            <div className="flex  items-center justify-center rounded-xl bg-green-50 border border-green-100 transition-all duration-300 group-hover:bg-green-100 group-hover:scale-105">
+            <div className="flex w-16  items-center justify-center rounded-xl bg-green-50 border border-green-100 transition-all duration-300 group-hover:bg-green-100 group-hover:scale-105">
               <img
                 src={logo}
                 alt="Tree Planet logo"
-                className="h-8 w-8 object-contain"
+                className="object-contain"
               />
             </div>
 
@@ -170,6 +171,7 @@ const NavHomeBar = () => {
               </Link>
             ))}
           </div>
+         
 
           {/* Right Actions */}
           <div className="flex items-center gap-2 sm:gap-3">
@@ -192,6 +194,12 @@ const NavHomeBar = () => {
                 </span>
               )}
             </Link>
+
+             <div className="flex items-center gap-3">
+  <ThemeToggle />
+
+  {/* Existing cart button, profile menu, etc. */}
+</div>
 
             {/* Profile Dropdown */}
             <div className="relative hidden sm:block" ref={profileRef}>

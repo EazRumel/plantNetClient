@@ -25,6 +25,7 @@ import MyInventory from "../layouts/Dashboard/Seller/MyInventory";
 import ManageOrders from "../layouts/Dashboard/Seller/ManageOrders";
 import AdminStats from "../layouts/Dashboard/Admin/AdminStats";
 import Stats from "../layouts/Dashboard/Common/Stats";
+import UpdateInventory from "../layouts/Dashboard/Seller/UpdateInventory";
 
 
 
@@ -97,6 +98,10 @@ export const router = createBrowserRouter([
             <AddPlant></AddPlant>
           </SellerRoute>
         </PrivateRoute>
+      },
+      {
+       path:"updatePlant/:id",
+       element:<UpdateInventory></UpdateInventory>
       },
       {
         path:"myOrder",

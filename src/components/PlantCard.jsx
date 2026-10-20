@@ -157,7 +157,7 @@ const PlantCard = ({ plant }) => {
             </p>
 
             <p className="text-2xl font-extrabold tracking-tight text-green-800">
-              ৳{Number(price).toLocaleString("en-BD")}
+              {Number(price).toLocaleString("en-BD")} $
             </p>
           </div>
         </div>
