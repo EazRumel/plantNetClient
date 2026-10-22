@@ -10,7 +10,7 @@ import {
 } from "@headlessui/react";
 import { Leaf, LoaderPinwheel, X } from "lucide-react";
 
-const UpdateInventory = ({
+const UpdatePlant = ({
   id,
   isUpdateOpen,
   closeUpdateModal,
@@ -182,4 +182,4 @@ const UpdateInventory = ({
   );
 };
 
-export default UpdateInventory;
+export default UpdatePlant;

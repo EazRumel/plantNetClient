@@ -25,7 +25,8 @@ import MyInventory from "../layouts/Dashboard/Seller/MyInventory";
 import ManageOrders from "../layouts/Dashboard/Seller/ManageOrders";
 import AdminStats from "../layouts/Dashboard/Admin/AdminStats";
 import Stats from "../layouts/Dashboard/Common/Stats";
-import UpdateInventory from "../layouts/Dashboard/Seller/UpdateInventory";
+import UpdatePlant from "../layouts/Dashboard/Seller/UpdatePlant";
+
 
 
 
@@ -99,10 +100,7 @@ export const router = createBrowserRouter([
           </SellerRoute>
         </PrivateRoute>
       },
-      {
-       path:"updatePlant/:id",
-       element:<UpdateInventory></UpdateInventory>
-      },
+     
       {
         path:"myOrder",
         element:<MyOrders></MyOrders>
@@ -130,6 +128,10 @@ export const router = createBrowserRouter([
           <MyInventory></MyInventory>
         </SellerRoute>
       </PrivateRoute>
+     },{
+      path:"updatePlant/:id",
+      element:<UpdatePlant></UpdatePlant>,
+      // loader:({})=>fetch(`http://localhost:3000/${params.id}`)
      },
      {
       path:"manageOrders",

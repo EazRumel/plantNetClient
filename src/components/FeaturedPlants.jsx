@@ -64,7 +64,7 @@ const FeaturedPlants = () => {
                     Price
                   </p>
                   <p className="text-lg font-bold text-green-700">
-                    ৳{plant.price}
+                    ${plant.price}
                   </p>
                 </div>
               </div>

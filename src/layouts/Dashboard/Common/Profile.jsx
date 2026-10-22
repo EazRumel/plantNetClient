@@ -39,35 +39,37 @@ const Profile = () => {
             </div>
           </div>
 
-          {/* Avatar and Name */}
-          <div className="px-6 pb-8 sm:px-10">
-            <div className="-mt-16 flex flex-col items-center sm:-mt-20">
-              <div className="flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-4 border-base-100 bg-green-100 shadow-lg sm:h-40 sm:w-40">
-                {photoURL ? (
-                  <img
-                    src={photoURL}
-                    alt={`${displayName}'s profile`}
-                    className="h-full w-full object-cover"
-                  />
-                ) : (
-                  <UserRound size={64} className="text-green-700" />
-                )}
-              </div>
+  {/* Avatar and Name */}
+<div className="px-6 pb-8 sm:px-10">
+  <div className="relative z-10 -mt-16 flex flex-col items-center sm:-mt-20">
+    {/* Profile Picture */}
+    <div className="flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-4 border-base-100 bg-green-100 shadow-lg sm:h-40 sm:w-40">
+      {photoURL ? (
+        <img
+          src={photoURL}
+          alt={`${displayName}'s profile`}
+          className="h-full w-full object-cover"
+        />
+      ) : (
+        <UserRound size={64} className="text-green-700" />
+      )}
+    </div>
 
-              <h2 className="mt-5 text-center text-2xl font-bold text-base-content sm:text-3xl">
-                {displayName}
-              </h2>
+    <h2 className="mt-5 text-center text-2xl font-bold text-base-content sm:text-3xl">
+      {displayName}
+    </h2>
 
-              <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-4 py-1.5 text-sm font-semibold capitalize text-green-800">
-                <ShieldCheck size={16} />
-                {role || "Customer"}
-              </div>
+    <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-4 py-1.5 text-sm font-semibold capitalize text-green-800">
+      <ShieldCheck size={16} />
+      {role || "Customer"}
+    </div>
 
-              <p className="mt-4 max-w-md text-center text-sm leading-6 text-base-content/60">
-                Welcome to Tree Planet! Keep growing your connection with nature.
-              </p>
-            </div>
+    <p className="mt-4 max-w-md text-center text-sm leading-6 text-base-content/60">
+      Welcome to Tree Planet! Keep growing your connection with nature.
+    </p>
+  </div>
 
+  {/* Keep your existing Information Section and Footer below this */}
             {/* Information Section */}
             <div className="mt-8 border-t border-base-300 pt-6">
               <h3 className="mb-4 text-lg font-bold text-base-content">

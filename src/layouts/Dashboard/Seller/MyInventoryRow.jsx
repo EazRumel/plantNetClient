@@ -2,8 +2,9 @@ import { useState } from "react";
 import userAxiosSecure from "../../../hooks/userAxiosSecure";
 import DeleteInventoryModal from "./DeleteInventoryModal";
 import { notyf } from "../../../api/utils";
-import UpdateInventory from "./UpdateInventory";
+
 import { Link } from "react-router-dom";
+import UpdatePlant from "./UpdatePlant";
 
 const MyInventoryRow = ({ plant, refetch }) => {
 
@@ -109,64 +110,99 @@ setIsUpdateOpen(false);
 
 
       {/* Actions */}
-      <td className="px-6 py-4">
+    {/* Actions */}
+<td className="px-6 py-4">
+  <div className="flex items-center gap-3">
 
-        <div className="flex items-center gap-2">
+    {/* Update Button */}
+    <button
+      type="button"
+      onClick={() => setIsUpdateOpen(true)}
+      className="cursor-pointer
+        group inline-flex items-center justify-center gap-2
+        rounded-xl border border-green-200 bg-green-50
+        px-4 py-2.5 text-sm font-semibold text-green-700
+        shadow-sm transition-all duration-200
+        hover:border-green-700 hover:bg-green-700 hover:text-white
+        hover:shadow-md hover:shadow-green-700/20
+        focus:outline-none focus:ring-4 focus:ring-green-500/20
+        active:scale-95
+      "
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="transition-transform duration-200 group-hover:rotate-[-8deg]"
+      >
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L9 17l-4 1 1-4Z" />
+      </svg>
 
-          {/* Update */}
-   <button
-  type="button"
-  onClick={() => setIsUpdateOpen(true)}
-  className="
-    inline-flex cursor-pointer items-center rounded-lg
-    bg-green-50 px-4 py-2 text-sm font-semibold
-    text-green-600 transition hover:bg-green-500
-    hover:text-white
-  "
->
-  Update
-</button>
-          {/* Delete */}
-          <button
-            onClick={() => setIsOpen(true)}
-            className="
-              cursor-pointer
-              rounded-lg
-              bg-red-50
-              px-4
-              py-2
-              text-sm
-              font-semibold
-              text-red-500
-              transition
-              hover:bg-red-500
-              hover:text-white
-            "
-          >
-            Delete
-          </button>
+      <span>Update</span>
+    </button>
 
-        </div>
+    {/* Delete Button */}
+    <button
+      type="button"
+      onClick={() => setIsOpen(true)}
+      className="cursor-pointer
+        group inline-flex items-center justify-center gap-2
+        rounded-xl border border-red-200 bg-red-50
+        px-4 py-2.5 text-sm font-semibold text-red-600
+        shadow-sm transition-all duration-200
+        hover:border-red-600 hover:bg-red-600 hover:text-white
+        hover:shadow-md hover:shadow-red-600/20
+        focus:outline-none focus:ring-4 focus:ring-red-500/20
+        active:scale-95
+      "
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="transition-transform duration-200 group-hover:scale-110 "
+      >
+        <path d="M3 6h18" />
+        <path d="M8 6V4h8v2" />
+        <path d="m19 6-1 14H6L5 6" />
+        <path d="M10 11v5" />
+        <path d="M14 11v5" />
+      </svg>
 
+      <span>Delete</span>
+    </button>
 
-        <DeleteInventoryModal
-          plant={plant._id}
-          handleDelete={handleDelete}
-          isOpen={isOpen}
-          closeModal={closeModal}
-        />
+  </div>
 
-        <UpdateInventory
-         id={_id}
-         isUpdateOpen={isUpdateOpen} 
-          closeUpdateModal={closeUpdateModal}
-          refetch={refetch}  
-        >
-         
-           
-        </UpdateInventory>
+  {/* Delete Confirmation Modal */}
+  <DeleteInventoryModal
+    plant={plant._id}
+    handleDelete={handleDelete}
+    isOpen={isOpen}
+    closeModal={closeModal}
+  />
 
-      </td>
+  {/* Update Modal */}
+  <UpdatePlant
+    id={_id}
+    isUpdateOpen={isUpdateOpen}
+    closeUpdateModal={closeUpdateModal}
+    refetch={refetch}
+  />
+</td>
 
     </tr>
   );
