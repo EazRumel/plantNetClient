@@ -13,10 +13,17 @@ import { Notyf } from "notyf";
 import useAuth from "../hooks/useAuth";
 import userAxiosSecure from "../hooks/userAxiosSecure";
 import useCart from "../hooks/useCart";
+import SetAddToCart from "./SetAddToCart";
 
 const PlantCard = ({ plant }) => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [isOpen,setIsOpen] = useState(false);
+
+    const closeModal = ()=>{
+      setIsOpen(false);
+    }
 
   const [carts, refetch] = useCart();
   const [addingToCart, setAddingToCart] = useState(false);
@@ -70,6 +77,10 @@ const PlantCard = ({ plant }) => {
 
       return;
     }
+
+    
+
+
 
     const cartItem = {
       cartId: _id,
@@ -186,7 +197,8 @@ const PlantCard = ({ plant }) => {
           {/* Add to Cart Button */}
           <button
             type="button"
-            onClick={handleAddToCart}
+            // onClick={handleAddToCart}
+            onClick={()=>setIsOpen(true)}
             disabled={addingToCart}
             className="group/cart relative inline-flex min-h-11 items-center justify-center gap-2 overflow-hidden rounded-xl bg-green-700 px-3 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-green-800 hover:shadow-lg hover:shadow-green-800/20 disabled:cursor-not-allowed disabled:opacity-60"
           >
@@ -208,8 +220,15 @@ const PlantCard = ({ plant }) => {
                 </>
               )}
             </span>
+             <SetAddToCart
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        closeModal={closeModal}
+        plant={plant}
+        ></SetAddToCart>
           </button>
         </div>
+       
       </div>
     </article>
   );

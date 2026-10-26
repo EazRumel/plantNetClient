@@ -26,6 +26,7 @@ import ManageOrders from "../layouts/Dashboard/Seller/ManageOrders";
 import AdminStats from "../layouts/Dashboard/Admin/AdminStats";
 import Stats from "../layouts/Dashboard/Common/Stats";
 import UpdatePlant from "../layouts/Dashboard/Seller/UpdatePlant";
+import Review from "../Home/Review";
 
 
 
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
   {
     path:"/plants",
     element:<Plants></Plants>
+  },
+  {
+    path:"/reviews",
+    element:<Review/>
   },
   {
     path:"/plant/:id",

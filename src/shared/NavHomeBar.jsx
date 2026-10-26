@@ -73,9 +73,10 @@ const NavHomeBar = () => {
   };
 
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "Plants", path: "/plants" },
-  ];
+  { name: "Home", path: "/" },
+  { name: "Plants", path: "/plants" },
+  { name: "Reviews", path: "/reviews" },
+];
 
   const isActive = (path) => {
     if (path === "/") {
